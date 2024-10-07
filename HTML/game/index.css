@@ -10,6 +10,14 @@ html, body {
 	height: 50px;
 	width: 50px;
 	position: absolute;
-	top: 0;
-	left: 0;
+}
+
+#pointer {
+	display: inline;
+	background: white;
+	position: absolute;
+	top: 100px;
+	left: 100px;
+	height: 20px;
+	width: 5px;
 }
