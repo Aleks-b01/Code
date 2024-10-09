@@ -35,7 +35,7 @@ let speed = setInterval(function() {
 	moveLeft();
 	moveRight()
 	}
-	, 5);
+	, 3);
 let shootingSpeed = setInterval(shoot, 500);
 let aim = 1;
 let whichFire = 1;
