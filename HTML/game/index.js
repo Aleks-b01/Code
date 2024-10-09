@@ -239,13 +239,13 @@ function aimPointer() {
 };
 
 function projectileIsFired() {
-	if (fireProjectile1 == false) {
+	if (fireProjectile1 === false) {
 		whichFire = 1;
 		shoot();
-	} else if (fireProjectile2 == false) {
+	} else if (fireProjectile2 === false) {
 		whichFire = 2;
 		shoot();
-	} else if (fireProjectile3 == false) {
+	} else if (fireProjectile3 === false) {
 		whichFire = 3;
 		shoot();
 	}
