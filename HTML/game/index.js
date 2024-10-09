@@ -508,6 +508,8 @@ function fire1() {
 				} else if (upProjectile1 <= 0) {
 					projectile1.style.visibility = "hidden";
 					fireProjectile1 = false;
+					upProjectile1 = 0;
+					leftProjectile1 = 0;
 				}
 				break;
 			case 2:
@@ -517,6 +519,8 @@ function fire1() {
 				} else if (leftProjectile1 >= width) {
 					projectile1.style.visibility = "hidden";
 					fireProjectile1 = false;
+					upProjectile1 = 0;
+					leftProjectile1 = 0;
 				}
 				break;
 			case 3:
@@ -526,6 +530,8 @@ function fire1() {
 				} else if (upProjectile1 >= height) {
 					projectile1.style.visibility = "hidden";
 					fireProjectile1 = false;
+					upProjectile1 = 0;
+					leftProjectile1 = 0;
 				}
 				break;
 			case 4:
@@ -535,6 +541,8 @@ function fire1() {
 				} else if (leftProjectile1 <= 0) {
 					projectile1.style.visibility = "hidden";
 					fireProjectile1 = false;
+					upProjectile1 = 0;
+					leftProjectile1 = 0;
 				}
 				break;
 			case 5:
@@ -546,6 +554,8 @@ function fire1() {
 				} else if (upProjectile1 <= 0 || leftProjectile1 >= width) {
 					projectile1.style.visibility = "hidden";
 					fireProjectile1 = false;
+					upProjectile1 = 0;
+					leftProjectile1 = 0;
 				}
 				break;
 			case 6:
@@ -557,6 +567,8 @@ function fire1() {
 				} else if (upProjectile1 >= height || leftProjectile1 >= width) {
 					projectile1.style.visibility = "hidden";
 					fireProjectile1 = false;
+					upProjectile1 = 0;
+					leftProjectile1 = 0;
 				}
 				break;
 			case 7:
@@ -568,6 +580,8 @@ function fire1() {
 				} else if (upProjectile1 >= height || leftProjectile1 <= 0) {
 					projectile1.style.visibility = "hidden";
 					fireProjectile1 = false;
+					upProjectile1 = 0;
+					leftProjectile1 = 0;
 				}
 				break;
 			case 8:
@@ -579,6 +593,8 @@ function fire1() {
 				} else if (upProjectile1 <= 0 || leftProjectile1 <= 0) {
 					projectile1.style.visibility = "hidden";
 					fireProjectile1 = false;
+					upProjectile1 = 0;
+					leftProjectile1 = 0;
 				}
 				break;
 		}
@@ -594,7 +610,9 @@ function fire2() {
 					projectile2.style.top = upProjectile2 + "px";
 				} else if (upProjectile2 <= 0) {
 					projectile2.style.visibility = "hidden";
-					fireprojectile2 = false;
+					fireProjectile2 = false;
+					upProjectile2 = 0;
+					leftProjectile2 = 0;
 				}
 				break;
 			case 2:
@@ -603,7 +621,9 @@ function fire2() {
 					projectile2.style.left = leftProjectile2 + "px";
 				} else if (leftProjectile2 >= width) {
 					projectile2.style.visibility = "hidden";
-					fireprojectile2 = false;
+					fireProjectile2 = false;
+					upProjectile2 = 0;
+					leftProjectile2 = 0;
 				}
 				break;
 			case 3:
@@ -612,7 +632,9 @@ function fire2() {
 					projectile2.style.top = upProjectile2 + "px";
 				} else if (upProjectile2 >= height) {
 					projectile2.style.visibility = "hidden";
-					fireprojectile2 = false;
+					fireProjectile2 = false;
+					upProjectile2 = 0;
+					leftProjectile2 = 0;
 				}
 				break;
 			case 4:
@@ -621,7 +643,9 @@ function fire2() {
 					projectile2.style.left = leftProjectile2 + "px";
 				} else if (leftProjectile2 <= 0) {
 					projectile2.style.visibility = "hidden";
-					fireprojectile2 = false;
+					fireProjectile2 = false;
+					upProjectile2 = 0;
+					leftProjectile2 = 0;
 				}
 				break;
 			case 5:
@@ -632,7 +656,9 @@ function fire2() {
 					projectile2.style.left = leftProjectile2 + "px";
 				} else if (upProjectile2 <= 0 || leftProjectile2 >= width) {
 					projectile2.style.visibility = "hidden";
-					fireprojectile2 = false;
+					fireProjectile2 = false;
+					upProjectile2 = 0;
+					leftProjectile2 = 0;
 				}
 				break;
 			case 6:
@@ -643,7 +669,9 @@ function fire2() {
 					projectile2.style.left = leftProjectile2 + "px";
 				} else if (upProjectile2 >= height || leftProjectile2 >= width) {
 					projectile2.style.visibility = "hidden";
-					fireprojectile2 = false;
+					fireProjectile2 = false;
+					upProjectile2 = 0;
+					leftProjectile2 = 0;
 				}
 				break;
 			case 7:
@@ -654,7 +682,9 @@ function fire2() {
 					projectile2.style.left = leftProjectile2 + "px";
 				} else if (upProjectile2 >= height || leftProjectile2 <= 0) {
 					projectile2.style.visibility = "hidden";
-					fireprojectile2 = false;
+					fireProjectile2 = false;
+					upProjectile2 = 0;
+					leftProjectile2 = 0;
 				}
 				break;
 			case 8:
@@ -665,7 +695,9 @@ function fire2() {
 					projectile2.style.left = leftProjectile2 + "px";
 				} else if (upProjectile2 <= 0 || leftProjectile2 <= 0) {
 					projectile2.style.visibility = "hidden";
-					fireprojectile2 = false;
+					fireProjectile2 = false;
+					upProjectile2 = 0;
+					leftProjectile2 = 0;
 				}
 				break;
 		}
@@ -681,7 +713,9 @@ function fire3() {
 					projectile3.style.top = upProjectile3 + "px";
 				} else if (upProjectile3 <= 0) {
 					projectile3.style.visibility = "hidden";
-					fireprojectile3 = false;
+					fireProjectile3 = false;
+					upProjectile3 = 0;
+					leftProjectile3 = 0;
 				}
 				break;
 			case 2:
@@ -690,7 +724,9 @@ function fire3() {
 					projectile3.style.left = leftProjectile3 + "px";
 				} else if (leftProjectile3 >= width) {
 					projectile3.style.visibility = "hidden";
-					fireprojectile3 = false;
+					fireProjectile3 = false;
+					upProjectile3 = 0;
+					leftProjectile3 = 0;
 				}
 				break;
 			case 3:
@@ -699,7 +735,9 @@ function fire3() {
 					projectile3.style.top = upProjectile3 + "px";
 				} else if (upProjectile3 >= height) {
 					projectile3.style.visibility = "hidden";
-					fireprojectile3 = false;
+					fireProjectile3 = false;
+					upProjectile3 = 0;
+					leftProjectile3 = 0;
 				}
 				break;
 			case 4:
@@ -708,7 +746,9 @@ function fire3() {
 					projectile3.style.left = leftProjectile3 + "px";
 				} else if (leftProjectile3 <= 0) {
 					projectile3.style.visibility = "hidden";
-					fireprojectile3 = false;
+					fireProjectile3 = false;
+					upProjectile3 = 0;
+					leftProjectile3 = 0;
 				}
 				break;
 			case 5:
@@ -719,7 +759,9 @@ function fire3() {
 					projectile3.style.left = leftProjectile3 + "px";
 				} else if (upProjectile3 <= 0 || leftProjectile3 >= width) {
 					projectile3.style.visibility = "hidden";
-					fireprojectile3 = false;
+					fireProjectile3 = false;
+					upProjectile3 = 0;
+					leftProjectile3 = 0;
 				}
 				break;
 			case 6:
@@ -730,7 +772,9 @@ function fire3() {
 					projectile3.style.left = leftProjectile3 + "px";
 				} else if (upProjectile3 >= height || leftProjectile3 >= width) {
 					projectile3.style.visibility = "hidden";
-					fireprojectile3 = false;
+					fireProjectile3 = false;
+					upProjectile3 = 0;
+					leftProjectile3 = 0;
 				}
 				break;
 			case 7:
@@ -741,7 +785,9 @@ function fire3() {
 					projectile3.style.left = leftProjectile3 + "px";
 				} else if (upProjectile3 >= height || leftProjectile3 <= 0) {
 					projectile3.style.visibility = "hidden";
-					fireprojectile3 = false;
+					fireProjectile3 = false;
+					upProjectile3 = 0;
+					leftProjectile3 = 0;
 				}
 				break;
 			case 8:
@@ -752,7 +798,9 @@ function fire3() {
 					projectile3.style.left = leftProjectile3 + "px";
 				} else if (upProjectile3 <= 0 || leftProjectile3 <= 0) {
 					projectile3.style.visibility = "hidden";
-					fireprojectile3 = false;
+					fireProjectile3 = false;
+					upProjectile3 = 0;
+					leftProjectile3 = 0;
 				}
 				break;
 		}
