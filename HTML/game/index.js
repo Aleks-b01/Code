@@ -48,6 +48,9 @@ let projectileSpeed = setInterval(function() {
 let fireProjectile1 = false;
 let fireProjectile2 = false;
 let fireProjectile3 = false;
+let aim1 = 0;
+let aim2 = 0;
+let aim3 = 0;
 
 function handleMovement(event) {
 	if ((event.key === "w" || event.key === "W")) {
@@ -140,23 +143,29 @@ function handleStop(event) {
 	if ((event.key === "w" || event.key === "W")) {
 		event.preventDefault();
 		w = false;
-	} else if ((event.key === "s" || event.key === "S")) {
+	} else if (event.key === "s" || event.key === "S") {
 		event.preventDefault();
 		s = false;
 	} else if ((event.key === "a" || event.key === "A")) {
 		event.preventDefault();
 		a = false;
 	} else if ((event.key === "d" || event.key === "D")) {
+		event.preventDefault();
 		d = false;
 	} else if ((event.key === "f" || event.key === "F")) {
+		event.preventDefault();
 		f = false;
 	} else if (event.key === "ArrowUp") {
+		event.preventDefault();
 		aup = false;
 	} else if (event.key === "ArrowRight") {
+		event.preventDefault();
 		aright = false;
 	} else if (event.key === "ArrowDown") {
+		event.preventDefault();
 		adown = false;
 	} else if (event.key === "ArrowLeft") {
+		event.preventDefault();
 		aleft = false;
 	}
 };
@@ -230,13 +239,13 @@ function aimPointer() {
 };
 
 function projectileIsFired() {
-	if (projectile1.style.visibility == "hidden") {
+	if (fireProjectile1 == false) {
 		whichFire = 1;
 		shoot();
-	} else if (projectile2.style.visibility == "hidden") {
+	} else if (fireProjectile2 == false) {
 		whichFire = 2;
 		shoot();
-	} else if (projectile3.style.visibility == "hidden") {
+	} else if (fireProjectile3 == false) {
 		whichFire = 3;
 		shoot();
 	}
@@ -253,6 +262,7 @@ function shoot() {
 					leftProjectile1 = left + 23;
 					projectile1.style.visibility = "visible";
 					fireProjectile1 = true;
+					aim1 = aim;
 					fire1();
 				} else if (whichFire == 2) {
 					projectile2.style.top = (up - 50) + "px";
@@ -261,6 +271,7 @@ function shoot() {
 					leftProjectile2 = left + 23;
 					projectile2.style.visibility = "visible";
 					fireProjectile2 = true;
+					aim2 = aim;
 					fire2();
 				} else if (whichFire == 3) {
 					projectile3.style.top = (up - 50) + "px";
@@ -269,8 +280,10 @@ function shoot() {
 					leftProjectile3 = left + 23;
 					projectile3.style.visibility = "visible";
 					fireProjectile3 = true;
+					aim3 = aim;
 					fire3();
 				}
+				break;
 			case 2:
 				if (whichFire == 1) {
 					projectile1.style.top = (up + 15) + "px";
@@ -279,6 +292,7 @@ function shoot() {
 					leftProjectile1 = left + 85;
 					projectile1.style.visibility = "visible";
 					fireProjectile1 = true;
+					aim1 = aim;
 					fire1();
 				} else if (whichFire == 2) {
 					projectile2.style.top = (up + 15) + "px";
@@ -287,6 +301,7 @@ function shoot() {
 					leftProjectile2 = left + 85;
 					projectile2.style.visibility = "visible";
 					fireProjectile2 = true;
+					aim2 = aim;
 					fire2();
 				} else if (whichFire == 3) {
 					projectile3.style.top = (up + 15) + "px";
@@ -295,8 +310,10 @@ function shoot() {
 					leftProjectile3 = left + 85;
 					projectile3.style.visibility = "visible";
 					fireProjectile3 = true;
+					aim3 = aim;
 					fire3();
 				}
+				break;
 			case 3:
 				if (whichFire == 1) {
 					projectile1.style.top = (up + 80) + "px";
@@ -305,6 +322,7 @@ function shoot() {
 					leftProjectile1 = left + 23;
 					projectile1.style.visibility = "visible";
 					fireProjectile1 = true;
+					aim1 = aim;
 					fire1();
 				} else if (whichFire == 2) {
 					projectile2.style.top = (up + 80) + "px";
@@ -313,6 +331,7 @@ function shoot() {
 					leftProjectile2 = left + 23;
 					projectile2.style.visibility = "visible";
 					fireProjectile2 = true;
+					aim2 = aim;
 					fire2();
 				} else if (whichFire == 3) {
 					projectile3.style.top = (up + 80) + "px";
@@ -321,8 +340,10 @@ function shoot() {
 					leftProjectile3 = left + 23;
 					projectile3.style.visibility = "visible";
 					fireProjectile3 = true;
+					aim3 = aim;
 					fire3();
 				}
+				break;
 			case 4:
 				if (whichFire == 1) {
 					projectile1.style.top = (up + 15) + "px";
@@ -331,6 +352,7 @@ function shoot() {
 					leftProjectile1 = left - 45;
 					projectile1.style.visibility = "visible";
 					fireProjectile1 = true;
+					aim1 = aim;
 					fire1();
 				} else if (whichFire == 2) {
 					projectile2.style.top = (up + 15) + "px";
@@ -339,6 +361,7 @@ function shoot() {
 					leftProjectile2 = left - 45;
 					projectile2.style.visibility = "visible";
 					fireProjectile2 = true;
+					aim2 = aim;
 					fire2();
 				} else if (whichFire == 3) {
 					projectile3.style.top = (up + 15) + "px";
@@ -347,8 +370,10 @@ function shoot() {
 					leftProjectile3 = left - 45;
 					projectile3.style.visibility = "visible";
 					fireProjectile3 = true;
+					aim3 = aim;
 					fire3();
 				}
+				break;
 			case 5:
 				if (whichFire == 1) {
 					projectile1.style.top = (up - 50) + "px";
@@ -357,6 +382,7 @@ function shoot() {
 					leftProjectile1 = left + 85;
 					projectile1.style.visibility = "visible";
 					fireProjectile1 = true;
+					aim1 = aim;
 					fire1();
 				} else if (whichFire == 2) {
 					projectile2.style.top = (up - 50) + "px";
@@ -365,6 +391,7 @@ function shoot() {
 					leftProjectile2 = left + 85;
 					projectile2.style.visibility = "visible";
 					fireProjectile2 = true;
+					aim2 = aim;
 					fire2();
 				} else if (whichFire == 3) {
 					projectile3.style.top = (up - 50) + "px";
@@ -373,8 +400,10 @@ function shoot() {
 					leftProjectile3 = left + 85;
 					projectile3.style.visibility = "visible";
 					fireProjectile3 = true;
+					aim3 = aim;
 					fire3();
 				}
+				break;
 			case 6:
 				if (whichFire == 1) {
 					projectile1.style.top = (up + 80) + "px";
@@ -383,6 +412,7 @@ function shoot() {
 					leftProjectile1 = left + 85;
 					projectile1.style.visibility = "visible";
 					fireProjectile1 = true;
+					aim1 = aim;
 					fire1();
 				} else if (whichFire == 2) {
 					projectile2.style.top = (up - 80) + "px";
@@ -391,6 +421,7 @@ function shoot() {
 					leftProjectile2 = left + 85;
 					projectile2.style.visibility = "visible";
 					fireProjectile2 = true;
+					aim2 = aim;
 					fire2();
 				} else if (whichFire == 3) {
 					projectile3.style.top = (up - 80) + "px";
@@ -399,8 +430,10 @@ function shoot() {
 					leftProjectile3 = left + 85;
 					projectile3.style.visibility = "visible";
 					fireProjectile3 = true;
+					aim3 = aim;
 					fire3();
 				}
+				break;
 			case 7:
 				if (whichFire == 1) {
 					projectile1.style.top = (up + 80) + "px";
@@ -409,6 +442,7 @@ function shoot() {
 					leftProjectile1 = left - 45;
 					projectile1.style.visibility = "visible";
 					fireProjectile1 = true;
+					aim1 = aim;
 					fire1();
 				} else if (whichFire == 2) {
 					projectile2.style.top = (up + 80) + "px";
@@ -417,6 +451,7 @@ function shoot() {
 					leftProjectile2 = left - 45;
 					projectile2.style.visibility = "visible";
 					fireProjectile2 = true;
+					aim2 = aim;
 					fire2();
 				} else if (whichFire == 3) {
 					projectile3.style.top = (up + 80) + "px";
@@ -425,8 +460,10 @@ function shoot() {
 					leftProjectile3 = left - 45;
 					projectile3.style.visibility = "visible";
 					fireProjectile3 = true;
+					aim3 = aim;
 					fire3();
 				}
+				break;
 			case 8:
 				if (whichFire == 1) {
 					projectile1.style.top = (up - 50) + "px";
@@ -435,6 +472,7 @@ function shoot() {
 					leftProjectile1 = left - 45;
 					projectile1.style.visibility = "visible";
 					fireProjectile1 = true;
+					aim1 = aim;
 					fire1();
 				} else if (whichFire == 2) {
 					projectile2.style.top = (up - 50) + "px";
@@ -443,6 +481,7 @@ function shoot() {
 					leftProjectile2 = left - 45;
 					projectile2.style.visibility = "visible";
 					fireProjectile2 = true;
+					aim2 = aim;
 					fire2();
 				} else if (whichFire == 3) {
 					projectile3.style.top = (up - 50) + "px";
@@ -451,173 +490,271 @@ function shoot() {
 					leftProjectile3 = left - 45;
 					projectile3.style.visibility = "visible";
 					fireProjectile3 = true;
+					aim3 = aim;
 					fire3();
 				}
+				break;
 		}
 	}
 };
 
 function fire1() {
 	if (fireProjectile1 == true) {
-		switch (aim) {
+		switch (aim1) {
 			case 1:
 				if (upProjectile1 > 0) {
 					upProjectile1 -= 2;
 					projectile1.style.top = upProjectile1 + "px";
+				} else if (upProjectile1 <= 0) {
+					projectile1.style.visibility = "hidden";
+					fireProjectile1 = false;
 				}
+				break;
 			case 2:
 				if (leftProjectile1 < width) {
 					leftProjectile1 += 2;
 					projectile1.style.left = leftProjectile1 + "px";
+				} else if (leftProjectile1 >= width) {
+					projectile1.style.visibility = "hidden";
+					fireProjectile1 = false;
 				}
+				break;
 			case 3:
 				if (upProjectile1 < height) {
 					upProjectile1 += 2;
 					projectile1.style.top = upProjectile1 + "px";
+				} else if (upProjectile1 >= height) {
+					projectile1.style.visibility = "hidden";
+					fireProjectile1 = false;
 				}
+				break;
 			case 4:
 				if (leftProjectile1 > 0) {
 					leftProjectile1 -= 2;
 					projectile1.style.left = leftProjectile1 + "px";
+				} else if (leftProjectile1 <= 0) {
+					projectile1.style.visibility = "hidden";
+					fireProjectile1 = false;
 				}
+				break;
 			case 5:
 				if (upProjectile1 > 0 && leftProjectile1 < width) {
 					upProjectile1 -= 2;
 					leftProjectile1 += 2;
 					projectile1.style.top = upProjectile1 + "px";
 					projectile1.style.left = leftProjectile1 + "px";
+				} else if (upProjectile1 <= 0 || leftProjectile1 >= width) {
+					projectile1.style.visibility = "hidden";
+					fireProjectile1 = false;
 				}
+				break;
 			case 6:
 				if (upProjectile1 < height && leftProjectile1 < width) {
 					upProjectile1 += 2;
 					leftProjectile1 += 2
 					projectile1.style.top = upProjectile1 + "px";
 					projectile1.style.left = leftProjectile1 + "px";
+				} else if (upProjectile1 >= height || leftProjectile1 >= width) {
+					projectile1.style.visibility = "hidden";
+					fireProjectile1 = false;
 				}
+				break;
 			case 7:
 				if (upProjectile1 < height && leftProjectile1 > 0) {
 					upProjectile1 += 2;
 					leftProjectile1 -= 2;
 					projectile1.style.top = upProjectile1 + "px";
 					projectile1.style.left = leftProjectile1 + "px";
+				} else if (upProjectile1 >= height || leftProjectile1 <= 0) {
+					projectile1.style.visibility = "hidden";
+					fireProjectile1 = false;
 				}
+				break;
 			case 8:
 				if (upProjectile1 > 0 && leftProjectile1 > 0) {
 					upProjectile1 -= 2;
 					leftProjectile1 -= 2;
 					projectile1.style.top = upProjectile1 + "px";
 					projectile1.style.left = leftProjectile1 + "px";
+				} else if (upProjectile1 <= 0 || leftProjectile1 <= 0) {
+					projectile1.style.visibility = "hidden";
+					fireProjectile1 = false;
 				}
+				break;
 		}
 	}
 };
 
 function fire2() {
 	if (fireProjectile2 == true) {
-		switch (aim) {
+		switch (aim2) {
 			case 1:
 				if (upProjectile2 > 0) {
 					upProjectile2 -= 2;
 					projectile2.style.top = upProjectile2 + "px";
+				} else if (upProjectile2 <= 0) {
+					projectile2.style.visibility = "hidden";
+					fireprojectile2 = false;
 				}
+				break;
 			case 2:
 				if (leftProjectile2 < width) {
 					leftProjectile2 += 2;
 					projectile2.style.left = leftProjectile2 + "px";
+				} else if (leftProjectile2 >= width) {
+					projectile2.style.visibility = "hidden";
+					fireprojectile2 = false;
 				}
+				break;
 			case 3:
 				if (upProjectile2 < height) {
 					upProjectile2 += 2;
 					projectile2.style.top = upProjectile2 + "px";
+				} else if (upProjectile2 >= height) {
+					projectile2.style.visibility = "hidden";
+					fireprojectile2 = false;
 				}
+				break;
 			case 4:
 				if (leftProjectile2 > 0) {
 					leftProjectile2 -= 2;
 					projectile2.style.left = leftProjectile2 + "px";
+				} else if (leftProjectile2 <= 0) {
+					projectile2.style.visibility = "hidden";
+					fireprojectile2 = false;
 				}
+				break;
 			case 5:
 				if (upProjectile2 > 0 && leftProjectile2 < width) {
 					upProjectile2 -= 2;
 					leftProjectile2 += 2;
 					projectile2.style.top = upProjectile2 + "px";
 					projectile2.style.left = leftProjectile2 + "px";
+				} else if (upProjectile2 <= 0 || leftProjectile2 >= width) {
+					projectile2.style.visibility = "hidden";
+					fireprojectile2 = false;
 				}
+				break;
 			case 6:
 				if (upProjectile2 < height && leftProjectile2 < width) {
 					upProjectile2 += 2;
 					leftProjectile2 += 2
 					projectile2.style.top = upProjectile2 + "px";
 					projectile2.style.left = leftProjectile2 + "px";
+				} else if (upProjectile2 >= height || leftProjectile2 >= width) {
+					projectile2.style.visibility = "hidden";
+					fireprojectile2 = false;
 				}
+				break;
 			case 7:
 				if (upProjectile2 < height && leftProjectile2 > 0) {
 					upProjectile2 += 2;
 					leftProjectile2 -= 2;
 					projectile2.style.top = upProjectile2 + "px";
 					projectile2.style.left = leftProjectile2 + "px";
+				} else if (upProjectile2 >= height || leftProjectile2 <= 0) {
+					projectile2.style.visibility = "hidden";
+					fireprojectile2 = false;
 				}
+				break;
 			case 8:
 				if (upProjectile2 > 0 && leftProjectile2 > 0) {
 					upProjectile2 -= 2;
 					leftProjectile2 -= 2;
 					projectile2.style.top = upProjectile2 + "px";
 					projectile2.style.left = leftProjectile2 + "px";
+				} else if (upProjectile2 <= 0 || leftProjectile2 <= 0) {
+					projectile2.style.visibility = "hidden";
+					fireprojectile2 = false;
 				}
+				break;
 		}
 	}
 };
 
 function fire3() {
 	if (fireProjectile3 == true) {
-		switch (aim) {
+		switch (aim3) {
 			case 1:
 				if (upProjectile3 > 0) {
 					upProjectile3 -= 2;
 					projectile3.style.top = upProjectile3 + "px";
+				} else if (upProjectile3 <= 0) {
+					projectile3.style.visibility = "hidden";
+					fireprojectile3 = false;
 				}
+				break;
 			case 2:
 				if (leftProjectile3 < width) {
 					leftProjectile3 += 2;
 					projectile3.style.left = leftProjectile3 + "px";
+				} else if (leftProjectile3 >= width) {
+					projectile3.style.visibility = "hidden";
+					fireprojectile3 = false;
 				}
+				break;
 			case 3:
 				if (upProjectile3 < height) {
 					upProjectile3 += 2;
 					projectile3.style.top = upProjectile3 + "px";
+				} else if (upProjectile3 >= height) {
+					projectile3.style.visibility = "hidden";
+					fireprojectile3 = false;
 				}
+				break;
 			case 4:
 				if (leftProjectile3 > 0) {
 					leftProjectile3 -= 2;
 					projectile3.style.left = leftProjectile3 + "px";
+				} else if (leftProjectile3 <= 0) {
+					projectile3.style.visibility = "hidden";
+					fireprojectile3 = false;
 				}
+				break;
 			case 5:
 				if (upProjectile3 > 0 && leftProjectile3 < width) {
 					upProjectile3 -= 2;
 					leftProjectile3 += 2;
 					projectile3.style.top = upProjectile3 + "px";
 					projectile3.style.left = leftProjectile3 + "px";
+				} else if (upProjectile3 <= 0 || leftProjectile3 >= width) {
+					projectile3.style.visibility = "hidden";
+					fireprojectile3 = false;
 				}
+				break;
 			case 6:
 				if (upProjectile3 < height && leftProjectile3 < width) {
 					upProjectile3 += 2;
 					leftProjectile3 += 2
 					projectile3.style.top = upProjectile3 + "px";
 					projectile3.style.left = leftProjectile3 + "px";
+				} else if (upProjectile3 >= height || leftProjectile3 >= width) {
+					projectile3.style.visibility = "hidden";
+					fireprojectile3 = false;
 				}
+				break;
 			case 7:
 				if (upProjectile3 < height && leftProjectile3 > 0) {
 					upProjectile3 += 2;
 					leftProjectile3 -= 2;
 					projectile3.style.top = upProjectile3 + "px";
 					projectile3.style.left = leftProjectile3 + "px";
+				} else if (upProjectile3 >= height || leftProjectile3 <= 0) {
+					projectile3.style.visibility = "hidden";
+					fireprojectile3 = false;
 				}
+				break;
 			case 8:
 				if (upProjectile3 > 0 && leftProjectile3 > 0) {
 					upProjectile3 -= 2;
 					leftProjectile3 -= 2;
 					projectile3.style.top = upProjectile3 + "px";
 					projectile3.style.left = leftProjectile3 + "px";
+				} else if (upProjectile3 <= 0 || leftProjectile3 <= 0) {
+					projectile3.style.visibility = "hidden";
+					fireprojectile3 = false;
 				}
+				break;
 		}
 	}
 };

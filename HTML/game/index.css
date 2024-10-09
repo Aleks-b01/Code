@@ -29,15 +29,3 @@ html, body {
 	visibility: hidden;
 	position: absolute;
 }
-
-#projectile1 {
-	visibility: hidden;
-}
-
-#projectile2 {
-	visibility: hidden;
-}
-
-#projectile3 {
-	visibility: hidden;
-}
