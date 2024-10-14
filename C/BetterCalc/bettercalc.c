@@ -7,6 +7,7 @@ char userInput[];
 char num1[];
 char num2[];
 char analyzer;
+char temp;
 int length;
 int operator = 0;
 int option;
@@ -24,8 +25,26 @@ void getUserInput() {
 void processUserInput() {
 	for (int i = length; i >= 0; i--) {
 		analyzer = userInput[i];
-		if (isdigit(analyzer) || analyzer == '.' || analyzer == ',') {
-			
+		if (isdigit(analyzer) && num1alr == false) {
+			num2[inputCount] = analyzer;
+			inputCount++;
+		} else if ((analyzer == '.' || analyzer == ',') && num1alr == false) {
+			num2[inputCount] = '.';
+			inputCount++;
+		} else {
+			num1alr = true;
+			inputCount = 0;
+		}
+		if (isdigit(analyzer) && num1alr == true) {
+			num1[inputCount] = analyzer;
+			inputCount++;
+		} else if ((analyzer == '.' || analyzer == ',') && num1alr == true) {
+			num1[inputCount] = '.';
+			inputCount++;
+		} else {
+			num1alr = false;
+			inputCount = 0;
+		}
 		if (analyzer == '+') {
 			operator = 1;
 			break;
@@ -40,6 +59,12 @@ void processUserInput() {
 			break;
 		}
 	}
+	processUserInput2();
+}
+
+void processUserInput2() {
+	for (int i = strlen(num1); i >= 0; i--) {
+		
 }
 
 int main() {
