@@ -2,16 +2,16 @@ document.addEventListener('DOMContentLoaded', function()     {
 document.addEventListener("keydown", handleMovement);
 document.addEventListener("keyup", handleStop);
 
-const body = document.getElementById("html");
 const player = document.getElementById("player");
 const pointer = document.getElementById("pointer");
 const projectile = document.getElementsByClassName("projectile");
 const projectile1 = document.getElementById("projectile1");
 const projectile2 = document.getElementById("projectile2");
 const projectile3 = document.getElementById("projectile3");
+const game = document.getElementById("game");
 
-const height = screen.height;
-const width = screen.width;
+const height = window.innerHeight;
+const width = window.innerWidth;
 let up = 0;
 let left = 0;
 let upProjectile1 = 0;
@@ -36,7 +36,7 @@ let speed = setInterval(function() {
 	moveRight()
 	}
 	, 3);
-let shootingSpeed = setInterval(shoot, 500);
+let shootingSpeed = setInterval(shoot, 300);
 let aim = 1;
 let whichFire = 1;
 let projectileSpeed = setInterval(function() {
@@ -53,88 +53,90 @@ let aim2 = 0;
 let aim3 = 0;
 
 function handleMovement(event) {
-	if ((event.key === "w" || event.key === "W")) {
-		event.preventDefault();
-		w = true;
-		moveUp();
-	} else if ((event.key === "s" || event.key === "S")) {
-		event.preventDefault();
-		s = true;
-		moveDown();
-	}	else if ((event.key === "a" || event.key === "A")) {
-		event.preventDefault();
-		a = true;
-		moveLeft();
-	} else if ((event.key === "d" || event.key === "D")) {
-		event.preventDefault();
-		d = true;
-		moveRight();
-	} else if ((event.key === "f" || event.key === "F")) {
-		event.preventDefault();
-		f = true;
-		projectileIsFired();
-	} else if (event.key === "ArrowUp") {
-		event.preventDefault();
-		aup = true;
-		if (aleft == false && aright == false) {
+	if (game.style.display = "inline") {
+		if ((event.key === "w" || event.key === "W")) {
 			event.preventDefault();
-			aim = 1;
-			aimPointer();
-		} else if (aright == true && aup == true) {
+			w = true;
+			moveUp();
+		} else if ((event.key === "s" || event.key === "S")) {
 			event.preventDefault();
-			aim = 5;
-			aimPointer();
-		} else if (aleft == true && aup == true) {
+			s = true;
+			moveDown();
+		}	else if ((event.key === "a" || event.key === "A")) {
 			event.preventDefault();
-			aim = 8;
-			aimPointer();
-		}
-	} else if (event.key === "ArrowRight") {
-		event.preventDefault();
-		aright = true;
-		if (aup == false && adown == false) {
+			a = true;
+			moveLeft();
+		} else if ((event.key === "d" || event.key === "D")) {
 			event.preventDefault();
-			aim = 2;
-			aimPointer();
-		} else if (aright == true && aup == true) {
+			d = true;
+			moveRight();
+		} else if ((event.key === "f" || event.key === "F")) {
 			event.preventDefault();
-			aim = 5;
-			aimPointer();
-		} else if (aright == true && adown == true) {
+			f = true;
+			shoot();
+		} else if (event.key === "ArrowUp") {
 			event.preventDefault();
-			aim = 6;
-			aimPointer();
-		} 
-	} else if (event.key === "ArrowDown") {
-		event.preventDefault();
-		adown = true;
-		if (aleft == false && aright == false) {
+			aup = true;
+			if (aleft == false && aright == false) {
+				event.preventDefault();
+				aim = 1;
+				aimPointer();
+			} else if (aright == true && aup == true) {
+				event.preventDefault();
+				aim = 5;
+				aimPointer();
+			} else if (aleft == true && aup == true) {
+				event.preventDefault();
+				aim = 8;
+				aimPointer();
+			}
+		} else if (event.key === "ArrowRight") {
 			event.preventDefault();
-			aim = 3;
-			aimPointer();
-		} else if (aright == true && adown == true) {
+			aright = true;
+			if (aup == false && adown == false) {
+				event.preventDefault();
+				aim = 2;
+				aimPointer();
+			} else if (aright == true && aup == true) {
+				event.preventDefault();
+				aim = 5;
+				aimPointer();
+			} else if (aright == true && adown == true) {
+				event.preventDefault();
+				aim = 6;
+				aimPointer();
+			} 
+		} else if (event.key === "ArrowDown") {
 			event.preventDefault();
-			aim = 6;
-			aimPointer();
-		} else if (aleft == true && adown == true) {
+			adown = true;
+			if (aleft == false && aright == false) {
+				event.preventDefault();
+				aim = 3;
+				aimPointer();
+			} else if (aright == true && adown == true) {
+				event.preventDefault();
+				aim = 6;
+				aimPointer();
+			} else if (aleft == true && adown == true) {
+				event.preventDefault();
+				aim = 7;
+				aimPointer();
+			}
+		} else if (event.key === "ArrowLeft") {
 			event.preventDefault();
-			aim = 7;
-			aimPointer();
-		}
-	} else if (event.key === "ArrowLeft") {
-		event.preventDefault();
-		aleft = true;
-		if (aup == false && adown == false) {
-			aim = 4;
-			aimPointer();
-		} else if (aleft == true && aup == true) {
-			event.preventDefault();
-			aim = 8;
-			aimPointer();
-		} else if (aleft == true && adown == true) {
-			event.preventDefault();
-			aim = 7;
-			aimPointer();
+			aleft = true;
+			if (aup == false && adown == false) {
+				aim = 4;
+				aimPointer();
+			} else if (aleft == true && aup == true) {
+				event.preventDefault();
+				aim = 8;
+				aimPointer();
+			} else if (aleft == true && adown == true) {
+				event.preventDefault();
+				aim = 7;
+				aimPointer();
+			}
 		}
 	}
 };
@@ -241,18 +243,18 @@ function aimPointer() {
 function projectileIsFired() {
 	if (fireProjectile1 === false) {
 		whichFire = 1;
-		shoot();
 	} else if (fireProjectile2 === false) {
 		whichFire = 2;
-		shoot();
 	} else if (fireProjectile3 === false) {
 		whichFire = 3;
-		shoot();
+	} else {
+		whichFire = 0;
 	}
 };
 
 function shoot() {
 	if (f == true) {
+		projectileIsFired();
 		switch (aim) {
 			case 1:
 				if (whichFire == 1) {
