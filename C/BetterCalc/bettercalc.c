@@ -1,125 +1,80 @@
 #include <stdio.h>
-#include <stdbool.h>
-#include <string.h>
-#include <ctype.h>
-#include <stdlib.h>
 
-char userInput[50] = "";
+int choice;
+char userInput[50];
 double num1;
 double num2;
 double result;
-char num1str[50];
-char num2str[50];
-char temp;
-int length;
-int length1 = 0;
-int length2 = 0;
-int operator = 0;
-int option;
-int inputCount = 0;
+char operator;
+int historyCount = 0;
+double nums1[300];
+double nums2[300];
+double results[300];
+char operators[300];
 
-void calculate() {
-	if (operator == 1) {
+int displayHistory() {
+	if (historyCount == 0) {
+		printf("\n\nHistory is empty\n");
+	} else {
+		printf("\n\nHistory:\n");
+		for (int i = historyCount; i > 0; i--) {
+			printf("%.2lf %c %.2lf = %.2lf\n", nums1[i], operators[i], nums2[i], results[i]);
+		}
+	}
+	return 0;
+}
+
+int calculate() {
+	scanf("%s", userInput);
+	sscanf(userInput, "%lf%c%lf", &num1, &operator, &num2);
+	historyCount++;
+	nums1[historyCount] = num1;
+	nums2[historyCount] = num2;
+	operators[historyCount] = operator;
+	if (operator == '+') {
 		result = num1 + num2;
-		printf("\n%.2f\n", result);
-	} else if (operator == 2) {
+		printf("\n%.2lf\n", result);
+		results[historyCount] = result;
+	} else if (operator == '-') {
 		result = num1 - num2;
-		printf("\n%.2f\n", result);
-	} else if (operator == 3) {
+		printf("\n%.2lf\n", result);
+		results[historyCount] = result;
+	} else if (operator == '*') {
 		result = num1 * num2;
-		printf("\n%.2f\n", result);
-	} else if (operator == 4) {
+		printf("\n%.2lf\n", result);
+		results[historyCount] = result;
+	} else if (operator == '/') {
 		if (num2 == 0) {
 			printf("\nYou can't divide by zero\n");
+			historyCount--;
 		} else {
 			result = num1 / num2;
-			printf("\n%.2f\n", result);
+			printf("\n%.2lf\n", result);
+			results[historyCount] = result;
 		}
+	} else {
+		printf("\nPlease enter valid inputs\n");
 	}
-}
-
-void processUserInput() {
-	for (int i = length; i >= 0; i--) {
-		temp = userInput[i];
-		if (isdigit(temp) || (temp == '.' || temp == ',')) {
-			length2++;
-		} else {
-			break;
-		}
-	}
-	for (int i = length - length2; i >= 0; i--) {
-		temp = userInput[i];
-		if (isdigit(temp) || (temp == '.' || temp == ',')) {
-			length1++;
-		}
-	}
-	for (int i = length; i >= 0; i--) {
-		temp = userInput[i];
-		if (isdigit(temp)) {
-			num2str[length2 - 1] = temp;
-			length2--;
-		} else if (temp == '.' || temp == ',') {
-			num2str[length2 - 1] = '.';
-			length2--;
-		} else {
-			break;
-		}
-	}
-	num2 = atof(num2str);
-	for (int i = length - length2; i >= 0; i--) {
-		temp = userInput[i];
-		if (isdigit(temp)) {
-			num1str[length1 - 1] = temp;
-			length1--;
-		} else if (temp == '.' || temp == ',') {
-			num1str[length1 - 1] = '.';
-			length1--;
-		}
-	}
-	num1 = atof(num1str);
-	for (int i = length; i > 0; i--) {
-		temp = userInput[i];
-		if (temp == '+') {
-			operator = 1;
-		} else if (temp == '-') {
-			operator = 2;
-		} else if (temp == '*') {
-			operator = 3;
-		} else if (temp == '/') {
-			operator = 4;
-		}
-	}
-	calculate();
-}
-
-void getUserInput() {
-	printf("\n");
-	scanf("%s", userInput);
-	length = strlen(userInput);
-	processUserInput();
+	return 0;
 }
 
 int main() {
+	printf("\nBetterCalc");
 	while(1) {
-		printf("\n\n\nBetterCalc\n");
-		printf("\nChoose an Option:\n");
-		printf("1. Calculator\n");
-		printf("2. History\n");
-		printf("3. Settings\n");
-		printf("4. Exit\n");
-		scanf("%d", &option);
-		switch(option) {
+		printf("\n\n\n\nChoose an Option:\n1. Calculate\n2. History\n3. Settings\n4. Exit\n");
+		scanf("%d", &choice);
+		switch (choice) {
 			case 1:
-				getUserInput();
+				calculate();
 				break;
 			case 2:
-				printf("\nIn Works\n");
+				displayHistory();
 				break;
 			case 3:
 				break;
-				printf("\nIn Works\n");
 			case 4:
 				return 0;
+				break;
 		}
 	}
 	return 0;
