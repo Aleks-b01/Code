@@ -4,13 +4,12 @@
 #include <ctype.h>
 #include <stdlib.h>
 
-char userInput[];
+char userInput[50] = "";
 double num1;
 double num2;
 double result;
-char num1str[];
-char num2str[];
-char analyzer;
+char num1str[50];
+char num2str[50];
 char temp;
 int length;
 int length1 = 0;
@@ -19,17 +18,30 @@ int operator = 0;
 int option;
 int inputCount = 0;
 
-void getUserInput() {
-	printf("\n");
-	scanf("%s", userInput);
-	length = strlen(userInput);
-	processUserInput();
+void calculate() {
+	if (operator == 1) {
+		result = num1 + num2;
+		printf("\n%.2f\n", result);
+	} else if (operator == 2) {
+		result = num1 - num2;
+		printf("\n%.2f\n", result);
+	} else if (operator == 3) {
+		result = num1 * num2;
+		printf("\n%.2f\n", result);
+	} else if (operator == 4) {
+		if (num2 == 0) {
+			printf("\nYou can't divide by zero\n");
+		} else {
+			result = num1 / num2;
+			printf("\n%.2f\n", result);
+		}
+	}
 }
 
 void processUserInput() {
 	for (int i = length; i >= 0; i--) {
 		temp = userInput[i];
-		if (isdigit(temp) && (temp == '.' || temp == ',')) {
+		if (isdigit(temp) || (temp == '.' || temp == ',')) {
 			length2++;
 		} else {
 			break;
@@ -37,7 +49,7 @@ void processUserInput() {
 	}
 	for (int i = length - length2; i >= 0; i--) {
 		temp = userInput[i];
-		if (isdigit(temp) && (temp == '.' || temp == ',')) {
+		if (isdigit(temp) || (temp == '.' || temp == ',')) {
 			length1++;
 		}
 	}
@@ -80,19 +92,16 @@ void processUserInput() {
 	calculate();
 }
 
-void calculate() {
-	if (operator == 1) {
-		result = num1 + num2;
-		printf("\n%.2f\n", result);
-	} else if (operator == 2) {
-		result = num1 - num2;
-		printf("\n%.2f\n", result);
-	}
+void getUserInput() {
+	printf("\n");
+	scanf("%s", userInput);
+	length = strlen(userInput);
+	processUserInput();
 }
 
 int main() {
 	while(1) {
-		printf("\nBetterCalc\n");
+		printf("\n\n\nBetterCalc\n");
 		printf("\nChoose an Option:\n");
 		printf("1. Calculator\n");
 		printf("2. History\n");
@@ -101,7 +110,7 @@ int main() {
 		scanf("%d", &option);
 		switch(option) {
 			case 1:
-				printf("\nIn Works\n");
+				getUserInput();
 				break;
 			case 2:
 				printf("\nIn Works\n");
