@@ -1,5 +1,7 @@
 #include <stdio.h>
 
+FILE *cfile;
+
 int choice;
 char userInput[50];
 double num1;
@@ -12,23 +14,42 @@ double nums2[300];
 double results[300];
 char operators[300];
 int settingsChoice;
+char historyString[100000];
+
+int save() {
+	cfile = fopen("calchistory", "w");
+	for (int i = length; i > 0; i--) {
+		fprintf(cfile, "%lf %c %lf = %lf\n", nums1[i], operators[i], nums2[i], results[i]);
+	}
+	fclose(cfile);
+}
+
+int load() {
+	cfile = fopen("calchistory", "r");
+	if (cfile == NULL) {
+		printf("\n\nCannot load file");
+	} else {
+		while(fgets(historyString, 100000, cfile)){}
+	}
+	fclose(cfile);
+}
 
 int printSettings() {
 	while(1) {
-		printf("\n\nSettings:\n\n1. Save\n2. Save As\n3. Load\n4. Decimal Points (Currently %d)\n5. Autosave\n6. Exit");
-		scanf("%d", settingsChoice);
+		printf("\n\nSettings:\n\n1. Save\n2. Load\n3. Decimal Points (Currently %d)\n4. Autosave\n5. Exit", /*var name here*/);
+		scanf("%d", &settingsChoice);
 		switch (settingsChoice) {
 			case 1:
+				save();
 				break;
 			case 2:
+				load();
 				break;
 			case 3:
 				break;
 			case 4:
 				break;
 			case 5:
-				break;
-			case 6:
 				return 0;
 				break;
 			default:
@@ -44,6 +65,7 @@ int displayHistory() {
 		printf("\n\nHistory is empty\n");
 	} else {
 		printf("\n\nHistory:\n");
+		printf("%s\n", historyString);
 		for (int i = historyCount; i > 0; i--) {
 			printf("%.2lf %c %.2lf = %.2lf\n", nums1[i], operators[i], nums2[i], results[i]);
 		}
