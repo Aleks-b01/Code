@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-FILE *cfile;
+FILE *hFile;
 
 int choice;
 char userInput[50];
@@ -17,21 +17,15 @@ int settingsChoice;
 char historyString[100000];
 
 int save() {
-	cfile = fopen("calchistory", "w");
-	for (int i = length; i > 0; i--) {
-		fprintf(cfile, "%lf %c %lf = %lf\n", nums1[i], operators[i], nums2[i], results[i]);
+	hFile = fopen("calchistory", "a");
+	for (int i = historyCount; i > 0; i--) {
+		fprintf(hFile, "%lf %c %lf = %lf", nums1[i], operators[i], nums2[i], results[i]);
 	}
-	fclose(cfile);
+	fclose(hFile);
 }
 
 int load() {
-	cfile = fopen("calchistory", "r");
-	if (cfile == NULL) {
-		printf("\n\nCannot load file");
-	} else {
-		while(fgets(historyString, 100000, cfile)){}
-	}
-	fclose(cfile);
+	
 }
 
 int printSettings() {
