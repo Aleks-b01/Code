@@ -11,6 +11,33 @@ double nums1[300];
 double nums2[300];
 double results[300];
 char operators[300];
+int settingsChoice;
+
+int printSettings() {
+	while(1) {
+		printf("\n\nSettings:\n\n1. Save\n2. Save As\n3. Load\n4. Decimal Points (Currently %d)\n5. Autosave\n6. Exit");
+		scanf("%d", settingsChoice);
+		switch (settingsChoice) {
+			case 1:
+				break;
+			case 2:
+				break;
+			case 3:
+				break;
+			case 4:
+				break;
+			case 5:
+				break;
+			case 6:
+				return 0;
+				break;
+			default:
+				printf("\n\nChoose a valid option");
+				break;
+		}
+	}
+	return 0;
+}
 
 int displayHistory() {
 	if (historyCount == 0) {
@@ -71,9 +98,13 @@ int main() {
 				displayHistory();
 				break;
 			case 3:
+				printSettings();
 				break;
 			case 4:
 				return 0;
+				break;
+			default:
+				printf("\n\nChoose a valid option'n");
 				break;
 		}
 	}
