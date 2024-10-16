@@ -14,23 +14,58 @@ double nums2[300];
 double results[300];
 char operators[300];
 int settingsChoice;
-char historyString[100000];
+int hitoryChoice;
 
 int save() {
 	hFile = fopen("calchistory", "a");
 	for (int i = historyCount; i > 0; i--) {
-		fprintf(hFile, "%lf %c %lf = %lf", nums1[i], operators[i], nums2[i], results[i]);
+		fprintf(hFile, "%lf %c %lf = %lf\n", nums1[i], operators[i], nums2[i], results[i]);
 	}
 	fclose(hFile);
+	return 0;
 }
 
 int load() {
+	hFile = fopen("calchistory", "r");
+	while (fgets(userInput, 50, hFile) != NULL) {
+		sscanf(userInput, "%lf%c%lf", &num1, &operator, &num2);
+	}
+	fclose(hFile);
+	return 0;
+}
+
+int clearHistory() {
 	
+	return 0;
+}
+
+int printClearHistory() {
+	while(1) {
+		printf("\n\n1. Only Clear current history\n2. Clear all history (including files)\n3. Exit");
+		scanf("%d", &historyChoice);
+		switch (historyChoice) {
+			case 1:
+				clearHistory();
+				return 0;
+				break;
+			case 2:
+				clearAllHistory();
+				return 0;
+				break;
+			case 3:
+				return 0;
+				break;
+			default:
+				printf("\n\nPlease Choose a valid option\n");
+				break
+		}
+	}
+	return 0;
 }
 
 int printSettings() {
 	while(1) {
-		printf("\n\nSettings:\n\n1. Save\n2. Load\n3. Decimal Points (Currently %d)\n4. Autosave\n5. Exit", /*var name here*/);
+		printf("\n\nSettings:\n\n1. Save\n2. Load\n3. Clear History\n4. Decimal Points (Currently %d)\n5. Exit", /*var name here*/);
 		scanf("%d", &settingsChoice);
 		switch (settingsChoice) {
 			case 1:
@@ -40,6 +75,7 @@ int printSettings() {
 				load();
 				break;
 			case 3:
+				printClearHistory();
 				break;
 			case 4:
 				break;
@@ -47,7 +83,7 @@ int printSettings() {
 				return 0;
 				break;
 			default:
-				printf("\n\nChoose a valid option");
+				printf("\n\nChoose a valid option\n");
 				break;
 		}
 	}
@@ -59,7 +95,6 @@ int displayHistory() {
 		printf("\n\nHistory is empty\n");
 	} else {
 		printf("\n\nHistory:\n");
-		printf("%s\n", historyString);
 		for (int i = historyCount; i > 0; i--) {
 			printf("%.2lf %c %.2lf = %.2lf\n", nums1[i], operators[i], nums2[i], results[i]);
 		}
