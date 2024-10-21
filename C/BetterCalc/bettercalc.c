@@ -14,30 +14,7 @@ double nums2[300];
 double results[300];
 char operators[300];
 int settingsChoice;
-int hitoryChoice;
-
-int save() {
-	hFile = fopen("calchistory", "a");
-	for (int i = historyCount; i > 0; i--) {
-		fprintf(hFile, "%lf %c %lf = %lf\n", nums1[i], operators[i], nums2[i], results[i]);
-	}
-	fclose(hFile);
-	return 0;
-}
-
-int load() {
-	hFile = fopen("calchistory", "r");
-	while (fgets(userInput, 50, hFile) != NULL) {
-		sscanf(userInput, "%lf%c%lf", &num1, &operator, &num2);
-	}
-	fclose(hFile);
-	return 0;
-}
-
-int clearHistory() {
-	
-	return 0;
-}
+int historyChoice;
 
 int printClearHistory() {
 	while(1) {
@@ -45,11 +22,9 @@ int printClearHistory() {
 		scanf("%d", &historyChoice);
 		switch (historyChoice) {
 			case 1:
-				clearHistory();
 				return 0;
 				break;
 			case 2:
-				clearAllHistory();
 				return 0;
 				break;
 			case 3:
@@ -57,7 +32,7 @@ int printClearHistory() {
 				break;
 			default:
 				printf("\n\nPlease Choose a valid option\n");
-				break
+				break;
 		}
 	}
 	return 0;
@@ -65,14 +40,12 @@ int printClearHistory() {
 
 int printSettings() {
 	while(1) {
-		printf("\n\nSettings:\n\n1. Save\n2. Load\n3. Clear History\n4. Decimal Points (Currently %d)\n5. Exit", /*var name here*/);
+		printf("\n\nSettings:\n\n1. Save\n2. Load\n3. Clear History\n4. Decimal Points\n5. Exit");
 		scanf("%d", &settingsChoice);
 		switch (settingsChoice) {
 			case 1:
-				save();
 				break;
 			case 2:
-				load();
 				break;
 			case 3:
 				printClearHistory();
