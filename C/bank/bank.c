@@ -79,9 +79,20 @@ int openAcc() {
 	return 0;
 }
 
+int manage() {
+	pritnf("\n\n\nChoose an option:\n1. Deposit\n2. Withdraw\n3. ");
+	return 0;
+}
+
+int login() {
+	printf("\nThis is beeing worked on, enjoy your stay for now\n");
+	manage();
+	return 0;
+}
+
 int main() {
 	while (1) {
-		printf("\nWelcome to the Bank manager\n\n\n\nChoose an option:\n1. Manage account\n2. Open account\n3. Close account\n4. Exit\n");
+		printf("\nWelcome to the Bank manager\n\n\n\nChoose an option:\n1. Manage account\n2. Open account\n3. Exit\n");
 		int choice;
 		scanf("\n%d\n", choice);
 		switch(choice) {
@@ -90,8 +101,6 @@ int main() {
 			case 2:
 				break;
 			case 3:
-				break;
-			case 4:
 				return 0;
 		}
 	}
