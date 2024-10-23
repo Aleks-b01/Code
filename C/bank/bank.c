@@ -82,7 +82,9 @@ int openAcc() {
 }
 
 int manage() {
-	printf("\n\n\nChoose an option:\n1. Deposit\n2. Withdraw\n3. ");
+	while (1) {
+		printf("\n\n\nChoose an option:\n1. Deposit\n2. Withdraw\n3. ");
+	}
 	return 0;
 }
 
@@ -93,9 +95,10 @@ int login() {
 }
 
 int main() {
+	printf("\nWelcome to the Bank manager\n\n\n");
 	while (1) {
-		printf("\nWelcome to the Bank manager\n\n\n\nChoose an option:\n1. Manage account\n2. Open account\n3. Exit\n");
-		scanf("%d", choice);
+		printf("\nChoose an option:\n1. Manage account\n2. Open account\n3. Exit\n");
+		scanf("%d", &choice);
 		switch(choice) {
 			case 1:	
 				manage();
@@ -105,6 +108,9 @@ int main() {
 				break;
 			case 3:
 				return 0;
+			default:
+				printf("\nInvalid option\n");
+				break;
 		}
 	}
 	return 0;
