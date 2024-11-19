@@ -1,6 +1,10 @@
 document.addEventListener('DOMContentLoaded', function() {
 document.addEventListener("keydown", keyBinds);
 
+const mainMenu = document.getElementById('mainMenu');
+const startMenu = document.getElementById('startMenu');
+const settingsMenu = document.getElementById('settingsMenu');
+
 const css = document.getElementsByTagName('link');
 
 const screenwidth = screen.width
@@ -14,6 +18,14 @@ window.onload = function() {
 };
 
 function keyBinds(event) {
+	if (event.key === '' && mainMenu.style.display == "flex") {
+
+	} else if (event.key === '' && startMenu.style.display == "flex") {
+
+	}
+};
+
+function loadGame() {
 
 };
 
