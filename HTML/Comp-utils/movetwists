@@ -1,0 +1,12 @@
+This is just a list for me to know how a move twists/affects a corner
+
+U/D: N/A
+R/R': UFR DBR, CW | UBR DFR, CCW
+L/L': UBL DFL, CW | UFL DBL, CCW
+F/F': UFL DFR, CW | UFR DFL, CCW
+B/B': UBR DBL, CW | UBL DBR, CCW
+
+CW + CW = CCW
+CCW + CCW = CW
+CW + CCW = Solved
+CCW + CW = Solved

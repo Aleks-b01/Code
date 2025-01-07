@@ -1,0 +1,293 @@
+html, body {
+	margin: 0;
+	display: inline;
+	height: 100%;
+	width: 100%;
+}
+
+#headerDiv {
+	display: flex;
+	height: 10%;
+	width: 100%;
+	justify-content: center;
+	align-items: center;
+	margin: auto;
+}
+
+#menu {
+	display: flex;
+	height: 50%;
+	width: 30%;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-content: center;
+	margin: auto;
+}
+
+#header {
+	height: 20%;
+	width: auto;
+	color: white;
+	font-size: 45px;
+	font-family: arial;
+}
+
+#settarget {
+	color: white;
+	font-family: arial;
+	font-size: 30px;
+}
+
+.menuBtns {
+	height: 32%;
+	width: 32%;
+	margin: 1px;
+}
+
+#settingsBtn {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	height: 50px;
+	width: 50px;
+}
+
+.time {
+	font-family: arial;
+	font-size: 30px;
+	color: white;
+}
+
+#calc {
+	display: none; /* Normally flex */
+	height: 100%;
+	width: 100%;
+	flex-direction: column;
+	flex-wrap: wrap;
+}
+
+#calcMenuBtn {
+	height: 50px;
+	width: 50px;
+}
+
+#timesDiv {
+	height: 50%;
+	width: 25%;
+	padding-left: 10px;
+}
+
+#avgDiv {
+	height: 50%;
+	width: 25%;
+	padding-left: 10px;
+}
+
+#timeInputDiv {
+	height: 100%;
+	width: calc(75% - 10px);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+#timeInput {
+	text-align: center;
+	height: 20%;
+	width: 65%;
+	font-size: 100px;
+}
+
+#calcBtnsDiv {
+	height: 100px;
+	width: 150px;
+	display: flex;
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	flex-wrap: wrap;
+	flex-direction: row;
+}
+
+.penaltyBtns {
+	height: 50px;
+	width: 50px;
+}
+
+#confirmPenalty {
+	height: 40%;
+	width: 40%;
+	display: none;
+	flex-wrap: wrap;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background-color: rgba(0, 0, 0, 0.6);
+}
+
+#confirmText {
+	height: 80%;
+	width: 100%;
+	color: white;
+	font-family: arial;
+	font-size: 40px;
+	text-align: center;
+}
+
+#cancel {
+	color: white;
+	background-color: rgba(0, 0, 0, 0.5);
+	font-family: arial;
+	height: 20%;
+	width: 50%;
+	font-size: 40px;
+}
+
+#yes {
+	color: white;
+	background-color: rgba(0, 0, 0, 0.5);
+	font-family: arial;
+	height: 20%;
+	width: 50%;
+	font-size: 40px;
+}
+
+#toSetTarget {
+	height: 50px;
+	width: 50px;
+	position: absolute;
+	bottom: 10px;
+	right: 10px;
+	z-index: 1;
+	font-size: 10px;
+	color: black;
+}
+
+#target {
+	visibility: collapse;
+}
+
+#toCalc {
+	visibility: collapse;
+	position: absolute;
+	height: 50px;
+	width: 50px;
+	top: 10px;
+	right: 10px;
+}
+
+#scramble {
+	display: none;
+	height: 100%;
+	width: 100%;
+	justify-content: center;
+	align-items: center;
+}
+
+#scrambleMenuBtn {
+	height: 50px;
+	width: 50px;
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	z-index: 2;
+}
+
+#nextScramble {
+	height: 100%;
+	width: 100%;
+	background: none;
+	z-index: 1;
+	position: absolute;
+	border: none;
+}
+
+#scrambleSelectBtn {
+	height: 50px;
+	width: 50px;
+	position: absolute;
+	top: 10px;
+	left: 10px;
+	z-index: 2;
+}
+
+#scrambleText {
+	width: 80%;
+	text-align: center;
+	font-size: 50px;
+	color: white;
+	font-family: arial;
+	word-wrap: break-word;
+}
+
+#scrambleSelect {
+	display: none;
+	flex-wrap: wrap;
+	justify-content: space-evenly;
+	height: 80%;
+	width: 40%;
+	border: solid;
+	border-color: black;
+	border-width: 5px;
+	background-color: rgba(0, 0, 0, 0.6);
+	z-index: 5;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	padding-top: 3px;
+}
+
+.scrambleEvent {
+	height: 24%;
+	width: 24%;
+}
+
+#helpers {
+	display: none;
+	height: 100%;
+	width: 100%;
+}
+
+#helperMenuBtn {
+	visibility: collapse;
+   position: absolute;
+   height: 50px;
+   width: 50px;
+   top: 5px;
+	right: 5px;
+}
+
+#algs {
+	display: none;
+}
+
+#settings {
+	display: none;
+	height: 100%;
+	width: 100%;
+}
+
+#settingsMenuBtn {
+	height: 50px;
+	width: 50px;
+	visibility: collapse;
+	position: absolute;
+	top: 10px;
+	right: 10px;
+}
+
+#formatSelect {
+	display: flex;
+	flex-direction: column;
+	height: 50px;
+	width: 100px;
+}
+
+.settingsHeader {
+	font-size: 50px;
+	font-family: Arial;
+	color: white;
+}
