@@ -54,6 +54,7 @@ html, body {
 	top: 50%;
 	left: 70px;
 	transform: translate(0%, -50%);
+	z-index: 2;
 }
 
 #leftArrowV {
@@ -77,6 +78,7 @@ html, body {
 	top: 50%;
 	right: 70px;
 	transform: translate(0%, -50%);
+	z-index: 2;
 }
 
 #rightArrowV {
@@ -93,8 +95,108 @@ html, body {
 .Tabs {
 	height: calc(100% - 150px);
 	width: calc(100% - 360px);
-	display: none;
+	display: flex;
 	position: absolute;
 	bottom: 50px;
 	left: 180px;
+}
+
+#tabSlots {
+	display: none;
+}
+
+#tabSlotsFixed {
+	height: 100%;
+	width: 30%;
+	display: flex;
+	justify-content: space-between;
+}
+
+.SlotsFixed {
+	height: 97%;
+	width: 45%;
+	border-radius: 20px;
+	background: red;
+	z-index: 1;
+}
+
+.SlotsFixed:hover, .SlotsFlex:hover {
+	cursor: pointer;
+}
+
+#tabSlotsFlex {
+	height: 100%;
+	width: 70%;
+	display: flex;
+	justify-content: space-evenly;
+	align-items: space-between;
+	flex-wrap: wrap;
+}
+
+.SlotsFlex {
+	height: 47%;
+	width: 21%;
+	border-radius: 20px;
+	background: black;
+	z-index: 1;
+}
+
+#tabTable {
+	display: none;
+}
+
+#tabTablePoker {
+	height: 96%;
+	width: 35%;
+	display: flex;
+	justify-content: center;
+}
+
+#pokerArt {
+	height: 100%;
+	width: 97%;
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	border-radius: 20px;
+	background: red;
+	flex-direction: column;
+	flex-wrap: wrap;
+}
+
+#pokerTexasHoldem {
+	height: 15%;
+	width: 90%;
+	border-radius: 20px;
+	background: blue;
+	z-index: 1;
+}
+
+#pokerOmahaHoldem {
+	height: 15%;
+	width: 90%;
+	border-radius: 20px;
+	background: brown;
+	margin: 5%;
+	z-index: 1;
+}
+
+#tabTableRest {
+	height: 100%;
+	width: 65%;
+	display: flex;
+	justify-content: space-evenly;
+	flex-wrap: wrap;
+}
+
+.Table {
+	height: 46%;
+	width: 43%;
+	background: black;
+	border-radius: 20px;
+	z-index: 1;
+}
+
+.Table:hover, #pokerTexasHoldem:hover, #pokerOmahaHoldem:hover {
+	cursor: pointer;
 }
