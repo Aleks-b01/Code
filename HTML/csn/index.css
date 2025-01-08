@@ -41,5 +41,60 @@ html, body {
 
 #chipsCounter {
 	color: white;
-	font-family: arial;
+	font-family: helvetica;
+}
+
+#LeftArrow {
+	height: 70px;
+	width: 70px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: absolute;
+	top: 50%;
+	left: 70px;
+	transform: translate(0%, -50%);
+}
+
+#leftArrowV {
+	color: white;
+	font-size: 110px;
+	font-weight: bold;
+	user-select: none;
+}
+
+#leftArrowV:hover {
+	cursor: pointer;
+}
+
+#RightArrow {
+	height: 70px;
+	width: 70px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: absolute;
+	top: 50%;
+	right: 70px;
+	transform: translate(0%, -50%);
+}
+
+#rightArrowV {
+	color: white;
+	font-size: 110px;
+	font-weight: bold;
+	user-select: none;
+}
+
+#rightArrowV:hover {
+	cursor: pointer;
+}
+
+.Tabs {
+	height: calc(100% - 150px);
+	width: calc(100% - 360px);
+	display: none;
+	position: absolute;
+	bottom: 50px;
+	left: 180px;
 }
