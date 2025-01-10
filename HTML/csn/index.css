@@ -62,10 +62,6 @@ html, body {
 	user-select: none;
 }
 
-#leftArrowV:hover {
-	cursor: pointer;
-}
-
 #RightArrow {
 	height: 70px;
 	width: 70px;
@@ -84,7 +80,7 @@ html, body {
 	user-select: none;
 }
 
-#rightArrowV:hover {
+#RightArrow:hover, #LeftArrow:hover {
 	cursor: pointer;
 }
 
@@ -99,13 +95,12 @@ html, body {
 .Tabs {
 	height: calc(100% - 150px);
 	width: calc(100% - 360px);
-	display: flex;
 	position: absolute;
 	bottom: 50px;
 }
 
 #tabSlots {
-	display: flex;
+	display: none;
 }
 
 #tabSlotsFixed {
@@ -189,6 +184,7 @@ html, body {
 	width: 65%;
 	display: flex;
 	justify-content: space-evenly;
+	align-items: space-between;
 	flex-wrap: wrap;
 }
 
@@ -201,6 +197,25 @@ html, body {
 }
 
 .Table:hover, #pokerTexasHoldem:hover, #pokerOmahaHoldem:hover {
+	cursor: pointer;
+}
+
+#tabVirtual {
+	display: none;
+	justify-content: space-between;
+	align-items: space-between;
+	flex-wrap: wrap;
+}
+
+.Virtual {
+	height: 44%;
+	width: 22%;
+	background: black;
+	border-radius: 20px;
+	z-index: 1;
+}
+
+.Virtual:hover {
 	cursor: pointer;
 }
 
