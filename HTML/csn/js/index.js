@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", function() {
 document.addEventListener("keydown", keybinds);
 
 const tabIndicatorSlots = document.getElementById("tabIndicatorSlots");
-const tabIndicatorCards = document.getElementById("tabIndicatorCards");
+const tabIndicatorTable = document.getElementById("tabIndicatorTable");
 const tabIndicatorVirtual = document.getElementById("tabIndicatorVirtual");
 const chipsCounter = document.getElementById("chipsCounter");
 const LeftArrow = document.getElementById("LeftArrow");
@@ -27,13 +27,25 @@ function keybinds(event) {
 function pageLeft() {
 	switch (currentTab) {
 		case 1:
-			console.log(centerLeft.left);
+			currentTab = 3;
+			tabIndicatorSlots.style.background = "rgba(255, 255, 255, 0.3)";
+			tabIndicatorVirtual.style.background = "rgba(255, 255, 255, 1)";
+			tabSlots.style.display = "none";
+			tabVirtual.style.display = "flex";
 			break;
 		case 2:
-
+			currentTab = 1;
+			tabIndicatorTable.style.background = "rgba(255, 255, 255, 0.3)";
+			tabIndicatorSlots.style.background = "rgba(255, 255, 255, 1)";
+			tabTable.style.display = "none";
+			tabSlots.style.display = "flex";
 			break;
 		case 3:
-
+			currentTab = 2;
+			tabIndicatorVirtual.style.background = "rgba(255, 255, 255, 0.3)";
+			tabIndicatorTable.style.background = "rgba(255, 255, 255, 1)";
+			tabVirtual.style.display = "none";
+			tabTable.style.display = "flex";
 			break;
 	}
 };
@@ -41,14 +53,34 @@ function pageLeft() {
 function pageRight() {
 	switch (currentTab) {
 		case 1:
-
+			currentTab = 2;
+			tabIndicatorSlots.style.background = "rgba(255, 255, 255, 0.3)";
+			tabIndicatorTable.style.background = "rgba(255, 255, 255, 1)";
+			tabSlots.style.display = "none";
+			tabTable.style.display = "flex";
 			break;
 		case 2:
-
+			currentTab = 3;
+			tabIndicatorTable.style.background = "rgba(255, 255, 255, 0.3)";
+			tabIndicatorVirtual.style.background = "rgba(255, 255, 255, 1)";
+			tabTable.style.display = "none";
+			tabVirtual.style.display = "flex";
 			break;
 		case 3:
-
+			currentTab = 1;
+			tabIndicatorVirtual.style.background = "rgba(255, 255, 255, 0.3)";
+			tabIndicatorSlots.style.background = "rgba(255, 255, 255, 1)";
+			tabVirtual.style.display = "none";
+			tabSlots.style.display = "flex";
 			break;
 	}
+};
+
+LeftArrow.onclick = function() {
+	pageLeft();
+};
+
+RightArrow.onclick = function() {
+	pageRight();
 };
 });
