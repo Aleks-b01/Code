@@ -51,9 +51,7 @@ html, body {
 	justify-content: center;
 	align-items: center;
 	position: absolute;
-	top: 50%;
 	left: 70px;
-	transform: translate(0%, -50%);
 	z-index: 2;
 }
 
@@ -75,9 +73,7 @@ html, body {
 	justify-content: center;
 	align-items: center;
 	position: absolute;
-	top: 50%;
 	right: 70px;
-	transform: translate(0%, -50%);
 	z-index: 2;
 }
 
@@ -92,17 +88,24 @@ html, body {
 	cursor: pointer;
 }
 
+#arrowCorrectDiv {
+	height: 100%;
+	width: 100%;
+	z-index: 1;
+	display: flex;
+	align-items: center;
+}
+
 .Tabs {
 	height: calc(100% - 150px);
 	width: calc(100% - 360px);
 	display: flex;
 	position: absolute;
 	bottom: 50px;
-	left: 180px;
 }
 
 #tabSlots {
-	display: none;
+	display: flex;
 }
 
 #tabSlotsFixed {
@@ -199,4 +202,12 @@ html, body {
 
 .Table:hover, #pokerTexasHoldem:hover, #pokerOmahaHoldem:hover {
 	cursor: pointer;
+}
+
+#tabCorrectDiv {
+	height: 100%;
+	width: 100%;
+	z-index: 1;
+	display: flex;
+	justify-content: center;
 }
