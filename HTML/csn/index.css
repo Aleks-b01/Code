@@ -3,6 +3,7 @@ html, body {
 	display: inline;
 	height: 100%;
 	width: 100%;
+	overflow: hidden;
 }
 
 #tabIndicator {
@@ -22,6 +23,10 @@ html, body {
 	width: 50px;
 	background: rgba(255, 255, 255, 0.3);
 	border-radius: 5px;
+}
+
+#tabIndicatorSlots {
+	background: rgba(255, 255, 255, 1);
 }
 
 #ChipsCounter {
@@ -87,7 +92,6 @@ html, body {
 #arrowCorrectDiv {
 	height: 100%;
 	width: 100%;
-	z-index: 1;
 	display: flex;
 	align-items: center;
 }
@@ -100,7 +104,7 @@ html, body {
 }
 
 #tabSlots {
-	display: none;
+	display: flex;
 }
 
 #tabSlotsFixed {
@@ -222,7 +226,6 @@ html, body {
 #tabCorrectDiv {
 	height: 100%;
 	width: 100%;
-	z-index: 1;
 	display: flex;
 	justify-content: center;
 }
