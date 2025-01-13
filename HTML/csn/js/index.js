@@ -4,15 +4,18 @@ document.addEventListener("keydown", keybinds);
 const tabIndicatorSlots = document.getElementById("tabIndicatorSlots");
 const tabIndicatorTable = document.getElementById("tabIndicatorTable");
 const tabIndicatorVirtual = document.getElementById("tabIndicatorVirtual");
-const chipsCounter = document.getElementById("chipsCounter");
+const chipsDisplay = document.getElementById("chipsDisplay");
 const LeftArrow = document.getElementById("LeftArrow");
 const RightArrow = document.getElementById("RightArrow");
 const tabSlots = document.getElementById("tabSlots");
 const tabTable = document.getElementById("tabTable");
 const tabVirtual = document.getElementById("tabVirtual");
+const blackjack = document.getElementById("blackjack");
+const blackjackGame = document.getElementById("blackjackGame");
 
 let currentTab = 1;
 let centerLeft = tabSlots.getBoundingClientRect();
+let chips = 5000;
 
 function keybinds(event) {
 	if (event.key === "ArrowLeft" || event.key === "a" || event.key === "A") {
@@ -74,6 +77,10 @@ function pageRight() {
 			tabSlots.style.display = "flex";
 			break;
 	}
+};
+
+blackjack.onclick = function() {
+	blackjackGame.style.display = "flex";
 };
 
 LeftArrow.onclick = function() {

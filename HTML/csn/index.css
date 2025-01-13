@@ -6,6 +6,10 @@ html, body {
 	overflow: hidden;
 }
 
+#chipsCounter {
+	display: none;
+}
+
 #tabIndicator {
 	display: flex;
 	height: 80px;
@@ -29,7 +33,7 @@ html, body {
 	background: rgba(255, 255, 255, 1);
 }
 
-#ChipsCounter {
+#ChipsDisplay {
 	height: 50px;
 	width: 165px;
 	display: flex;
@@ -44,7 +48,7 @@ html, body {
 	border-width: 4px;
 }
 
-#chipsCounter {
+#chipsDisplay {
 	color: white;
 	font-family: helvetica;
 }
@@ -198,6 +202,7 @@ html, body {
 	background: black;
 	border-radius: 20px;
 	z-index: 1;
+	color: white;
 }
 
 .Table:hover, #pokerTexasHoldem:hover, #pokerOmahaHoldem:hover {
@@ -228,4 +233,15 @@ html, body {
 	width: 100%;
 	display: flex;
 	justify-content: center;
+}
+
+#blackjackGame {
+	display: none;
+	height: 100%;
+	width: 100%;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	background: rgba(40, 120, 0, 1);
+	z-index: 5;
 }
