@@ -12,6 +12,7 @@ const tabTable = document.getElementById("tabTable");
 const tabVirtual = document.getElementById("tabVirtual");
 const blackjack = document.getElementById("blackjack");
 const blackjackGame = document.getElementById("blackjackGame");
+const exitBlackjack = document.getElementById("exitBlackjack");
 
 let currentTab = 1;
 let centerLeft = tabSlots.getBoundingClientRect();
@@ -31,56 +32,69 @@ function pageLeft() {
 	switch (currentTab) {
 		case 1:
 			currentTab = 3;
-			tabIndicatorSlots.style.background = "rgba(255, 255, 255, 0.3)";
-			tabIndicatorVirtual.style.background = "rgba(255, 255, 255, 1)";
-			tabSlots.style.display = "none";
-			tabVirtual.style.display = "flex";
 			break;
 		case 2:
 			currentTab = 1;
-			tabIndicatorTable.style.background = "rgba(255, 255, 255, 0.3)";
-			tabIndicatorSlots.style.background = "rgba(255, 255, 255, 1)";
-			tabTable.style.display = "none";
-			tabSlots.style.display = "flex";
 			break;
 		case 3:
 			currentTab = 2;
-			tabIndicatorVirtual.style.background = "rgba(255, 255, 255, 0.3)";
-			tabIndicatorTable.style.background = "rgba(255, 255, 255, 1)";
-			tabVirtual.style.display = "none";
-			tabTable.style.display = "flex";
 			break;
 	}
+	pageCurrent();
 };
 
 function pageRight() {
 	switch (currentTab) {
 		case 1:
 			currentTab = 2;
-			tabIndicatorSlots.style.background = "rgba(255, 255, 255, 0.3)";
-			tabIndicatorTable.style.background = "rgba(255, 255, 255, 1)";
-			tabSlots.style.display = "none";
-			tabTable.style.display = "flex";
 			break;
 		case 2:
 			currentTab = 3;
-			tabIndicatorTable.style.background = "rgba(255, 255, 255, 0.3)";
-			tabIndicatorVirtual.style.background = "rgba(255, 255, 255, 1)";
-			tabTable.style.display = "none";
-			tabVirtual.style.display = "flex";
 			break;
 		case 3:
 			currentTab = 1;
-			tabIndicatorVirtual.style.background = "rgba(255, 255, 255, 0.3)";
+			break;
+	}
+	pageCurrent();
+};
+
+function pageCurrent() {
+	switch (currentTab) {
+		case 1:
 			tabIndicatorSlots.style.background = "rgba(255, 255, 255, 1)";
-			tabVirtual.style.display = "none";
+			tabIndicatorTable.style.background = "rgba(255, 255, 255, 0.3)";
+			tabIndicatorVirtual.style.background = "rgba(255, 255, 255, 0.3)";
 			tabSlots.style.display = "flex";
+			tabTable.style.display = "none";
+			tabVirtual.style.display = "none";
+			break;
+		case 2:
+			tabIndicatorTable.style.background = "rgba(255, 255, 255, 1)";
+			tabIndicatorSlots.style.background = "rgba(255, 255, 255, 0.3)";
+			tabIndicatorVirtual.style.background = "rgba(255, 255, 255, 0.3)";
+			tabTable.style.display = "flex";
+			tabSlots.style.display = "none";
+			tabVirtual.style.display = "none";
+			break;
+		case 3:
+			tabIndicatorVirtual.style.background = "rgba(255, 255, 255, 1)";
+			tabIndicatorSlots.style.background = "rgba(255, 255, 255, 0.3)";
+			tabIndicatorTable.style.background = "rgba(255, 255, 255, 0.3)";
+			tabVirtual.style.display = "flex";
+			tabSlots.style.display = "none";
+			tabTable.style.display = "none";
 			break;
 	}
 };
 
 blackjack.onclick = function() {
 	blackjackGame.style.display = "flex";
+};
+
+exitBlackjack.onclick = function() {
+	currentTab = 2;
+	pageCurrent();
+	blackjackGame.style.display = "none";
 };
 
 LeftArrow.onclick = function() {
