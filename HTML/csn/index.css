@@ -246,6 +246,49 @@ html, body {
 	z-index: 5;
 }
 
+.BlackjackBtn {
+	height: 100px;
+	width: 100px;
+	color: white;
+	font-size: 30px;
+	font-family: helvetica;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border: solid;
+	border-color: rgba(0, 0, 0, 0.5);
+	border-width: 5px;
+}
+
+.BlackjackBtn:hover {
+	cursor: pointer;
+}
+
+#blackjackSplit {
+	cursor: not-allowed;
+}
+
+#blackjackBtns {
+	height: 100px;
+	width: 460px;
+	display: flex;
+	position: absolute;
+	bottom: 25px;
+	left: 50%;
+	transform: translate(-50%, 0);
+	justify-content: space-between;
+}
+
+#blackjackCardsPlayer {
+	height: 20%;
+	width: 80%;
+	display: flex;
+}
+
+.BlackjackCardPlayer {
+	display: none;
+}
+
 #exitBlackjack {
 	height: 60px;
 	width: 60px;
