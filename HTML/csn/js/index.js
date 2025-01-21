@@ -97,6 +97,7 @@ blackjack.onclick = function() {
 exitBlackjack.onclick = function() {
 	ExitBlackjack();
 };
+
 function ExitBlackjack() {
 	currentTab = 2;
 	pageCurrent();
