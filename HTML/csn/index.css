@@ -288,10 +288,14 @@ html, body {
 	bottom: 150px;
 	left: 50%;
 	transform: translate(-50%, 0);
+	justify-content: center;
 }
 
-.BlackjackCardPlayer {
+#blackjackCardPlayer1 {
 	display: none;
+	height: 100%;
+	width: 130px;
+	border-radius: 10px;
 }
 
 #blackjackCardsDealer {
@@ -307,6 +311,187 @@ html, body {
 
 .BlackjackCardDealer {
 	display: none;
+	height: 100%;
+	width: 130px;
+	border-radius: 10px;
+}
+
+#blackjackCardPlayer1 {
+	z-index: 1;
+	display: flex;
+	background: red;
+}
+
+#blackjackCardPlayer2 {
+	z-index: 2;
+}
+
+#blackjackCardPlayer3 {
+	z-index: 3;
+}
+
+#blackjackCardPlayer4 {
+	z-index: 4;
+}
+
+#blackjackCardPlayer5 {
+	z-index: 5;
+}
+
+#blackjackCardPlayer6 {
+	z-index: 6;
+}
+
+#blackjackCardPlayer7 {
+	z-index: 7;
+}
+
+#blackjackCardPlayer8 {
+	z-index: 8;
+}
+
+#blackjackCardPlayer9 {
+	z-index: 9;
+}
+
+#blackjackCardPlayer10 {
+	z-index: 10;
+}
+
+#blackjackCardPlayer11 {
+	z-index: 11;
+}
+
+#blackjackCardPlayer12 {
+	z-index: 12;
+}
+
+#blackjackCardPlayer13 {
+	z-index: 13;
+}
+
+#blackjackCardPlayer14 {
+	z-index: 14;
+}
+
+#blackjackCardPlayer15 {
+	z-index: 15;
+}
+
+#blackjackCardPlayer16 {
+	z-index: 16;
+}
+
+#blackjackCardPlayer17 {
+	z-index: 17;
+}
+
+#blackjackCardPlayer18 {
+	z-index: 18;
+}
+
+#blackjackCardPlayer19 {
+	z-index: 19;
+}
+
+#blackjackCardPlayer20 {
+	z-index: 20;
+}
+
+#blackjackCardPlayer21 {
+	z-index: 21;
+}
+
+#blackjackCardPlayer22 {
+	z-index: 22;
+}
+
+#blackjackCardDealer1 {
+	z-index: 1;
+}
+
+#blackjackCardDealer2 {
+	z-index: 2;
+}
+
+#blackjackCardDealer3 {
+	z-index: 3;
+}
+
+#blackjackCardDealer4 {
+	z-index: 4;
+}
+
+#blackjackCardDealer5 {
+	z-index: 5;
+}
+
+#blackjackCardDealer6 {
+	z-index: 6;
+}
+
+#blackjackCardDealer7 {
+	z-index: 7;
+}
+
+#blackjackCardDealer8 {
+	z-index: 8;
+}
+
+#blackjackCardDealer9 {
+	z-index: 9;
+}
+
+#blackjackCardDealer10 {
+	z-index: 10;
+}
+
+#blackjackCardDealer11 {
+	z-index: 11;
+}
+
+#blackjackCardDealer12 {
+	z-index: 12;
+}
+
+#blackjackCardDealer13 {
+	z-index: 13;
+}
+
+#blackjackCardDealer14 {
+	z-index: 14;
+}
+
+#blackjackCardDealer15 {
+	z-index: 15;
+}
+
+#blackjackCardDealer16 {
+	z-index: 16;
+}
+
+#blackjackCardDealer17 {
+	z-index: 17;
+}
+
+#blackjackCardDealer18 {
+	z-index: 18;
+}
+
+#blackjackCardDealer19 {
+	z-index: 19;
+}
+
+#blackjackCardDealer20 {
+	z-index: 20;
+}
+
+#blackjackCardDealer21 {
+	z-index: 21;
+}
+
+#blackjackCardDealer22 {
+	z-index: 22;
 }
 
 #exitBlackjack {
