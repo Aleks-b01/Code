@@ -280,12 +280,32 @@ html, body {
 }
 
 #blackjackCardsPlayer {
-	height: 20%;
+	height: 30%;
 	width: 80%;
 	display: flex;
+	background: black;
+	position: absolute;
+	bottom: 150px;
+	left: 50%;
+	transform: translate(-50%, 0);
 }
 
 .BlackjackCardPlayer {
+	display: none;
+}
+
+#blackjackCardsDealer {
+	height: 30%;
+	width: 80%;
+	display: flex;
+	background: black;
+	position: absolute;
+	top: 60px;
+	left: 50%;
+	transform: translate(-50%, 0);
+}
+
+.BlackjackCardDealer {
 	display: none;
 }
 

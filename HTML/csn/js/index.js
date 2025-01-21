@@ -25,6 +25,9 @@ function keybinds(event) {
 	} else if (event.key === "ArrowRight" || event.key === "d" || event.key === "D") {
 		event.preventDefault();
 		pageRight();
+	} else if (event.key === "Escape" && blackjackGame.style.display == "flex") {
+		event.preventDefault();
+		ExitBlackjack();
 	}
 };
 
@@ -92,6 +95,9 @@ blackjack.onclick = function() {
 };
 
 exitBlackjack.onclick = function() {
+	ExitBlackjack();
+};
+function ExitBlackjack() {
 	currentTab = 2;
 	pageCurrent();
 	blackjackGame.style.display = "none";
