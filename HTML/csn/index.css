@@ -246,6 +246,119 @@ html, body {
 	z-index: 5;
 }
 
+#blackjackBetScreen {
+	height: 80%;
+	width: 65%;
+	display: flex;
+	background: rgba(0, 80, 20, 0.5);
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	z-index: 10;
+	border-color: black;
+	border: solid;
+	border-width: 5px;
+	flex-wrap: wrap;
+	align-items: space-between;
+}
+
+#blackjackBetChipsDisplayDiv {
+	height: 110px;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+}
+
+#blackjackBetChipsDisplay {
+	height: 110px;
+	width: 110px;
+}
+
+#blackjackBetDisplay {
+	height: 50px;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: white;
+	font-size: 50px;
+	font-family: arial;
+}
+
+#blackjackBetBtnsDiv {
+	height: 140px;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+}
+
+#blackjackBetBtns {
+	height: 140px;
+	width: 45%;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-items: space-between;
+}
+
+.BlackjackBetBtn {
+	height: 60px;
+	width: 48%;
+	border: solid;
+	border-width: 3px;
+	border-color: black;
+	color: white;
+	text-align: center;
+	vertical-align: middle;
+	font-size: 30px;
+	font-family: arial;
+	line-height: 60px;
+	user-select: none;
+	font-weight: bold;
+}
+
+.BlackjackBetBtn:hover {
+	cursor: pointer;
+}
+
+#blackjackPlay {
+	width: 100%;
+}
+
+#blackjackBetChips {
+	height: 100px;
+	width: 100%;
+	display: flex;
+	justify-content: space-evenly;
+}
+
+.BlackjackBetChip {
+	height: 100px;
+	width: 100px;
+	background: black;
+}
+
+.BlackjackBetChip:hover {
+	cursor: pointer;
+}
+
+#blackjackBetSign {
+	height: 65px;
+	width: 100%;
+	text-align: center;
+	color: white;
+	font-size: 50px;
+	font-weight: bold;
+	font-family: arial;
+	z-index: 15;
+	margin-top: 10px;
+	border-bottom-color: black;
+	border-bottom-width: 5px;
+	border-bottom: solid;
+	border-bottom-color: black;
+}
+
 .BlackjackBtn {
 	height: 100px;
 	width: 100px;
@@ -271,7 +384,7 @@ html, body {
 #blackjackBtns {
 	height: 100px;
 	width: 460px;
-	display: flex;
+	display: none;
 	position: absolute;
 	bottom: 25px;
 	left: 50%;
