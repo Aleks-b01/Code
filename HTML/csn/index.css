@@ -336,11 +336,34 @@ html, body {
 .BlackjackBetChip {
 	height: 100px;
 	width: 100px;
-	background: black;
 }
 
 .BlackjackBetChip:hover {
 	cursor: pointer;
+}
+
+#blackjackBet50 {
+	background-image: url("assets/chips/50.png");
+}
+
+#blackjackBet100 {
+	background-image: url("assets/chips/100.png");
+}
+
+#blackjackBet500 {
+	background-image: url("assets/chips/500.png");
+}
+
+#blackjackBet1k {
+	background-image: url("assets/chips/1k.png");
+}
+
+#blackjackBet5k {
+	background-image: url("assets/chips/5k.png");
+}
+
+#blackjackBet10k {
+	background-image: url("assets/chips/10k.png");
 }
 
 #blackjackBetSign {
