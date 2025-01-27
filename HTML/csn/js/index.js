@@ -25,7 +25,7 @@ function keybinds(event) {
 	} else if (event.key === "ArrowRight" || event.key === "d" || event.key === "D") {
 		event.preventDefault();
 		pageRight();
-	} else if (event.key === "Escape" && blackjackGame.style.display == "flex") {
+	} else if (event.key === "Escape" && exitBlackjack.style.display == "flex") {
 		event.preventDefault();
 		ExitBlackjack();
 	}
@@ -90,25 +90,27 @@ function pageCurrent() {
 	}
 };
 
-blackjack.onclick = function() {
+blackjack.addEventListener("click", function() {
 	blackjackGame.style.display = "flex";
-};
+	exitBlackjack.style.display = "flex";
+});
 
-exitBlackjack.onclick = function() {
+exitBlackjack.addEventListener("click", function() {
 	ExitBlackjack();
-};
+});
 
 function ExitBlackjack() {
 	currentTab = 2;
 	pageCurrent();
 	blackjackGame.style.display = "none";
+	exitBlackjack.style.display = "none";
 };
 
-LeftArrow.onclick = function() {
+LeftArrow.addEventListener("click", function() {
 	pageLeft();
-};
+});
 
-RightArrow.onclick = function() {
+RightArrow.addEventListener("click", function() {
 	pageRight();
-};
+});
 });
