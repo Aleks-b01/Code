@@ -56,6 +56,12 @@ exitBlackjack.addEventListener("click", function() {
 	clearBet();
 });
 
+blackjackPlay.addEventListener("click", function() {
+	if (betAmount >= 50) {
+		
+	}
+});
+
 blackjackClearBet.addEventListener("click", function() {
 	clearBet();
 });
@@ -65,68 +71,29 @@ blackjackMinusBet.addEventListener("click", function() {
 		betAmount -= 50;
 		updateBetDisplay();
 		blackjackBetChipsDisplay.style.backgroundImage = blackjackBetChipsDisplay.style.backgroundImage.slice(27);
-		if (Number.isInteger(blackjackBetChipsDisplay.style.backgroundPosition.charAt(1)) == false && Number.isInteger(blackjackBetChipsDisplay.style.backgroundPosition.charAt(5)) == false) {
-			blackjackBetChipsDisplay.style.backgroundPosition = blackjackBetChipsDisplay.style.backgroundPosition.slice(8);
-		} else if ((Number.isInteger(blackjackBetChipsDisplay.style.backgroundPosition.charAt(2)) == true && Number.isInteger(blackjackBetChipsDisplay.style.backgroundPosition.charAt(6)) == false) || (Number.isInteger(blackjackBetChipsDisplay.style.backgroundPosition.charAt(2)) == false && Number.isInteger(blackjackBetChipsDisplay.style.backgroundPosition.charAt(5)) == true)) {
-			blackjackBetChipsDisplay.style.backgroundPosition = blackjackBetChipsDisplay.style.backgroundPosition.slice(9);
-		} else if (Number.isInteger(blackjackBetChipsDisplay.style.backgroundPosition.charAt(2)) == true && Number.isInteger(blackjackBetChipsDisplay.style.backgroundPosition.charAt(6)) == true) {
-			blackjackBetChipsDisplay.style.backgroundPosition = blackjackBetChipsDisplay.style.backgroundPosition.slice(10);
-		}
 	} else if (blackjackBetChipsDisplay.style.backgroundImage.indexOf("100.png") > 0 && blackjackBetChipsDisplay.style.backgroundImage.indexOf("100.png") < 28) {
 		betAmount -= 100;
 		updateBetDisplay();
 		blackjackBetChipsDisplay.style.backgroundImage = blackjackBetChipsDisplay.style.backgroundImage.slice(28);
-		if (Number.isInteger(blackjackBetChipsDisplay.style.backgroundPosition.charAt(1)) == false && Number.isInteger(blackjackBetChipsDisplay.style.backgroundPosition.charAt(5)) == false) {
-			blackjackBetChipsDisplay.style.backgroundPosition = blackjackBetChipsDisplay.style.backgroundPosition.slice(8);
-		} else if ((Number.isInteger(blackjackBetChipsDisplay.style.backgroundPosition.charAt(2)) == true && Number.isInteger(blackjackBetChipsDisplay.style.backgroundPosition.charAt(6)) == false) || (Number.isInteger(blackjackBetChipsDisplay.style.backgroundPosition.charAt(2)) == false && Number.isInteger(blackjackBetChipsDisplay.style.backgroundPosition.charAt(5)) == true)) {
-			blackjackBetChipsDisplay.style.backgroundPosition = blackjackBetChipsDisplay.style.backgroundPosition.slice(9);
-		} else if (Number.isInteger(blackjackBetChipsDisplay.style.backgroundPosition.charAt(2)) == true && Number.isInteger(blackjackBetChipsDisplay.style.backgroundPosition.charAt(6)) == true) {
-			blackjackBetChipsDisplay.style.backgroundPosition = blackjackBetChipsDisplay.style.backgroundPosition.slice(10);
-		}
 	} else if (blackjackBetChipsDisplay.style.backgroundImage.indexOf("500.png") > 0 && blackjackBetChipsDisplay.style.backgroundImage.indexOf("500.png") < 28) {
 		betAmount -= 500;
 		updateBetDisplay();
 		blackjackBetChipsDisplay.style.backgroundImage = blackjackBetChipsDisplay.style.backgroundImage.slice(28);
-		if (Number.isInteger(blackjackBetChipsDisplay.style.backgroundPosition.charAt(1)) == false && Number.isInteger(blackjackBetChipsDisplay.style.backgroundPosition.charAt(5)) == false) {
-			blackjackBetChipsDisplay.style.backgroundPosition = blackjackBetChipsDisplay.style.backgroundPosition.slice(8);
-		} else if ((Number.isInteger(blackjackBetChipsDisplay.style.backgroundPosition.charAt(2)) == true && Number.isInteger(blackjackBetChipsDisplay.style.backgroundPosition.charAt(6)) == false) || (Number.isInteger(blackjackBetChipsDisplay.style.backgroundPosition.charAt(2)) == false && Number.isInteger(blackjackBetChipsDisplay.style.backgroundPosition.charAt(5)) == true)) {
-			blackjackBetChipsDisplay.style.backgroundPosition = blackjackBetChipsDisplay.style.backgroundPosition.slice(9);
-		} else if (Number.isInteger(blackjackBetChipsDisplay.style.backgroundPosition.charAt(2)) == true && Number.isInteger(blackjackBetChipsDisplay.style.backgroundPosition.charAt(6)) == true) {
-			blackjackBetChipsDisplay.style.backgroundPosition = blackjackBetChipsDisplay.style.backgroundPosition.slice(10);
-		}
 	} else if (blackjackBetChipsDisplay.style.backgroundImage.indexOf("1k.png") > 0 && blackjackBetChipsDisplay.style.backgroundImage.indexOf("1k.png") < 28) {
 		betAmount -= 1000;
 		updateBetDisplay();
 		blackjackBetChipsDisplay.style.backgroundImage = blackjackBetChipsDisplay.style.backgroundImage.slice(27);
-		if (Number.isInteger(blackjackBetChipsDisplay.style.backgroundPosition.charAt(1)) == false && Number.isInteger(blackjackBetChipsDisplay.style.backgroundPosition.charAt(5)) == false) {
-			blackjackBetChipsDisplay.style.backgroundPosition = blackjackBetChipsDisplay.style.backgroundPosition.slice(8);
-		} else if ((Number.isInteger(blackjackBetChipsDisplay.style.backgroundPosition.charAt(2)) == true && Number.isInteger(blackjackBetChipsDisplay.style.backgroundPosition.charAt(6)) == false) || (Number.isInteger(blackjackBetChipsDisplay.style.backgroundPosition.charAt(2)) == false && Number.isInteger(blackjackBetChipsDisplay.style.backgroundPosition.charAt(5)) == true)) {
-			blackjackBetChipsDisplay.style.backgroundPosition = blackjackBetChipsDisplay.style.backgroundPosition.slice(9);
-		} else if (Number.isInteger(blackjackBetChipsDisplay.style.backgroundPosition.charAt(2)) == true && Number.isInteger(blackjackBetChipsDisplay.style.backgroundPosition.charAt(6)) == true) {
-			blackjackBetChipsDisplay.style.backgroundPosition = blackjackBetChipsDisplay.style.backgroundPosition.slice(10);
-		}
 	} else if (blackjackBetChipsDisplay.style.backgroundImage.indexOf("5k.png") > 0 && blackjackBetChipsDisplay.style.backgroundImage.indexOf("5k.png") < 28) {
 		betAmount -= 5000;
 		updateBetDisplay();
 		blackjackBetChipsDisplay.style.backgroundImage = blackjackBetChipsDisplay.style.backgroundImage.slice(27);
-		if (Number.isInteger(blackjackBetChipsDisplay.style.backgroundPosition.charAt(1)) == false && Number.isInteger(blackjackBetChipsDisplay.style.backgroundPosition.charAt(5)) == false) {
-			blackjackBetChipsDisplay.style.backgroundPosition = blackjackBetChipsDisplay.style.backgroundPosition.slice(8);
-		} else if ((Number.isInteger(blackjackBetChipsDisplay.style.backgroundPosition.charAt(2)) == true && Number.isInteger(blackjackBetChipsDisplay.style.backgroundPosition.charAt(6)) == false) || (Number.isInteger(blackjackBetChipsDisplay.style.backgroundPosition.charAt(2)) == false && Number.isInteger(blackjackBetChipsDisplay.style.backgroundPosition.charAt(5)) == true)) {
-			blackjackBetChipsDisplay.style.backgroundPosition = blackjackBetChipsDisplay.style.backgroundPosition.slice(9);
-		} else if (Number.isInteger(blackjackBetChipsDisplay.style.backgroundPosition.charAt(2)) == true && Number.isInteger(blackjackBetChipsDisplay.style.backgroundPosition.charAt(6)) == true) {
-			blackjackBetChipsDisplay.style.backgroundPosition = blackjackBetChipsDisplay.style.backgroundPosition.slice(10);
-		}
 	} else if (blackjackBetChipsDisplay.style.backgroundImage.indexOf("10k.png") > 0 && blackjackBetChipsDisplay.style.backgroundImage.indexOf("10k.png") > 28) {
 		betAmount -= 10000;
 		updateBetDisplay();
 		blackjackBetChipsDisplay.style.backgroundImage = blackjackBetChipsDisplay.style.backgroundImage.slice(28);
-		if (Number.isInteger(blackjackBetChipsDisplay.style.backgroundPosition.charAt(1)) == false && Number.isInteger(blackjackBetChipsDisplay.style.backgroundPosition.charAt(5)) == false) {
-			blackjackBetChipsDisplay.style.backgroundPosition = blackjackBetChipsDisplay.style.backgroundPosition.slice(8);
-		} else if ((Number.isInteger(blackjackBetChipsDisplay.style.backgroundPosition.charAt(2)) == true && Number.isInteger(blackjackBetChipsDisplay.style.backgroundPosition.charAt(6)) == false) || (Number.isInteger(blackjackBetChipsDisplay.style.backgroundPosition.charAt(2)) == false && Number.isInteger(blackjackBetChipsDisplay.style.backgroundPosition.charAt(5)) == true)) {
-			blackjackBetChipsDisplay.style.backgroundPosition = blackjackBetChipsDisplay.style.backgroundPosition.slice(9);
-		} else if (Number.isInteger(blackjackBetChipsDisplay.style.backgroundPosition.charAt(2)) == true && Number.isInteger(blackjackBetChipsDisplay.style.backgroundPosition.charAt(6)) == true) {
-			blackjackBetChipsDisplay.style.backgroundPosition = blackjackBetChipsDisplay.style.backgroundPosition.slice(10);
-		}
+	}
+	if (blackjackBetChipsDisplay.style.backgroundPosition != "") {
+		blackjackBetChipsDisplay.style.backgroundPosition = blackjackBetChipsDisplay.style.backgroundPosition.slice(blackjackBetChipsDisplay.style.backgroundPosition.indexOf(",") + 1);
 	}
 });
 
