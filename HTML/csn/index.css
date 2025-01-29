@@ -250,7 +250,7 @@ html, body {
 #blackjackBetScreen {
 	height: 80%;
 	width: 65%;
-	display: flex;
+	display: none;
 	background: rgba(0, 80, 20, 0.5);
 	position: absolute;
 	top: 50%;
@@ -417,9 +417,9 @@ html, body {
 	justify-content: space-between;
 }
 
-#blackjackCardsPlayer {
+#BlackjackCardsPlayer {
 	height: 200px;
-	width: 80%;
+	width: 100%;
 	display: flex;
 	position: absolute;
 	bottom: 150px;
@@ -428,14 +428,14 @@ html, body {
 	justify-content: center;
 }
 
-.BlackjackCardPlayer {
-	display: none;
+#blackjackCardsPlayer {
 	height: 200px;
 	width: 140px;
-	border-radius: 10px;
+	display: flex;
+	background-repeat: no-repeat;
 }
 
-#blackjackCardsDealer {
+#BlackjackCardsDealer {
 	height: 200px;
 	width: 80%;
 	display: flex;
@@ -446,198 +446,11 @@ html, body {
 	justify-content: center;
 }
 
-.BlackjackCardDealer {
-	display: none;
+#blackjackCardsDealer {
 	height: 200px;
 	width: 140px;
-	border-radius: 10px;
-}
-
-#tempText {
-	width: 100%;
-	height: 9%;
 	display: flex;
-	justify-content: space-around;
-	position: absolute;
-	top: calc(30% + 60px);
-}
-
-#blackjackCardPlayer1 {
-	z-index: 1;
-}
-
-#blackjackCardPlayer2 {
-	z-index: 2;
-}
-
-#blackjackCardPlayer3 {
-	z-index: 3;
-}
-
-#blackjackCardPlayer4 {
-	z-index: 4;
-}
-
-#blackjackCardPlayer5 {
-	z-index: 5;
-}
-
-#blackjackCardPlayer6 {
-	z-index: 6;
-}
-
-#blackjackCardPlayer7 {
-	z-index: 7;
-}
-
-#blackjackCardPlayer8 {
-	z-index: 8;
-}
-
-#blackjackCardPlayer9 {
-	z-index: 9;
-}
-
-#blackjackCardPlayer10 {
-	z-index: 10;
-}
-
-#blackjackCardPlayer11 {
-	z-index: 11;
-}
-
-#blackjackCardPlayer12 {
-	z-index: 12;
-}
-
-#blackjackCardPlayer13 {
-	z-index: 13;
-}
-
-#blackjackCardPlayer14 {
-	z-index: 14;
-}
-
-#blackjackCardPlayer15 {
-	z-index: 15;
-}
-
-#blackjackCardPlayer16 {
-	z-index: 16;
-}
-
-#blackjackCardPlayer17 {
-	z-index: 17;
-}
-
-#blackjackCardPlayer18 {
-	z-index: 18;
-}
-
-#blackjackCardPlayer19 {
-	z-index: 19;
-}
-
-#blackjackCardPlayer20 {
-	z-index: 20;
-}
-
-#blackjackCardPlayer21 {
-	z-index: 21;
-}
-
-#blackjackCardPlayer22 {
-	z-index: 22;
-	margin-left: 0;
-}
-
-#blackjackCardDealer1 {
-	z-index: 1;
-}
-
-#blackjackCardDealer2 {
-	z-index: 2;
-}
-
-#blackjackCardDealer3 {
-	z-index: 3;
-}
-
-#blackjackCardDealer4 {
-	z-index: 4;
-}
-
-#blackjackCardDealer5 {
-	z-index: 5;
-}
-
-#blackjackCardDealer6 {
-	z-index: 6;
-}
-
-#blackjackCardDealer7 {
-	z-index: 7;
-}
-
-#blackjackCardDealer8 {
-	z-index: 8;
-}
-
-#blackjackCardDealer9 {
-	z-index: 9;
-}
-
-#blackjackCardDealer10 {
-	z-index: 10;
-}
-
-#blackjackCardDealer11 {
-	z-index: 11;
-}
-
-#blackjackCardDealer12 {
-	z-index: 12;
-}
-
-#blackjackCardDealer13 {
-	z-index: 13;
-}
-
-#blackjackCardDealer14 {
-	z-index: 14;
-}
-
-#blackjackCardDealer15 {
-	z-index: 15;
-}
-
-#blackjackCardDealer16 {
-	z-index: 16;
-}
-
-#blackjackCardDealer17 {
-	z-index: 17;
-}
-
-#blackjackCardDealer18 {
-	z-index: 18;
-}
-
-#blackjackCardDealer19 {
-	z-index: 19;
-}
-
-#blackjackCardDealer20 {
-	z-index: 20;
-}
-
-#blackjackCardDealer21 {
-	z-index: 21;
-}
-
-#blackjackCardDealer22 {
-	z-index: 22;
-	margin-left: 0;
+	background-repeat: no-repeat;
 }
 
 #exitBlackjack {
