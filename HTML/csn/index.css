@@ -250,7 +250,7 @@ html, body {
 #blackjackBetScreen {
 	height: 80%;
 	width: 65%;
-	display: none;
+	display: flex;
 	background: rgba(0, 80, 20, 0.5);
 	position: absolute;
 	top: 50%;
@@ -402,7 +402,7 @@ html, body {
 	cursor: pointer;
 }
 
-#blackjackSplit {
+#blackjackSplitNotAllowed:hover {
 	cursor: not-allowed;
 }
 
@@ -417,39 +417,23 @@ html, body {
 	justify-content: space-between;
 }
 
-#BlackjackCardsPlayer {
+#blackjackCardsPlayer {
 	height: 200px;
 	width: 100%;
 	display: flex;
 	position: absolute;
 	bottom: 150px;
-	left: 50%;
-	transform: translate(-50%, 0);
 	justify-content: center;
-}
-
-#blackjackCardsPlayer {
-	height: 200px;
-	width: 140px;
-	display: flex;
 	background-repeat: no-repeat;
-}
-
-#BlackjackCardsDealer {
-	height: 200px;
-	width: 80%;
-	display: flex;
-	position: absolute;
-	top: 60px;
-	left: 50%;
-	transform: translate(-50%, 0);
-	justify-content: center;
 }
 
 #blackjackCardsDealer {
 	height: 200px;
-	width: 140px;
+	width: 100%;
 	display: flex;
+	position: absolute;
+	top: 60px;
+	justify-content: center;
 	background-repeat: no-repeat;
 }
 

@@ -16,8 +16,28 @@ const blackjackBet500 = document.getElementById("blackjackBet500");
 const blackjackBet1k = document.getElementById("blackjackBet1k");
 const blackjackBet5k = document.getElementById("blackjackBet5k");
 const blackjackBet10k = document.getElementById("blackjackBet10k");
+const blackjackCardsPlayer = document.getElementById("blackjackCardsPlayer");
+const blackjackCardsDealer = document.getElementById("blackjackCardsDealer");
+
+const cardValues = new Map([
+	["2", 2],
+	["3", 3],
+	["4", 4],
+	["5", 5],
+	["6", 6],
+	["7", 7],
+	["8", 8],
+	["9", 9],
+	["1", 10],
+	["j", 10],
+	["q", 10],
+	["k", 10],
+	["a", 11],
+]);
 
 let temp;
+let tempDealer;
+let tempSplit;
 let chips = chipsCounter.innerText;
 let betAmount = 0;
 let cards = new Map ([
@@ -79,10 +99,13 @@ let cardDealer;
 let cardsAmount;
 let shuffleCard;
 let hasPlayed = false;
-let playerOnCard;
-let dealerOnCard;
-let cardSplit1;
-let cardSplit2;
+let playerCardOffset;
+let dealerCardOffset;
+let playerValue;
+let dealerValue;
+let playerAce = false;
+let dealerAce = false;
+let playerSplit = false;
 
 function keybinds(event) {
 	if (event.key === "Escape" && exitBlackjack.style.display == "flex") {
@@ -261,6 +284,16 @@ function getCard(num) {
 	}
 };
 
+function getValue(num, player) {
+	temp = getCard(num).split("");
+	return cardValues.get(temp[0]);
+	if (temp == "a" && player == 1) {
+		playerAce = true;
+	} else if (temp == "a" && player == 0) {
+		dealerAce = true;
+	}
+};
+
 function drawCard() {
 	while (true) {
 		card = Math.floor(Math.random() * 52) + 1;
@@ -287,6 +320,33 @@ function updateBetDisplay() {
 	}
 };
 
+function checkSplit() {
+	if (tempSplit == temp) {
+		playerSplit = true;
+	}
+};
+
+function checkShuffle() {
+	console.log("not now");
+};
+
+function blackjackReset() {
+	blackjackCardsPlayer.style.backgroundImage = "";
+	blackjackCardsPlayer.style.backgroundPosition = "";
+	blackjackCardsDealer.style.backgroundImage = "";
+	blackjackCardsDealer.style.backgroundPosition = "";
+	betAmount = 0;
+	playerValue = 0;
+	dealerValue = 0;
+	playerAce = false;
+	dealerAce = false;
+	playerSplit = false;
+	checkShuffle();
+	blackjackBtns.style.display = "none";
+	blackjackBetScreen.style.display = "flex";
+	exitBlackjack.style.display = "flex";
+};
+
 exitBlackjack.addEventListener("click", function() {
 	clearBet();
 });
@@ -294,10 +354,40 @@ exitBlackjack.addEventListener("click", function() {
 blackjackPlay.addEventListener("click", function() {
 	if (betAmount >= 50) {
 		chips -= betAmount;
+		chipsCounter.innerText = chips;
 		exitBlackjack.style.display = "none";
 		blackjackBetScreen.style.display = "none";
 		drawCard();
-		
+		playerValue = getValue(card, 1);
+		tempSplit = temp;
+		blackjackCardsPlayer.style.backgroundImage = "url('assets/deck/" + getCard(card) + ".png')";
+		blackjackCardsPlayer.style.backgroundPosition = "center";
+		drawCard();
+		dealerValue = getValue(card, 0);
+		blackjackCardsDealer.style.backgroundImage = "url('assets/deck/" + getCard(card) + ".png')";
+		blackjackCardsDealer.style.backgroundPosition = "center";
+		tempDealer = blackjackCardsDealer.style.backgroundImage;
+		drawCard();
+		playerValue += getValue(card, 1);
+		checkSplit();
+		blackjackCardsPlayer.style.backgroundImage += ", url('assets/deck/" + getCard(card) + ".png')";
+		blackjackCardsPlayer.style.backgroundPosition += ", calc(50% - 44px)";
+		drawCard();
+		cardDealer = card;
+		blackjackCardsDealer.style.backgroundImage += ", url('assets/deck/blank.png')";
+		blackjackCardsDealer.style.backgroundPosition += ", calc(50% - 44px)"
+		blackjackBtns.style.display = "flex";
+		playerCardOffset = 88;
+		dealerCardOffset = 88;
+		if (playerValue == 21) {
+			if (dealerValue + getValue(cardDealer, 0) != 21) {
+				chips += (betAmount * 2) + (betAmount / 2);
+				blackjackReset();
+			} else {
+				blackjackCardsDealer.style.backgroundImage = tempDealer + ", url ('assets/deck/" + getCard(cardDealer) + ".png')";
+				chips += betAmount;
+				blackjackReset();
+		}
 	}
 });
 
