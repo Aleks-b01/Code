@@ -18,6 +18,11 @@ const blackjackBet5k = document.getElementById("blackjackBet5k");
 const blackjackBet10k = document.getElementById("blackjackBet10k");
 const blackjackCardsPlayer = document.getElementById("blackjackCardsPlayer");
 const blackjackCardsDealer = document.getElementById("blackjackCardsDealer");
+const blackjackHit = document.getElementById("blackjackHit");
+const blackjackStand = document.getElementById("blackjackStand");
+const blackjackDouble = document.getElementById("blackjackDouble");
+const blackjackSplit = document.getElementById("blackjackSplit");
+const blackjackSplitNotAllowed = document.getElementById("blackjackSplitNotAllowed");
 
 const cardValues = new Map([
 	["2", 2],
@@ -387,6 +392,7 @@ blackjackPlay.addEventListener("click", function() {
 				blackjackCardsDealer.style.backgroundImage = tempDealer + ", url ('assets/deck/" + getCard(cardDealer) + ".png')";
 				chips += betAmount;
 				blackjackReset();
+			}
 		}
 	}
 });
