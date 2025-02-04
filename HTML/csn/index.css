@@ -276,6 +276,7 @@ html, body {
 	bottom: 10px;
 	z-index: 50;
 	text-align: right;
+	user-select: none;
 }
 
 #blackjackBetChipsDisplayDiv {
@@ -419,7 +420,7 @@ html, body {
 #blackjackSplitNotAllowed {
 	height: 110px;
 	width: 110px;
-	display: flex;
+	display: none;
 	position: absolute;
 	bottom: -10px;
 	left: calc(50% + 120px);
@@ -473,6 +474,7 @@ html, body {
 	color: white;
 	font-family: arial;
 	text-align: center;
+	user-select: none;
 }
 
 #blackjackDealerValue {
@@ -486,6 +488,21 @@ html, body {
 	color: white;
 	font-family: arial;
 	text-align: center;
+	user-select: none;
+}
+
+#blackjackPlayerValue1 {
+	height: 40px;
+	width: 100px;
+	position: absolute;
+	bottom: 355px;
+	left: calc(50% - 200px);
+	transform: translate(-50%, 0%);
+	font-size: 40px;
+	color: white;
+	font-family: arial;
+	text-align: center;
+	user-select: none;
 }
 
 #exitBlackjack {

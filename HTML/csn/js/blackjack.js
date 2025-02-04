@@ -23,6 +23,7 @@ const blackjackCardsPlayer = document.getElementById("blackjackCardsPlayer");
 const blackjackCardsDealer = document.getElementById("blackjackCardsDealer");
 const blackjackPlayerValue = document.getElementById("blackjackPlayerValue");
 const blackjackDealerValue = document.getElementById("blackjackDealerValue");
+const blackjackPlayerValue1 = document.getElementById("blackjackPlayerValue1");
 const blackjackHit = document.getElementById("blackjackHit");
 const blackjackStand = document.getElementById("blackjackStand");
 const blackjackDouble = document.getElementById("blackjackDouble");
@@ -300,12 +301,12 @@ function sleep(time) {
 
 function getValue(num, player, askAce) {
 	temp = getCard(num).split("");
-	return cardValues.get(temp[0]);
-	if (temp == "a" && player == 1 && askAce == true) {
+	if (temp[0] == "a" && player == 1 && askAce == true) {
 		playerAce = true;
-	} else if (temp == "a" && player == 0 && askAce == true) {
+	} else if (temp[0] == "a" && player == 0 && askAce == true) {
 		dealerAce = true;
 	}
+	return cardValues.get(temp[0]);
 };
 
 function drawCard() {
@@ -365,8 +366,7 @@ function updateChipsDisplay() {
 };
 
 function checkSplit() {
-	if (tempSplit == temp) {
-		playerSplit = true;
+	if (tempSplit == temp[0]) {
 		blackjackSplitNotAllowed.style.display = "none";
 	}
 };
@@ -399,6 +399,8 @@ function blackjackReset() {
 	blackjackCardsDealer.style.backgroundPosition = "";
 	blackjackPlayerValue.innerText = "";
 	blackjackDealerValue.innerText = "";
+	blackjackPlayerValue1.innerText = "";
+	blackjackPlayerValue.style.left = "50%";
 	blackjackCurrentBet.innerText = "";
 	betAmount = 0;
 	playerValue = 0;
@@ -460,7 +462,6 @@ async function blackjackPlayFunc() {
 		blackjackCardsDealer.style.backgroundImage += ", url('assets/deck/blank.png')";
 		blackjackCardsDealer.style.backgroundPosition += ", calc(50% - 44px)";
 		await sleep(800);
-		blackjackBtns.style.display = "flex";
 		blackjackPlayerValue.innerText = playerValue;
 		blackjackDealerValue.innerText = dealerValue;
 		playerCardOffset = 88;
@@ -470,24 +471,31 @@ async function blackjackPlayFunc() {
 				await sleep(700);
 				chips += (betAmount * 2) + (betAmount / 2);
 				blackjackReset();
+				return;
 			} else {
 				await sleep(800);
 				blackjackCardsDealer.style.backgroundImage = tempDealer + ", url ('assets/deck/" + getCard(cardDealer) + ".png')";
 				chips += betAmount;
 				await sleep(600);
 				blackjackReset();
+				return;
 			}
 		} else if (dealerAce == true) {
 			askInsurance();
 		}
 	}
+	if (playerValue == 22) {
+		playerValue -= 10;
+		blackjackPlayerValue.innerText = playerValue;
+	}
+	blackjackBtns.style.display = "flex";
 };
 
 blackjackHit.addEventListener("click", function() {
-	blackjackHitFunc();
+	blackjackHitFunc(0);
 });
 
-async function blackjackHitFunc() {
+async function blackjackHitFunc(i) {
 	blackjackBtns.style.display =  "none";
 	await sleep(1000);
 	drawCard();
@@ -497,7 +505,9 @@ async function blackjackHitFunc() {
 	playerValue += getValue(card, 1, true);
 	blackjackPlayerValue.innerText = playerValue;
 	await sleep(600);
-	blackjackBtns.style.display = "flex"
+	if (i == 0) {
+		blackjackBtns.style.display = "flex";
+	}
 	if (playerValue > 21) {
 		if (playerAce == true) {
 			playerValue -= 10;
@@ -506,6 +516,9 @@ async function blackjackHitFunc() {
 		} else {
 			blackjackReset();
 		}
+	}
+	if (i == 1 && playerValue > 0) {
+		blackjackDealerPlay();
 	}
 };
 
@@ -535,7 +548,7 @@ async function blackjackDealerPlay() {
 			if (dealerValue >= 17) {
 				break;
 			}
-			dealercardOffset += 44;
+			dealerCardOffset += 44;
 		}
 	}
 	if (dealerValue >= 17 && dealerValue < 22) {
@@ -563,10 +576,7 @@ blackjackDouble.addEventListener("click", function() {
 	chips -= betAmount;
 	betAmount *= 2;
 	updateCurrentBet();
-	blackjackHitFunc();
-	if (betAmount != 0) {
-		blackjackDealerPlay();
-	}
+	blackjackHitFunc(1);
 });
 
 blackjackSplit.addEventListener("click", function() {
@@ -574,7 +584,9 @@ blackjackSplit.addEventListener("click", function() {
 });
 
 async function blackjackSplitFunc() {
-	console.log("split");
+	playerSplit = true;
+	blackjackCardsPlayer.style.backgroundPosition = "calc(50% + 200px), calc(50% - 200px)";
+	blackjackPlayerValue.style.left = "calc(50% + 200px)";
 };
 
 blackjackClearBet.addEventListener("click", function() {
