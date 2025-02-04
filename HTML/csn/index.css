@@ -46,6 +46,7 @@ html, body {
 	border: solid;
 	border-color: rgba(30, 30, 30, 1);
 	border-width: 4px;
+	z-index: 999;
 }
 
 #chipsDisplay {
@@ -262,6 +263,19 @@ html, body {
 	border-width: 5px;
 	flex-wrap: wrap;
 	align-items: space-between;
+}
+
+#blackjackCurrentBet {
+	height: 50px;
+	width: 250px;
+	font-size: 50px;
+	color: white;
+	font-family: arial;
+	position: absolute;
+	right: 10px;
+	bottom: 10px;
+	z-index: 50;
+	text-align: right;
 }
 
 #blackjackBetChipsDisplayDiv {

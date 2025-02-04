@@ -8,3 +8,4 @@ blackjack value displays: blackjack.js x
 blackjack symbols instead of text for btns: index.js x
 disable animations: blackjack.js x, y
 faster animations: blackjack.js 392 398 404 410 415
+reset prev bet: blackjack.js x
