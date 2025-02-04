@@ -289,12 +289,16 @@ function getCard(num) {
 	}
 };
 
-function getValue(num, player) {
+function sleep(time) {
+	return new Promise((resolve) => setTimeout(resolve, time));
+};
+
+function getValue(num, player, askAce) {
 	temp = getCard(num).split("");
 	return cardValues.get(temp[0]);
-	if (temp == "a" && player == 1) {
+	if (temp == "a" && player == 1 && askAce == true) {
 		playerAce = true;
-	} else if (temp == "a" && player == 0) {
+	} else if (temp == "a" && player == 0 && askAce == true) {
 		dealerAce = true;
 	}
 };
@@ -328,11 +332,29 @@ function updateBetDisplay() {
 function checkSplit() {
 	if (tempSplit == temp) {
 		playerSplit = true;
+		blackjackSplitNotAllowed.style.display = "none";
+	}
+};
+
+function countCards() {
+	cardsAmount = 0
+	for (let i of cards.values()) {
+		cardsAmount += i;
 	}
 };
 
 function checkShuffle() {
-	console.log("not now");
+	countCards();
+	cardsAmount /= 3.12;
+	if (cardsAmount < shuffleCard) {
+		for (let i = 52; i > 0; i--) {
+			cards.set(getCard(i), 6);
+		}
+	}
+};
+
+function askInsurance() {
+	console.log("this will ask for insurance");
 };
 
 function blackjackReset() {
@@ -347,6 +369,7 @@ function blackjackReset() {
 	dealerAce = false;
 	playerSplit = false;
 	checkShuffle();
+	blackjackSplitNotAllowed.style.display = "flex";
 	blackjackBtns.style.display = "none";
 	blackjackBetScreen.style.display = "flex";
 	exitBlackjack.style.display = "flex";
@@ -357,43 +380,137 @@ exitBlackjack.addEventListener("click", function() {
 });
 
 blackjackPlay.addEventListener("click", function() {
+	blackjackPlayFunc();
+});
+
+async function blackjackPlayFunc() {
 	if (betAmount >= 50) {
 		chips -= betAmount;
 		chipsCounter.innerText = chips;
 		exitBlackjack.style.display = "none";
 		blackjackBetScreen.style.display = "none";
+		await sleep(600);
 		drawCard();
-		playerValue = getValue(card, 1);
+		playerValue = getValue(card, 1, true);
 		tempSplit = temp;
 		blackjackCardsPlayer.style.backgroundImage = "url('assets/deck/" + getCard(card) + ".png')";
 		blackjackCardsPlayer.style.backgroundPosition = "center";
+		await sleep(1000);
 		drawCard();
-		dealerValue = getValue(card, 0);
+		dealerValue = getValue(card, 0, true);
 		blackjackCardsDealer.style.backgroundImage = "url('assets/deck/" + getCard(card) + ".png')";
 		blackjackCardsDealer.style.backgroundPosition = "center";
 		tempDealer = blackjackCardsDealer.style.backgroundImage;
+		await sleep(1000);
 		drawCard();
-		playerValue += getValue(card, 1);
+		playerValue += getValue(card, 1, true);
 		checkSplit();
 		blackjackCardsPlayer.style.backgroundImage += ", url('assets/deck/" + getCard(card) + ".png')";
 		blackjackCardsPlayer.style.backgroundPosition += ", calc(50% - 44px)";
+		await sleep(1000);
 		drawCard();
 		cardDealer = card;
 		blackjackCardsDealer.style.backgroundImage += ", url('assets/deck/blank.png')";
-		blackjackCardsDealer.style.backgroundPosition += ", calc(50% - 44px)"
+		blackjackCardsDealer.style.backgroundPosition += ", calc(50% - 44px)";
+		await sleep(800);
 		blackjackBtns.style.display = "flex";
 		playerCardOffset = 88;
 		dealerCardOffset = 88;
 		if (playerValue == 21) {
-			if (dealerValue + getValue(cardDealer, 0) != 21) {
+			if (dealerValue + getValue(cardDealer, 0, false) != 21) {
+				await sleep(700);
 				chips += (betAmount * 2) + (betAmount / 2);
 				blackjackReset();
 			} else {
+				await sleep(800);
 				blackjackCardsDealer.style.backgroundImage = tempDealer + ", url ('assets/deck/" + getCard(cardDealer) + ".png')";
 				chips += betAmount;
+				await sleep(600);
 				blackjackReset();
 			}
+		} else if (dealerAce == true) {
+			askInsurance();
 		}
+	}
+};
+
+blackjackHit.addEventListener("click", function() {
+	blackjackHitFunc();
+});
+
+async function blackjackHitFunc() {
+	blackjackBtns.style.display =  "none";
+	await sleep(1000);
+	drawCard();
+	blackjackCardsPlayer.style.backgroundPosition += ", calc(50% - " + playerCardOffset + "px)";
+	playerCardOffset += 44;
+	blackjackCardsPlayer.style.backgroundImage += ", url('assets/deck/" + getCard(card) + ".png')";
+	playerValue += getValue(card, 1, true);
+	await sleep(600);
+	blackjackBtns.style.display = "flex"
+	if (playerValue > 21) {
+		if (playerAce == true) {
+			playerValue -= 10;
+			playerAce = false;
+		} else {
+			blackjackReset();
+		}
+	}
+};
+
+blackjackStand.addEventListener("click", function() {
+	blackjackDealerPlay();
+});
+
+async function blackjackDealerPlay() {
+	blackjackBtns.style.display = "none";
+	await sleep(600);
+	blackjackCardsDealer.style.backgroundImage = tempDealer + ", url('assets/deck/" + getCard(cardDealer) + ".png')";
+	dealerValue += getValue(cardDealer, 0, true);
+	if (dealerValue < 17) {
+		while (true) {
+			await sleep(1000);
+			drawCard();
+			blackjackCardsDealer.style.backgroundPosition += ", calc(50% - " + dealerCardOffset + "px)";
+			blackjackCardsDealer.style.backgroundImage += ", url('assets/deck/" + getCard(card) + ".png')";
+			dealerValue += getValue(card, 0, true);
+			if (dealerValue >= 21 && dealerAce == true) {
+				dealervalue -= 10;
+				dealerAce = false;
+			}
+			if (dealerValue >= 17) {
+				break;
+			}
+			dealercardOffset += 44;
+		}
+	}
+	if (dealerValue >= 17 && dealerValue < 22) {
+		if (dealerValue > playerValue) {
+			await sleep(800);
+			blackjackReset();
+		} else if (dealerValue < playerValue) {
+			await sleep(800);
+			chips += betAmount * 2;
+			blackjackReset();
+		} else if (dealerValue == playerValue) {
+			await sleep(800);
+			chips += betAmount;
+			blackjackReset();
+		}
+	}
+	if (dealerValue > 21) {
+		await sleep(800);
+		chips += betAmount * 2;
+		blackjackReset();
+	}
+};
+
+blackjackDouble.addEventListener("click", function() {
+	chips -= betAmount;
+	betAmount += betAmount;
+	blackjackHitFunc();
+	if (betAmount != 0) {
+		blackjackDealerPlay();
 	}
 });
 
@@ -555,8 +672,11 @@ blackjackBet10k.addEventListener("click", function() {
 
 blackjack.addEventListener("click", function() {
 	if (hasPlayed == false) {
-		shuffleCard = Math.floor(Math.random() * 36) + 45;
-		cardsAmount = 312;
+		shuffleCard = Math.floor(Math.random() * 46) + 19;
 		hasPlayed = true;
 	}
+});
+
+exitBlackjack.addEventListener("click", function() {
+	chipsCounter.innerText = chips;
 });

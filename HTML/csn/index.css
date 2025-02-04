@@ -448,6 +448,32 @@ html, body {
 	background-repeat: no-repeat;
 }
 
+#blackjackPlayerValue {
+	height: 40px;
+	width: 100px;
+	position: absolute;
+	bottom: 355px;
+	left: 50%;
+	transform: translate(-50%, 0%);
+	font-size: 40px;
+	color: white;
+	font-family: arial;
+	text-align: center;
+}
+
+#blackjackDealerValue {
+	height: 40px;
+	width: 100px;
+	position: absolute;
+	top: 15px;
+	left: 50%;
+	transform: translate(-50%, 0%);
+	font-size: 40px;
+	color: white;
+	font-family: arial;
+	text-align: center;
+}
+
 #exitBlackjack {
 	height: 60px;
 	width: 60px;
