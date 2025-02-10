@@ -114,9 +114,11 @@ let playerCardOffset;
 let dealerCardOffset;
 let playerValue;
 let dealerValue;
-let playerAce = false;
-let dealerAce = false;
-let playerSplit = false;
+let playerValue1;
+let playerAce = 0;
+let dealerAce = 0;
+let playerAce1 = 0;
+let playerSplit;
 
 function keybinds(event) {
 	if (event.key === "Escape" && exitBlackjack.style.display == "flex") {
@@ -302,9 +304,11 @@ function sleep(time) {
 function getValue(num, player, askAce) {
 	temp = getCard(num).split("");
 	if (temp[0] == "a" && player == 1 && askAce == true) {
-		playerAce = true;
+		playerAce += 1;
 	} else if (temp[0] == "a" && player == 0 && askAce == true) {
-		dealerAce = true;
+		dealerAce += 1;
+	} else if (temp[0] == "a" && player == 2 && askAce == true) {
+		playerAce1 += 1;
 	}
 	return cardValues.get(temp[0]);
 };
@@ -402,20 +406,17 @@ function blackjackReset() {
 	blackjackPlayerValue1.innerText = "";
 	blackjackPlayerValue.style.left = "50%";
 	blackjackCurrentBet.innerText = "";
-	betAmount = 0;
 	playerValue = 0;
 	dealerValue = 0;
-	playerAce = false;
-	dealerAce = false;
+	playerAce = 0;
+	dealerAce = 0;
 	playerSplit = false;
 	checkShuffle();
 	blackjackSplitNotAllowed.style.display = "flex";
 	blackjackBtns.style.display = "none";
 	blackjackBetScreen.style.display = "flex";
 	updateChipsDisplay();
-	updateBetDisplay();
-	blackjackBetChipsDisplay.style.backgroundImage = "";
-	blackjackBetChipsDisplay.style.backgroundPosition = "";
+	clearBet();
 	chipsDisplay.style.display = "flex";
 	ChipsDisplay.style.display = "flex";
 	exitBlackjack.style.display = "flex";
@@ -480,12 +481,13 @@ async function blackjackPlayFunc() {
 				blackjackReset();
 				return;
 			}
-		} else if (dealerAce == true) {
+		} else if (dealerAce > 0) {
 			askInsurance();
 		}
 	}
 	if (playerValue == 22) {
 		playerValue -= 10;
+		playerAce -= 1;
 		blackjackPlayerValue.innerText = playerValue;
 	}
 	blackjackBtns.style.display = "flex";
@@ -509,9 +511,9 @@ async function blackjackHitFunc(i) {
 		blackjackBtns.style.display = "flex";
 	}
 	if (playerValue > 21) {
-		if (playerAce == true) {
+		if (playerAce > 0) {
 			playerValue -= 10;
-			playerAce = false;
+			playerAce -= 1;
 			blackjackPlayerValue.innerText = playerValue;
 		} else {
 			blackjackReset();
@@ -540,9 +542,9 @@ async function blackjackDealerPlay() {
 			blackjackCardsDealer.style.backgroundImage += ", url('assets/deck/" + getCard(card) + ".png')";
 			dealerValue += getValue(card, 0, true);
 			blackjackDealerValue.innerText = dealerValue;
-			if (dealerValue >= 21 && dealerAce == true) {
-				dealervalue -= 10;
-				dealerAce = false;
+			if (dealerValue >= 21 && dealerAce > 0) {
+				dealerValue -= 10;
+				dealerAce -= 1;
 				blackjackDealerValue.innerText = dealerValue;
 			}
 			if (dealerValue >= 17) {
@@ -584,9 +586,34 @@ blackjackSplit.addEventListener("click", function() {
 });
 
 async function blackjackSplitFunc() {
-	playerSplit = true;
+	blackjackBtns.style.display = "none";
+	playerSplit = 1;
 	blackjackCardsPlayer.style.backgroundPosition = "calc(50% + 200px), calc(50% - 200px)";
 	blackjackPlayerValue.style.left = "calc(50% + 200px)";
+	if (tempSplit != "a") {
+		playerValue /= 2;
+		playerValue1 = playerValue;
+	} else {
+		playerValue = 11;
+		playerValue1 = 11;
+		playerAce = 1;
+		playerAce1 = 1;
+	}
+	blackjackPlayerValue.innerText = playerValue;
+	blackjackPlayerValue1.innerText = playerValue;
+	await sleep(1000);
+	drawCard();
+	blackjackCardsPlayer.style.backgroundPosition += ", calc(50% + 200px - 44px)";
+	blackjackCardsPlayer.style.backgroundImage += ", url('assets/deck/" + getCard(card) + ".png')";
+	playerValue += getValue(card, 1, true);
+	blackjackPlayerValue.innerText = playerValue;
+	await sleep(1000);
+	drawCard();
+	blackjackCardsPlayer.style.backgroundPosition += ", calc(50% - 200px - 44px)";
+	blackjackCardsPlayer.style.backgroundImage += ", url('assets/deck/" + getCard(card) + ".png')";
+	playerValue1 += getValue(card, 2, true);
+	blackjackSplitNotAllowed.style.display = "flex";
+	blackjackBtns.style.display = "flex";
 };
 
 blackjackClearBet.addEventListener("click", function() {

@@ -428,8 +428,23 @@ html, body {
 	z-index: 100;
 }
 
+#blackjackDoubleNotAllowed {
+	height: 110px;
+	width: 110px;
+	display: none;
+	position: absolute;
+	bottom: -10px;
+	left: calc(50% + 5px);
+	background: none;
+	z-index: 100;
+}
+
 #blackjackSplitNotAllowed:hover {
 	cursor: not-allowed;
+}
+
+#blackjackDoubleNotAllowed:hover {
+	cursor: not-allowed
 }
 
 #blackjackBtns {
