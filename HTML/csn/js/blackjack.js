@@ -370,8 +370,8 @@ function updateChipsDisplay() {
 };
 
 function checkSplit() {
-	if (tempSplit == temp[0]) {
-		blackjackSplitNotAllowed.style.display = "none";
+	if (cardValues.get(tempSplit) == cardValues.get(temp[0])) {
+		blackjackSplit.style.display = "flex";
 	}
 };
 

@@ -411,51 +411,28 @@ html, body {
 	border: solid;
 	border-color: rgba(0, 0, 0, 0.5);
 	border-width: 5px;
+	user-select: none;
+	margin-right: 3px;
+	margin-left: 3px;
 }
 
 .BlackjackBtn:hover {
 	cursor: pointer;
 }
 
-#blackjackSplitNotAllowed {
-	height: 110px;
-	width: 110px;
+#blackjackSplit {
 	display: none;
-	position: absolute;
-	bottom: -10px;
-	left: calc(50% + 120px);
-	background: none;
-	z-index: 100;
-}
-
-#blackjackDoubleNotAllowed {
-	height: 110px;
-	width: 110px;
-	display: none;
-	position: absolute;
-	bottom: -10px;
-	left: calc(50% + 5px);
-	background: none;
-	z-index: 100;
-}
-
-#blackjackSplitNotAllowed:hover {
-	cursor: not-allowed;
-}
-
-#blackjackDoubleNotAllowed:hover {
-	cursor: not-allowed
 }
 
 #blackjackBtns {
 	height: 100px;
-	width: 460px;
+	width: 480px;
 	display: none;
 	position: absolute;
 	bottom: 25px;
 	left: 50%;
 	transform: translate(-50%, 0);
-	justify-content: space-between;
+	justify-content: center;
 }
 
 #blackjackCardsPlayer {
