@@ -28,7 +28,6 @@ const blackjackHit = document.getElementById("blackjackHit");
 const blackjackStand = document.getElementById("blackjackStand");
 const blackjackDouble = document.getElementById("blackjackDouble");
 const blackjackSplit = document.getElementById("blackjackSplit");
-const blackjackSplitNotAllowed = document.getElementById("blackjackSplitNotAllowed");
 
 const cardValues = new Map([
 	["2", 2],
@@ -412,8 +411,9 @@ function blackjackReset() {
 	dealerAce = 0;
 	playerSplit = false;
 	checkShuffle();
-	blackjackSplitNotAllowed.style.display = "flex";
 	blackjackBtns.style.display = "none";
+	blackjackSplit.style.display = "none";
+	blackjackDouble.style.display = "flex";
 	blackjackBetScreen.style.display = "flex";
 	updateChipsDisplay();
 	clearBet();
@@ -446,10 +446,10 @@ async function blackjackPlayFunc() {
 		blackjackCardsPlayer.style.backgroundImage = "url('assets/deck/" + getCard(card) + ".png')";
 		blackjackCardsPlayer.style.backgroundPosition = "center";
 		await sleep(1000);
-		drawCard();
-		dealerValue = getValue(card, 0, true);
+drawCard();
+	dealerValue = getValue(card, 0, true);
 		blackjackCardsDealer.style.backgroundImage = "url('assets/deck/" + getCard(card) + ".png')";
-		blackjackCardsDealer.style.backgroundPosition = "center";
+blackjackCardsDealer.style.backgroundPosition = "center";
 		tempDealer = blackjackCardsDealer.style.backgroundImage;
 		await sleep(1000);
 		drawCard();
@@ -464,7 +464,7 @@ async function blackjackPlayFunc() {
 		blackjackCardsDealer.style.backgroundPosition += ", calc(50% - 44px)";
 		await sleep(800);
 		blackjackPlayerValue.innerText = playerValue;
-		blackjackDealerValue.innerText = dealerValue;
+	blackjackDealerValue.innerText = dealerValue;
 		playerCardOffset = 88;
 		dealerCardOffset = 88;
 		if (playerValue == 21) {
