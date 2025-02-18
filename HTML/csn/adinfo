@@ -12,4 +12,5 @@ reset prev bet: blackjack.js 414
 
 bj funcs to revamp later:
 updateBet()
+updateChipsDisplay -> updateChips
 
