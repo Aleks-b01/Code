@@ -352,7 +352,7 @@ async function blackjackPlayFunc() {
 		cardDealer = card;
 		blackjackCardsDealer.style.backgroundImage += ", url('assets/deck/back-red.png')";
 		blackjackCardsDealer.style.backgroundPosition += ", calc(50% - 44px)";
-		await sleep(800);
+		await sleep(600);
 		if (playerValue == 22) {
 			playerValue -= 10;
 			playerAce -= 1;
@@ -387,7 +387,6 @@ blackjackHit.addEventListener("click", function() {
 // x: 0 == no double, 1 == double
 async function blackjackHitFunc(x) {
 	blackjackBtns.style.display =  "none";
-	await sleep(1000);
 	drawCard();
 	blackjackCardsPlayer.style.backgroundPosition += ", calc(50% - " + playerCardOffset + "px)";
 	playerCardOffset += 44;
@@ -398,6 +397,7 @@ async function blackjackHitFunc(x) {
 		playerAce -= 1;
 	}
 	blackjackPlayerValue.innerText = playerValue;
+	await sleep (600);
 	if (playerValue > 21 && playerAce == 0) {
 		x = 5;
 		blackjackReset();
@@ -413,7 +413,6 @@ async function blackjackHitFunc(x) {
 		blackjackDouble.style.display = "none";
 		blackjackBtns.style.display = "flex";
 	}
-	await sleep (600);
 };
 
 blackjackStand.addEventListener("click", function() {
@@ -422,7 +421,6 @@ blackjackStand.addEventListener("click", function() {
 
 async function blackjackDealerPlay() {
 	blackjackBtns.style.display = "none";
-	await sleep(800);
 	blackjackCardsDealer.style.backgroundImage = tempDealer + ", url('assets/deck/" + cardsNum.get(cardDealer) + ".png')";
 	dealerValue += getValue(cardDealer, 0);
 	blackjackDealerValue.innerText = dealerValue;
