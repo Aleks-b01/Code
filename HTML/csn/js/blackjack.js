@@ -44,12 +44,60 @@ const cardValues = new Map([
 	["k", 10],
 	["a", 11],
 ]);
-
-let temp;
-let tempDealer;
-let tempSplit;
-let chips = chipsCounter.innerText;
-let betAmount = 0;
+const cardsNum = new Map ([
+	[1, "2h"],
+	[2, "3h"],
+	[3, "4h"],
+	[4, "5h"],
+	[5, "6h"],
+	[6, "7h"],
+	[7, "8h"],
+	[8, "9h"],
+	[9, "10h"],
+	[10, "jh"],
+	[11, "qh"],
+	[12, "kh"],
+	[13, "ah"],
+	[14, "2d"],
+	[15, "3d"],
+	[16, "4d"],
+	[17, "5d"],
+	[18, "6d"],
+	[19, "7d"],
+	[20, "8d"],
+	[21, "9d"],
+	[22, "10d"],
+	[23, "jd"],
+	[24, "qd"],
+	[25, "kd"],
+	[26, "ad"],
+	[27, "2c"],
+	[28, "3c"],
+	[29, "4c"],
+	[30, "5c"],
+	[31, "6c"],
+	[32, "7c"],
+	[33, "8c"],
+	[34, "9c"],
+	[35, "10c"],
+	[36, "jc"],
+	[37, "qc"],
+	[38, "kc"],
+	[39, "ac"],
+	[40, "2s"],
+	[41, "3s"],
+	[42, "4s"],
+	[43, "5s"],
+	[44, "6s"],
+	[45, "7s"],
+	[46, "8s"],
+	[47, "9s"],
+	[48, "10s"],
+	[49, "js"],
+	[50, "qs"],
+	[51, "ks"],
+	[52, "as"]
+]);
 let cards = new Map ([
 	["2h", 6],
 	["3h", 6],
@@ -104,6 +152,11 @@ let cards = new Map ([
 	["ks", 6],
 	["as", 6]
 ]);
+let temp;
+let tempDealer;
+let tempSplit;
+let chips = chipsCounter.innerText;
+let betAmount = 0;
 let card;
 let cardDealer;
 let cardsAmount;
@@ -117,7 +170,7 @@ let playerValue1;
 let playerAce = 0;
 let dealerAce = 0;
 let playerAce1 = 0;
-let playerSplit;
+let playerSplit = 0;
 
 function keybinds(event) {
 	if (event.key === "Escape" && exitBlackjack.style.display == "flex") {
@@ -126,8 +179,13 @@ function keybinds(event) {
 	}
 };
 
-function checkBetAmount(betAmountCheck) {
-	temp = chips - betAmount - betAmountCheck;
+function sleep(time) {
+	return new Promise((resolve) => setTimeout(resolve, time));
+};
+
+// x == amount added to bet
+function checkBetAmount(x) {
+	temp = chips - betAmount - x;
 	if (temp >= 0) {
 		return true;
 	} else {
@@ -135,178 +193,14 @@ function checkBetAmount(betAmountCheck) {
 	}
 };
 
-function getCard(num) {
-	switch (num) {
-		case 1:
-			return "2h";
-			break;
-		case 2:
-			return "3h";
-			break;
-		case 3:
-			return "4h";
-			break;
-		case 4:
-			return "5h";
-			break;
-		case 5:
-			return "6h";
-			break;
-		case 6:
-			return "7h";
-			break;
-		case 7:
-			return "8h";
-			break;
-		case 8:
-			return "9h";
-			break;
-		case 9:
-			return "10h";
-			break;
-		case 10:
-			return "jh";
-			break;
-		case 11:
-			return "qh";
-			break;
-		case 12:
-			return "kh";
-			break;
-		case 13:
-			return "ah";
-			break;
-		case 14:
-			return "2d";
-			break;
-		case 15:
-			return "3d";
-			break;
-		case 16:
-			return "4d";
-			break;
-		case 17:
-			return "5d";
-			break;
-		case 18:
-			return "6d";
-			break;
-		case 19:
-			return "7d";
-			break;
-		case 20:
-			return "8d";
-			break;
-		case 21:
-			return "9d";
-			break;
-		case 22:
-			return "10d";
-			break;
-		case 23:
-			return "jd";
-			break;
-		case 24:
-			return "qd";
-			break;
-		case 25:
-			return "kd";
-			break;
-		case 26:
-			return "ad";
-			break;
-		case 27:
-			return "2c";
-			break;
-		case 28:
-			return "3c";
-			break;
-		case 29:
-			return "4c";
-			break;
-		case 30:
-			return "5c";
-			break;
-		case 31:
-			return "6c";
-			break;
-		case 32:
-			return "7c";
-			break;
-		case 33:
-			return "8c";
-			break;
-		case 34:
-			return "9c";
-			break;
-		case 35:
-			return "10c";
-			break;
-		case 36:
-			return "jc";
-			break;
-		case 37:
-			return "qc";
-			break;
-		case 38:
-			return "kc";
-			break;
-		case 39:
-			return "ac";
-			break;
-		case 40:
-			return "2s";
-			break;
-		case 41:
-			return "3s";
-			break;
-		case 42:
-			return "4s";
-			break;
-		case 43:
-			return "5s";
-			break;
-		case 44:
-			return "6s";
-			break;
-		case 45:
-			return "7s";
-			break;
-		case 46:
-			return "8s";
-			break;
-		case 47:
-			return "9s";
-			break;
-		case 48:
-			return "10s";
-			break;
-		case 49:
-			return "js";
-			break;
-		case 50:
-			return "qs";
-			break;
-		case 51:
-			return "ks";
-			break;
-		case 52:
-			return "as";
-			break;
-	}
-};
-
-function sleep(time) {
-	return new Promise((resolve) => setTimeout(resolve, time));
-};
-
-function getValue(num, player, askAce) {
-	temp = getCard(num).split("");
-	if (temp[0] == "a" && player == 1 && askAce == true) {
+// Card == current card, player: 0 == dealer, 1 == player, 2 == player 2nd split hand
+function getValue(Card, player) {
+	temp = cardsNum.get(Card).split("");
+	if (temp[0] == "a" && player == 1) {
 		playerAce += 1;
-	} else if (temp[0] == "a" && player == 0 && askAce == true) {
+	} else if (temp[0] == "a" && player == 0) {
 		dealerAce += 1;
-	} else if (temp[0] == "a" && player == 2 && askAce == true) {
+	} else if (temp[0] == "a" && player == 2) {
 		playerAce1 += 1;
 	}
 	return cardValues.get(temp[0]);
@@ -315,45 +209,53 @@ function getValue(num, player, askAce) {
 function drawCard() {
 	while (true) {
 		card = Math.floor(Math.random() * 52) + 1;
-		if (cards.get(getCard(card)) > 0) {
-			temp = cards.get(getCard(card));
-			cards.set(getCard(card), temp - 1)
+		if (cards.get(cardsNum.get(card)) > 0) {
+			temp = cards.get(cardsNum.get(card));
+			cards.set(cardsNum.get(card), temp - 1);
 			break;
 		}
 	}
 };
 
-function updateBetDisplay() {
-	if (betAmount >= 1000 && betAmount < 1000000) {
-		temp = (betAmount / 1000).toFixed(1);
-		blackjackBetDisplay.innerText = temp + "k$";
-	} else if (betAmount >= 1000000 && betAmount < 1000000000) {
-		temp = (betAmount / 1000000).toFixed(1);
-		blackjackBetDisplay.innerText = temp + "M$";
-	} else if (betAmount >= 1000000000 && betAmount < 1000000000000) {
-		temp = (betAmount / 1000000000).toFixed(1);
-		blackjackBetDisplay.innerText = temp + "B$";
-	} else {
-		blackjackBetDisplay.innerText = betAmount + "$";
+// x: 0 == BetDisplay, 1 == CurrentBet
+function updateBet(x) {
+	if (x == 0) {
+		if (betAmount >= 1000 && betAmount < 1000000) {
+			temp = (betAmount / 1000).toFixed(1);
+			blackjackBetDisplay.innerText = temp + "k$";
+		} else if (betAmount >= 1000000 && betAmount < 1000000000) {
+			temp = (betAmount / 1000000).toFixed(1);
+			blackjackBetDisplay.innerText = temp + "M$";
+		} else if (betAmount >= 1000000000 && betAmount < 1000000000000) {
+			temp = (betAmount / 1000000000).toFixed(1);
+			blackjackBetDisplay.innerText = temp + "B$";
+		} else {
+			blackjackBetDisplay.innerText = betAmount + "$";
+		}
+	} else if (x == 1) {
+		if (betAmount >= 1000 && betAmount < 1000000) {
+			temp = (betAmount / 1000).toFixed(1);
+			blackjackCurrentBet.innerText = "Bet: " + temp + "k$";
+		} else if (betAmount >= 1000000 && betAmount < 1000000000) {
+			temp = (betAmount / 1000000).toFixed(1);
+			blackjackCurrentBet.innerText = "Bet: " + temp + "M$";
+		} else if (betAmount >= 1000000000 && betAmount < 1000000000000) {
+			temp = (betAmount / 1000000000).toFixed(1);
+			blackjackCurrentBet.innerText = "Bet: " + temp + "B$";
+		} else {
+			blackjackCurrentBet.innerText = "Bet: " + betAmount + "$";
+		}
 	}
 };
 
-function updateCurrentBet() {
-	if (betAmount >= 1000 && betAmount < 1000000) {
-		temp = (betAmount / 1000).toFixed(1);
-		blackjackCurrentBet.innerText = "Bet: " + temp + "k$";
-	} else if (betAmount >= 1000000 && betAmount < 1000000000) {
-		temp = (betAmount / 1000000).toFixed(1);
-		blackjackCurrentBet.innerText = "Bet: " + temp + "M$";
-	} else if (betAmount >= 1000000000 && betAmount < 1000000000000) {
-		temp = (betAmount / 1000000000).toFixed(1);
-		blackjackCurrentBet.innerText = "Bet: " + temp + "B$";
-	} else {
-		blackjackCurrentBet.innerText = "Bet: " + betAmount + "$";
-	}
+function clearBet() {
+	blackjackBetChipsDisplay.style.backgroundImage = "";
+	blackjackBetChipsDisplay.style.backgroundPosition = "";
+	betAmount = 0;
+	updateBet(0);
 };
 
-function updateChipsDisplay() {
+function updateChips() {
 	if (chips >= 1000 && betAmount < 1000000) {
 		temp = (chips / 1000).toFixed(1);
 		chipsDisplay.innerText = temp + "k$";
@@ -368,21 +270,11 @@ function updateChipsDisplay() {
 	}
 };
 
-function checkSplit() {
-	if (cardValues.get(tempSplit) == cardValues.get(temp[0])) {
-		blackjackSplit.style.display = "flex";
-	}
-};
-
-function countCards() {
+function checkShuffle() {
 	cardsAmount = 0
 	for (let i of cards.values()) {
 		cardsAmount += i;
 	}
-};
-
-function checkShuffle() {
-	countCards();
 	cardsAmount /= 3.12;
 	if (cardsAmount < shuffleCard) {
 		for (let i = 52; i > 0; i--) {
@@ -409,22 +301,19 @@ function blackjackReset() {
 	dealerValue = 0;
 	playerAce = 0;
 	dealerAce = 0;
-	playerSplit = false;
+	playerAce1 = 0;
+	playerSplit = 0;
 	checkShuffle();
 	blackjackBtns.style.display = "none";
 	blackjackSplit.style.display = "none";
 	blackjackDouble.style.display = "flex";
 	blackjackBetScreen.style.display = "flex";
-	updateChipsDisplay();
+	updateChips();
 	clearBet();
 	chipsDisplay.style.display = "flex";
 	ChipsDisplay.style.display = "flex";
 	exitBlackjack.style.display = "flex";
 };
-
-exitBlackjack.addEventListener("click", function() {
-	clearBet();
-});
 
 blackjackPlay.addEventListener("click", function() {
 	blackjackPlayFunc();
@@ -435,93 +324,96 @@ async function blackjackPlayFunc() {
 		chips -= betAmount;
 		chipsCounter.innerText = chips;
 		exitBlackjack.style.display = "none";
-		chipsDisplay.style.display = "none";
 		ChipsDisplay.style.display = "none";
 		blackjackBetScreen.style.display = "none";
-		updateCurrentBet();
+		updateBet(1);
 		await sleep(600);
 		drawCard();
-		playerValue = getValue(card, 1, true);
+		playerValue = getValue(card, 1);
 		tempSplit = temp;
-		blackjackCardsPlayer.style.backgroundImage = "url('assets/deck/" + getCard(card) + ".png')";
+		blackjackCardsPlayer.style.backgroundImage = "url('assets/deck/" + cardsNum.get(card) + ".png')";
 		blackjackCardsPlayer.style.backgroundPosition = "center";
 		await sleep(1000);
-drawCard();
-	dealerValue = getValue(card, 0, true);
-		blackjackCardsDealer.style.backgroundImage = "url('assets/deck/" + getCard(card) + ".png')";
-blackjackCardsDealer.style.backgroundPosition = "center";
+		drawCard();
+		dealerValue = getValue(card, 0);
+		blackjackCardsDealer.style.backgroundImage = "url('assets/deck/" + cardsNum.get(card) + ".png')";
+		blackjackCardsDealer.style.backgroundPosition = "center";
 		tempDealer = blackjackCardsDealer.style.backgroundImage;
 		await sleep(1000);
 		drawCard();
-		playerValue += getValue(card, 1, true);
-		checkSplit();
-		blackjackCardsPlayer.style.backgroundImage += ", url('assets/deck/" + getCard(card) + ".png')";
+		playerValue += getValue(card, 1);
+		if (cardValues.get(tempSplit) == cardValues.get(temp[0])) {
+			blackjackSplit.style.display = "flex";
+		}
+		blackjackCardsPlayer.style.backgroundImage += ", url('assets/deck/" + cardsNum.get(card) + ".png')";
 		blackjackCardsPlayer.style.backgroundPosition += ", calc(50% - 44px)";
 		await sleep(1000);
 		drawCard();
 		cardDealer = card;
-		blackjackCardsDealer.style.backgroundImage += ", url('assets/deck/blank.png')";
+		blackjackCardsDealer.style.backgroundImage += ", url('assets/deck/back-red.png')";
 		blackjackCardsDealer.style.backgroundPosition += ", calc(50% - 44px)";
 		await sleep(800);
+		if (playerValue == 22) {
+			playerValue -= 10;
+			playerAce -= 1;
+		}
+		if (dealerValue == 11 && dealerValue == 10) {
+			//animation for card sliding up and sleep
+			if (dealerValue + getValue(cardDealer, 5) == 21) {
+				if (playerValue == 21) {
+					chips += betAmount;
+					blackjackReset();
+				} else {
+					blackjackReset();
+				}
+			}
+		}
+		if (playerValue == 21) {
+			chips += (betAmount * 2) + (betAmount / 2);
+			blackjackReset();
+		}
 		blackjackPlayerValue.innerText = playerValue;
-	blackjackDealerValue.innerText = dealerValue;
+		blackjackDealerValue.innerText = dealerValue;
 		playerCardOffset = 88;
 		dealerCardOffset = 88;
-		if (playerValue == 21) {
-			if (dealerValue + getValue(cardDealer, 0, false) != 21) {
-				await sleep(700);
-				chips += (betAmount * 2) + (betAmount / 2);
-				blackjackReset();
-				return;
-			} else {
-				await sleep(800);
-				blackjackCardsDealer.style.backgroundImage = tempDealer + ", url ('assets/deck/" + getCard(cardDealer) + ".png')";
-				chips += betAmount;
-				await sleep(600);
-				blackjackReset();
-				return;
-			}
-		} else if (dealerAce > 0) {
-			askInsurance();
-		}
+		blackjackBtns.style.display = "flex";
 	}
-	if (playerValue == 22) {
-		playerValue -= 10;
-		playerAce -= 1;
-		blackjackPlayerValue.innerText = playerValue;
-	}
-	blackjackBtns.style.display = "flex";
 };
 
 blackjackHit.addEventListener("click", function() {
 	blackjackHitFunc(0);
 });
 
-async function blackjackHitFunc(i) {
+// x: 0 == no double, 1 == double
+async function blackjackHitFunc(x) {
 	blackjackBtns.style.display =  "none";
 	await sleep(1000);
 	drawCard();
 	blackjackCardsPlayer.style.backgroundPosition += ", calc(50% - " + playerCardOffset + "px)";
 	playerCardOffset += 44;
-	blackjackCardsPlayer.style.backgroundImage += ", url('assets/deck/" + getCard(card) + ".png')";
-	playerValue += getValue(card, 1, true);
+	blackjackCardsPlayer.style.backgroundImage += ", url('assets/deck/" + cardsNum.get(card) + ".png')";
+	playerValue += getValue(card, 1);
+	if (playerValue > 21 && playerAce > 0) {
+		playerValue -= 10;
+		playerAce -= 1;
+	}
 	blackjackPlayerValue.innerText = playerValue;
-	await sleep(600);
-	if (i == 0) {
-		blackjackBtns.style.display = "flex";
+	if (playerValue > 21 && playerAce == 0) {
+		x = 5;
+		blackjackReset();
 	}
-	if (playerValue > 21) {
-		if (playerAce > 0) {
-			playerValue -= 10;
-			playerAce -= 1;
-			blackjackPlayerValue.innerText = playerValue;
-		} else {
-			blackjackReset();
-		}
-	}
-	if (i == 1 && playerValue > 0) {
+	if (playerValue == 21) {
+		x = 5;
 		blackjackDealerPlay();
 	}
+	if (x == 1) {
+		blackjackDealerPlay();
+	} else if (x == 0) {
+		blackjackSplit.style.display = "none";
+		blackjackDouble.style.display = "none";
+		blackjackBtns.style.display = "flex";
+	}
+	await sleep (600);
 };
 
 blackjackStand.addEventListener("click", function() {
@@ -530,28 +422,23 @@ blackjackStand.addEventListener("click", function() {
 
 async function blackjackDealerPlay() {
 	blackjackBtns.style.display = "none";
-	await sleep(600);
-	blackjackCardsDealer.style.backgroundImage = tempDealer + ", url('assets/deck/" + getCard(cardDealer) + ".png')";
-	dealerValue += getValue(cardDealer, 0, true);
+	await sleep(800);
+	blackjackCardsDealer.style.backgroundImage = tempDealer + ", url('assets/deck/" + cardsNum.get(cardDealer) + ".png')";
+	dealerValue += getValue(cardDealer, 0);
 	blackjackDealerValue.innerText = dealerValue;
-	if (dealerValue < 17) {
-		while (true) {
-			await sleep(1000);
-			drawCard();
-			blackjackCardsDealer.style.backgroundPosition += ", calc(50% - " + dealerCardOffset + "px)";
-			blackjackCardsDealer.style.backgroundImage += ", url('assets/deck/" + getCard(card) + ".png')";
-			dealerValue += getValue(card, 0, true);
-			blackjackDealerValue.innerText = dealerValue;
-			if (dealerValue >= 21 && dealerAce > 0) {
-				dealerValue -= 10;
-				dealerAce -= 1;
-				blackjackDealerValue.innerText = dealerValue;
-			}
-			if (dealerValue >= 17) {
-				break;
-			}
-			dealerCardOffset += 44;
+	for (let i = dealerValue; dealerValue < 17; i = i) {
+		await sleep(1000);
+		drawCard();
+		blackjackCardsDealer.style.backgroundPosition += ", calc(50% - " + dealerCardOffset + "px)";
+		blackjackCardsDealer.style.backgroundImage += ", url('assets/deck/" + cardsNum.get(card) + ".png')";
+		dealerValue += getValue(card, 0);
+		if (dealerValue > 21 && dealerAce > 0) {
+			dealerValue -= 10;
+			dealerAce -= 1;
 		}
+		i = dealerValue;
+		blackjackDealerValue.innerText = dealerValue;
+		dealerCardOffset += 44;
 	}
 	if (dealerValue >= 17 && dealerValue < 22) {
 		if (dealerValue > playerValue) {
@@ -577,7 +464,7 @@ async function blackjackDealerPlay() {
 blackjackDouble.addEventListener("click", function() {
 	chips -= betAmount;
 	betAmount *= 2;
-	updateCurrentBet();
+	updateBet(1);
 	blackjackHitFunc(1);
 });
 
@@ -604,16 +491,26 @@ async function blackjackSplitFunc() {
 	await sleep(1000);
 	drawCard();
 	blackjackCardsPlayer.style.backgroundPosition += ", calc(50% + 200px - 44px)";
-	blackjackCardsPlayer.style.backgroundImage += ", url('assets/deck/" + getCard(card) + ".png')";
-	playerValue += getValue(card, 1, true);
+	blackjackCardsPlayer.style.backgroundImage += ", url('assets/deck/" + cardsNum.get(card) + ".png')";
+	playerValue += getValue(card, 1);
+	if (playerValue == 22) {
+		playerValue -= 10;
+	}
 	blackjackPlayerValue.innerText = playerValue;
 	await sleep(1000);
-	drawCard();
-	blackjackCardsPlayer.style.backgroundPosition += ", calc(50% - 200px - 44px)";
-	blackjackCardsPlayer.style.backgroundImage += ", url('assets/deck/" + getCard(card) + ".png')";
-	playerValue1 += getValue(card, 2, true);
-	blackjackSplitNotAllowed.style.display = "flex";
-	blackjackBtns.style.display = "flex";
+	if (playerAce1 == 1) {
+		drawCard();
+		blackjackCardPlayer.style.backgroundPosition += ", calc(50% - 200px - 44px)";
+		blackjackCardPlayer.style.backgroundImage += ", url('assets/deck/" + cardsNum.get(card) + ".png')";
+		playerValue1 += getValue(card, 2);
+		if (playerValue1 == 22) {
+			playerValue1 -= 10;
+		}
+		blackjackDealerPlay();
+	} else {
+		blackjackSplit.style.display = "none";
+		blackjackBtns.style.display = "flex";
+	}
 };
 
 blackjackClearBet.addEventListener("click", function() {
@@ -623,27 +520,27 @@ blackjackClearBet.addEventListener("click", function() {
 blackjackMinusBet.addEventListener("click", function() {
 	if (blackjackBetChipsDisplay.style.backgroundImage.indexOf("50.png") > 0 && blackjackBetChipsDisplay.style.backgroundImage.indexOf("50.png") < 28) {
 		betAmount -= 50;
-		updateBetDisplay();
+		updateBet(0);
 		blackjackBetChipsDisplay.style.backgroundImage = blackjackBetChipsDisplay.style.backgroundImage.slice(27);
 	} else if (blackjackBetChipsDisplay.style.backgroundImage.indexOf("100.png") > 0 && blackjackBetChipsDisplay.style.backgroundImage.indexOf("100.png") < 28) {
 		betAmount -= 100;
-		updateBetDisplay();
+		updateBet(0);
 		blackjackBetChipsDisplay.style.backgroundImage = blackjackBetChipsDisplay.style.backgroundImage.slice(28);
 	} else if (blackjackBetChipsDisplay.style.backgroundImage.indexOf("500.png") > 0 && blackjackBetChipsDisplay.style.backgroundImage.indexOf("500.png") < 28) {
 		betAmount -= 500;
-		updateBetDisplay();
+		updateBet(0);
 		blackjackBetChipsDisplay.style.backgroundImage = blackjackBetChipsDisplay.style.backgroundImage.slice(28);
 	} else if (blackjackBetChipsDisplay.style.backgroundImage.indexOf("1k.png") > 0 && blackjackBetChipsDisplay.style.backgroundImage.indexOf("1k.png") < 28) {
 		betAmount -= 1000;
-		updateBetDisplay();
+		updateBet(0);
 		blackjackBetChipsDisplay.style.backgroundImage = blackjackBetChipsDisplay.style.backgroundImage.slice(27);
 	} else if (blackjackBetChipsDisplay.style.backgroundImage.indexOf("5k.png") > 0 && blackjackBetChipsDisplay.style.backgroundImage.indexOf("5k.png") < 28) {
 		betAmount -= 5000;
-		updateBetDisplay();
+		updateBet(0);
 		blackjackBetChipsDisplay.style.backgroundImage = blackjackBetChipsDisplay.style.backgroundImage.slice(27);
 	} else if (blackjackBetChipsDisplay.style.backgroundImage.indexOf("10k.png") > 0 && blackjackBetChipsDisplay.style.backgroundImage.indexOf("10k.png") > 28) {
 		betAmount -= 10000;
-		updateBetDisplay();
+		updateBet(0);
 		blackjackBetChipsDisplay.style.backgroundImage = blackjackBetChipsDisplay.style.backgroundImage.slice(28);
 	}
 	if (blackjackBetChipsDisplay.style.backgroundPosition != "") {
@@ -651,17 +548,10 @@ blackjackMinusBet.addEventListener("click", function() {
 	}
 });
 
-function clearBet() {
-	blackjackBetChipsDisplay.style.backgroundImage = "";
-	blackjackBetChipsDisplay.style.backgroundPosition = "";
-	betAmount = 0;
-	updateBetDisplay();
-};
-
 blackjackBet50.addEventListener("click", function() {
 	if (checkBetAmount(50) == true) {
 		betAmount += 50;
-		updateBetDisplay();
+		updateBet(0);
 		let x = Math.floor(Math.random() * 26);
 		let y = Math.floor(Math.random() * 26);
 		if (blackjackBetChipsDisplay.style.backgroundPosition == "") {
@@ -680,7 +570,7 @@ blackjackBet50.addEventListener("click", function() {
 blackjackBet100.addEventListener("click", function() {
 	if (checkBetAmount(100) == true) {
 		betAmount += 100;
-		updateBetDisplay();
+		updateBet(0);
 		let x = Math.floor(Math.random() * 26);
 		let y = Math.floor(Math.random() * 26);
 		if (blackjackBetChipsDisplay.style.backgroundPosition == "") {
@@ -699,7 +589,7 @@ blackjackBet100.addEventListener("click", function() {
 blackjackBet500.addEventListener("click", function() {
 	if (checkBetAmount(500) == true) {
 		betAmount += 500;
-		updateBetDisplay();
+		updateBet(0);
 		let x = Math.floor(Math.random() * 26);
 		let y = Math.floor(Math.random() * 26);
 		if (blackjackBetChipsDisplay.style.backgroundPosition == "") {
@@ -718,7 +608,7 @@ blackjackBet500.addEventListener("click", function() {
 blackjackBet1k.addEventListener("click", function() {
 	if (checkBetAmount(1000) == true) {
 		betAmount += 1000;
-		updateBetDisplay();
+		updateBet(0);
 		let x = Math.floor(Math.random() * 26);
 		let y = Math.floor(Math.random() * 26);
 		if (blackjackBetChipsDisplay.style.backgroundPosition == "") {
@@ -737,7 +627,7 @@ blackjackBet1k.addEventListener("click", function() {
 blackjackBet5k.addEventListener("click", function() {
 	if (checkBetAmount(5000) == true) {
 		betAmount += 5000;
-		updateBetDisplay();
+		updateBet(0);
 		let x = Math.floor(Math.random() * 26);
 		let y = Math.floor(Math.random() * 26);
 		if (blackjackBetChipsDisplay.style.backgroundPosition == "") {
@@ -756,7 +646,7 @@ blackjackBet5k.addEventListener("click", function() {
 blackjackBet10k.addEventListener("click", function() {
 	if (checkBetAmount(10000) == true) {
 		betAmount += 10000;
-		updateBetDisplay();
+		updateBet(0);
 		let x = Math.floor(Math.random() * 26);
 		let y = Math.floor(Math.random() * 26);
 		if (blackjackBetChipsDisplay.style.backgroundPosition == "") {
@@ -774,11 +664,12 @@ blackjackBet10k.addEventListener("click", function() {
 
 blackjack.addEventListener("click", function() {
 	if (hasPlayed == false) {
-		shuffleCard = Math.floor(Math.random() * 46) + 19;
+		shuffleCard = Math.floor(Math.random() * 38) + 9;
 		hasPlayed = true;
 	}
 });
 
 exitBlackjack.addEventListener("click", function() {
 	chipsCounter.innerText = chips;
+	clearBet();
 });
