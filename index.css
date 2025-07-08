@@ -1,0 +1,172 @@
+html, body {
+	display: inline;
+	height: 100%;
+	width: 100%;
+	margin: 0;
+}
+
+header {
+	display: inline;
+	height: 10%;
+	width: 100%;
+	margin: 0;
+	position: fixed;
+	top: 0px;
+}
+
+#logo {
+	color: black;
+	font-family: sans-serif;
+	font-size: 25px;
+	font-weight: normal;
+	margin: 0;
+	position: absolute;
+	top: 50%;
+	left: 7%;
+	transform: translate(0%, -50%);
+	user-select: none;
+}
+
+#menu {
+	display: none;
+	height: 100%;
+	width: 30%;
+	justify-content: space-between;
+	align-items: center;
+	position: absolute;
+	right: calc(6% + 80px);
+	z-index: 0;
+}
+
+.menuLink {
+	font-size: 15px;
+	cursor: pointer;
+	transition: 150ms;
+	color: black;
+}
+
+.menuLink:hover {
+	transition: 150ms;
+	color: #aaaaaa;
+}
+
+#homeLink {
+	text-decoration-line: underline;
+}
+
+#menubar {
+	display: flex;
+	height: 30px;
+	width: 30px;
+	flex-direction: column;
+	justify-content: space-around;
+	position: absolute;
+	top: 50%;
+	right: 6%;
+	transform: translate(0%, -50%);
+	cursor: pointer;
+	z-index: 2;
+}
+
+.menuBarLine {
+	height: 15%;
+	width: 100%;
+	background-color: black;
+	border-radius: 1000px;
+}
+
+#menuX {
+	display: none;
+	height: 30px;
+	width: 30px;
+	position: absolute;
+	top: 50%;
+	right: 6%;
+	transform: translate(0%, -50%);
+	cursor: pointer;
+	z-index: 2;
+}
+
+#menuXLine1 {
+	position: absolute;
+	top: 50%;
+	right: 2px;
+	transform: translate(0%, -50%);
+	rotate: 45deg;
+}
+
+#menuXLine2 {
+	position: absolute;
+	top: 50%;
+	left: 1px;
+	transform: translate(0%, -50%);
+	rotate: -45deg;
+}
+
+#headerLine {
+	display: inline;
+	height: 1%;
+	width: 90%;
+	background-color: black;
+	position: absolute;
+	bottom: 0px;
+	left: 50%;
+	transform: translate(-50%, 0%);
+	z-index: 2;
+}
+
+#home {
+	display: flex;
+	height: auto;
+	width: 100%;
+	justify-content: center;
+	align-items: center;
+	position: absolute;
+	top: 10%;
+}
+
+#work {
+	display: none;
+	height: auto;
+	width: 100%;
+	justify-content: center;
+	align-items: center;
+	position: absolute;
+	top: 10%;
+}
+
+#aboutme {
+	display: none;
+	height: auto;
+	width: 100%;
+	justify-content: center;
+	align-items: center;
+	position: absolute;
+	top: 10%;
+}
+
+#contact {
+	display: none;
+	height: auto;
+	width: 100%;
+	justify-content: center;
+	align-items: center;
+	position: absolute;
+	top: 10%;
+}
+
+footer {
+	height: 10%;
+	width: 100%;
+	position: absolute;
+	bottom: 0px;
+	background-color: #c1c1c1;
+}
+
+#email {
+	font-size: 15px;
+	position: absolute;
+	top: 50%;
+	left: 3%;
+	transform: translate(0%, -50%);
+}
