@@ -30,7 +30,7 @@ header {
 #menu {
 	display: none;
 	height: 100%;
-	width: 30%;
+	width: 25%;
 	justify-content: space-between;
 	align-items: center;
 	position: absolute;
@@ -39,6 +39,7 @@ header {
 }
 
 .menuLink {
+	font-family: sans-serif;
 	font-size: 15px;
 	cursor: pointer;
 	transition: 150ms;
@@ -69,7 +70,7 @@ header {
 }
 
 .menuBarLine {
-	height: 15%;
+	height: 14%;
 	width: 100%;
 	background-color: black;
 	border-radius: 1000px;
