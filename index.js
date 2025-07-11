@@ -1,6 +1,6 @@
 const title = document.getElementById("title");
 const menu = document.getElementById("menu");
-const menubar = document.getElementById("menubar");
+const hamburgerBtn = document.getElementById("hamburgerBtn");
 const menuX = document.getElementById("menuX");
 const homeLink = document.getElementById("homeLink");
 const workLink = document.getElementById("workLink");
@@ -11,16 +11,16 @@ const work = document.getElementById("work");
 const aboutme = document.getElementById("aboutme");
 const contact = document.getElementById("contact");
 
-menubar.addEventListener("click", function() {
+hamburgerBtn.addEventListener("click", function() {
 	menu.style.display = "flex";
-	menubar.style.display = "none";
+	hamburgerBtn.style.display = "none";
 	menuX.style.display = "inline";
 });
 
 function closeMenu() {
 	menu.style.display = "none";
 	menuX.style.display = "none";
-	menubar.style.display = "flex";
+	hamburgerBtn.style.display = "flex";
 };
 
 menuX.addEventListener("click", function() {
