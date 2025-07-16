@@ -1,9 +1,8 @@
-html {
+body {
 	display: inline;
 	height: 100%;
 	width: 100%;
 	margin: 0px;
-	padding-top: 5%;
 }
 
 header {
@@ -117,16 +116,63 @@ header {
 	z-index: 2;
 }
 
-body {
+#body {
 	display: inline;
+	height: auto;
 	width: 100%;
 	margin: 0px;
+	position: absolute;
+	top: 10%;
+}
+
+@keyframes fadein-h1 {
+	from {color: white; margin-top: 10%;}
+	to {color: black; margin-top: 5%;}
+}
+
+@keyframes fadein-bio {
+	from {color: white;}
+	to {color: black;}
 }
 
 #home {
 	display: flex;
 	height: 100%;
 	width: 100%;
+	flex-direction: column;
+	align-items: center;
+}
+
+#home-h1 {
+	font-family: sans-serif;
+	font-size: 95px;
+	font-weight: normal;
+	color: white;
+	user-select: none;
+	text-align: center;
+	margin: 0px;
+	margin-top: 10%;
+	margin-bottom: 5%;
+	animation-name: fadein-h1;
+	animation-duration: 1s;
+	animation-delay: 0.2s;
+	animation-fill-mode: forwards;
+}
+
+#home-bio {
+	font-family: sans-serif;
+	font-size: 35px;
+	font-weight: normal;
+	color: white;
+	text-align: center;
+	user-select: none;
+	margin: 0px;
+	margin-left: 10%;
+	margin-right: 10%;
+	animation-name: fadein-bio;
+	animation-duration: 1s;
+	animation-delay: 0.2s;
+	animation-fill-mode: forwards;
 }
 
 #work {
@@ -151,12 +197,6 @@ body {
 	width: 100%;
 	justify-content: center;
 	align-items: center;
-}
-
-#home-h1 {
-	font-family: sans-serif;
-	font-size: 90px;
-	font-weight: normal;
 }
 
 footer {
