@@ -1,15 +1,14 @@
-html, body {
-	display: inline;
+html {
 	height: 100%;
 	width: 100%;
-	margin: 0;
+	margin: 0px;
 }
 
 header {
-	display: inline;
+	display: sticky;
 	height: 10%;
 	width: 100%;
-	margin: 0;
+	margin: 0px;
 	position: fixed;
 	top: 0px;
 }
@@ -48,7 +47,7 @@ header {
 
 .menuLink:hover {
 	transition: 150ms;
-	color: #aaaaaa;
+	color: #999999;
 }
 
 #homeLink {
@@ -156,9 +155,17 @@ header {
 	top: 10%;
 }
 
+body {
+	display: inline;
+	width: 100%;
+	margin: 0px;
+}
+
 footer {
+	display: inline;
 	height: 10%;
 	width: 100%;
+	margin: 0px;
 	position: absolute;
 	bottom: 0px;
 	background-color: #c1c1c1;
