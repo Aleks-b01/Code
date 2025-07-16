@@ -1,16 +1,18 @@
 html {
+	display: inline;
 	height: 100%;
 	width: 100%;
 	margin: 0px;
+	padding-top: 5%;
 }
 
 header {
-	display: sticky;
+	display: inline;
 	height: 10%;
 	width: 100%;
-	margin: 0px;
-	position: fixed;
+	position: absolute;
 	top: 0px;
+	margin: 0px;
 }
 
 #logo {
@@ -47,7 +49,7 @@ header {
 
 .menuLink:hover {
 	transition: 150ms;
-	color: #999999;
+	color: #888888;
 }
 
 #homeLink {
@@ -115,50 +117,46 @@ header {
 	z-index: 2;
 }
 
-#home {
-	display: flex;
-	height: auto;
-	width: 100%;
-	justify-content: center;
-	align-items: center;
-	position: absolute;
-	top: 10%;
-}
-
-#work {
-	display: none;
-	height: auto;
-	width: 100%;
-	justify-content: center;
-	align-items: center;
-	position: absolute;
-	top: 10%;
-}
-
-#aboutme {
-	display: none;
-	height: auto;
-	width: 100%;
-	justify-content: center;
-	align-items: center;
-	position: absolute;
-	top: 10%;
-}
-
-#contact {
-	display: none;
-	height: auto;
-	width: 100%;
-	justify-content: center;
-	align-items: center;
-	position: absolute;
-	top: 10%;
-}
-
 body {
 	display: inline;
 	width: 100%;
 	margin: 0px;
+}
+
+#home {
+	display: flex;
+	height: 100%;
+	width: 100%;
+}
+
+#work {
+	display: none;
+	height: 100%;
+	width: 100%;
+	justify-content: center;
+	align-items: center;
+}
+
+#aboutme {
+	display: none;
+	height: 100%;
+	width: 100%;
+	justify-content: center;
+	align-items: center;
+}
+
+#contact {
+	display: none;
+	height: 100%;
+	width: 100%;
+	justify-content: center;
+	align-items: center;
+}
+
+#home-h1 {
+	font-family: sans-serif;
+	font-size: 90px;
+	font-weight: normal;
 }
 
 footer {
