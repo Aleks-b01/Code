@@ -1,7 +1,9 @@
 body {
-	display: inline;
+	display: flex;
 	height: 100%;
 	width: 100%;
+	flex-direction: column;
+	flex-wrap: wrap;
 	margin: 0px;
 }
 
@@ -9,9 +11,11 @@ header {
 	display: inline;
 	height: 10%;
 	width: 100%;
-	position: absolute;
+	position: fixed;
 	top: 0px;
 	margin: 0px;
+	background-color: rgb(255, 255, 255);
+	z-index: 5;
 }
 
 #logo {
@@ -24,6 +28,7 @@ header {
 	top: 50%;
 	left: 7%;
 	transform: translate(0%, -50%);
+	cursor: pointer;
 	user-select: none;
 }
 
@@ -35,7 +40,6 @@ header {
 	align-items: center;
 	position: absolute;
 	right: calc(6% + 80px);
-	z-index: 0;
 }
 
 .menuLink {
@@ -66,7 +70,6 @@ header {
 	right: 6%;
 	transform: translate(0%, -50%);
 	cursor: pointer;
-	z-index: 2;
 }
 
 .hamburgerBar {
@@ -85,7 +88,6 @@ header {
 	right: 6%;
 	transform: translate(0%, -50%);
 	cursor: pointer;
-	z-index: 2;
 }
 
 #menuXLine1 {
@@ -113,7 +115,6 @@ header {
 	bottom: 0px;
 	left: 50%;
 	transform: translate(-50%, 0%);
-	z-index: 2;
 }
 
 #body {
@@ -121,13 +122,12 @@ header {
 	height: auto;
 	width: 100%;
 	margin: 0px;
-	position: absolute;
-	top: 10%;
+	margin-top: 7%;
 }
 
 @keyframes fadein-h1 {
-	from {color: white; margin-top: 10%;}
-	to {color: black; margin-top: 5%;}
+	from {color: white; margin-top: 15%;}
+	to {color: black; margin-top: 6%;}
 }
 
 @keyframes fadein-bio {
@@ -145,16 +145,16 @@ header {
 
 #home-h1 {
 	font-family: sans-serif;
-	font-size: 95px;
+	font-size: 100px;
 	font-weight: normal;
 	color: white;
 	user-select: none;
 	text-align: center;
 	margin: 0px;
-	margin-top: 10%;
-	margin-bottom: 5%;
+	margin-top: 15%;
+	margin-bottom: 6%;
 	animation-name: fadein-h1;
-	animation-duration: 1s;
+	animation-duration: 1.3s;
 	animation-delay: 0.2s;
 	animation-fill-mode: forwards;
 }
@@ -167,12 +167,49 @@ header {
 	text-align: center;
 	user-select: none;
 	margin: 0px;
-	margin-left: 10%;
-	margin-right: 10%;
+	margin-left: 15%;
+	margin-right: 15%;
+	margin-bottom: 20%;
 	animation-name: fadein-bio;
-	animation-duration: 1s;
+	animation-duration: 1.3s;
 	animation-delay: 0.2s;
 	animation-fill-mode: forwards;
+}
+
+#home-workDiv {
+	display: flex;
+	width: 60%;
+	margin: 0px;
+	margin-bottom: 10%;
+	flex-direction: column;
+	align-items: center;
+	margin-bottom: 5%;
+}
+
+.home-work-intro {
+	font-family: sans-serif;
+	font-size: 35px;
+	font-weight: normal;
+	margin: 0px;
+	text-align: center;
+	user-select: none;
+}
+
+#home-workLink {
+	color: #0000EE;
+	margin: 0px;
+	text-decoration: underline;
+	cursor: pointer;
+}
+
+#home-preview-cards {
+	display: flex;
+	height: 400px;
+	width: 60%;
+	background-color: red;
+	border-radius: 20px;
+	margin: 0px;
+	margin-bottom: 20%;
 }
 
 #work {
@@ -200,19 +237,15 @@ header {
 }
 
 footer {
-	display: inline;
-	height: 10%;
+	display: flex;
+	height: 100px;
 	width: 100%;
 	margin: 0px;
-	position: absolute;
-	bottom: 0px;
+	align-items: center;
 	background-color: #c1c1c1;
 }
 
 #email {
 	font-size: 15px;
-	position: absolute;
-	top: 50%;
-	left: 3%;
-	transform: translate(0%, -50%);
+	margin-left: 5%;
 }

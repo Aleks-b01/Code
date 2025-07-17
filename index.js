@@ -1,4 +1,5 @@
 const title = document.getElementById("title");
+const logo = document.getElementById("logo");
 const menu = document.getElementById("menu");
 const hamburgerBtn = document.getElementById("hamburgerBtn");
 const menuX = document.getElementById("menuX");
@@ -7,6 +8,7 @@ const workLink = document.getElementById("workLink");
 const aboutmeLink = document.getElementById("aboutmeLink");
 const contactLink = document.getElementById("contactLink");
 const home = document.getElementById("home");
+const home_workLink = document.getElementById("home-workLink");
 const work = document.getElementById("work");
 const aboutme = document.getElementById("aboutme");
 const contact = document.getElementById("contact");
@@ -25,6 +27,19 @@ function closeMenu() {
 
 menuX.addEventListener("click", function() {
 	closeMenu();
+});
+
+logo.addEventListener("click", function() {
+	closeMenu();
+	work.style.display = "none";
+	aboutme.style.display = "none";
+	contact.style.display = "none";
+	home.style.display = "flex";
+	workLink.style.textDecorationLine = "none";
+	aboutmeLink.style.textDecorationLine = "none";
+	contactLink.style.textDecorationLine = "none";
+	homeLink.style.textDecorationLine = "underline";
+	title.innerText = "Home | Aleksander Bober";
 });
 
 homeLink.addEventListener("click", function() {
@@ -77,4 +92,17 @@ contactLink.addEventListener("click", function() {
 	aboutmeLink.style.textDecorationLine = "none";
 	contactLink.style.textDecorationLine = "underline";
 	title.innerText = "Contact | Aleksander Bober";
+});
+
+home_workLink.addEventListener("click", function() {
+	closeMenu();
+	home.style.display = "none";
+	aboutme.style.display = "none";
+	contact.style.display = "none";
+	work.style.display = "flex";
+	homeLink.style.textDecorationLine = "none";
+	aboutmeLink.style.textDecorationLine = "none";
+	contactLink.style.textDecorationLine = "none";
+	workLink.style.textDecorationLine = "underline";
+	title.innerText = "Work | Aleksander Bober";
 });
