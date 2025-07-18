@@ -9,9 +9,14 @@ const aboutmeLink = document.getElementById("aboutmeLink");
 const contactLink = document.getElementById("contactLink");
 const home = document.getElementById("home");
 const home_workLink = document.getElementById("home-workLink");
+const home_preview_card = document.getElementById("home-preview-card");
+const home_preview_card_arrowRight = document.getElementById("home-preview-card-arrowRight");
+const home_preview_card_arrowLeft = document.getElementById("home-preview-card-arrowLeft");
 const work = document.getElementById("work");
 const aboutme = document.getElementById("aboutme");
 const contact = document.getElementById("contact");
+
+let home_preview_current_card = 1;
 
 hamburgerBtn.addEventListener("click", function() {
 	menu.style.display = "flex";
@@ -105,4 +110,28 @@ home_workLink.addEventListener("click", function() {
 	contactLink.style.textDecorationLine = "none";
 	workLink.style.textDecorationLine = "underline";
 	title.innerText = "Work | Aleksander Bober";
+});
+
+home_preview_card_arrowRight.addEventListener("click", function() {
+	if (home_preview_current_card == 1) {
+		home_preview_card.style.backgroundColor = "gray";
+		home_preview_card_arrowLeft.style.visibility = "visible";
+		home_preview_current_card = 2;
+	} else if (home_preview_current_card == 2) {
+		home_preview_card.style.backgroundColor = "blue";
+		home_preview_card_arrowRight.style.visibility = "hidden";
+		home_preview_current_card = 3;
+	}
+});
+
+home_preview_card_arrowLeft.addEventListener("click", function() {
+	if (home_preview_current_card == 3) {
+		home_preview_card.style.backgroundColor = "gray";
+		home_preview_card_arrowRight.style.visibility = "visible";
+		home_preview_current_card = 2;
+	} else if (home_preview_current_card == 2) {
+		home_preview_card.style.backgroundColor = "black";
+		home_preview_card_arrowLeft.style.visibility = "hidden";
+		home_preview_current_card = 1;
+	}
 });
