@@ -354,6 +354,7 @@ header {
 	margin: 0px;
 	margin-left: 3%;
 	margin-right: 3%;
+	user-select: none;
 }
 
 #aboutme-dev-imgs {
