@@ -1,41 +1,41 @@
 const title = document.getElementById("title");
 const logo = document.getElementById("logo");
-const menu = document.getElementById("menu");
-const hamburgerBtn = document.getElementById("hamburgerBtn");
-const menuX = document.getElementById("menuX");
+const nav = document.getElementsByTagName("nav")[0];
+const burgerBtn = document.getElementById("burgerBtn");
+const navX = document.getElementById("navX");
 const homeLink = document.getElementById("homeLink");
 const workLink = document.getElementById("workLink");
 const aboutmeLink = document.getElementById("aboutmeLink");
 const contactLink = document.getElementById("contactLink");
 const home = document.getElementById("home");
-const home_workLink = document.getElementById("home-workLink");
-const home_preview_card = document.getElementById("home-preview-card");
-const home_preview_card_arrowRight = document.getElementById("home-preview-card-arrowRight");
-const home_preview_card_arrowLeft = document.getElementById("home-preview-card-arrowLeft");
+const home_workLink = document.getElementById("home_workLink");
+const home_preview_card = document.getElementById("home_preview_card");
+const home_preview_card_arrowRight = document.getElementById("home_preview_card_arrowRight");
+const home_preview_card_arrowLeft = document.getElementById("home_preview_card_arrowLeft");
 const work = document.getElementById("work");
 const aboutme = document.getElementById("aboutme");
 const contact = document.getElementById("contact");
 
 let home_preview_current_card = 1;
 
-hamburgerBtn.addEventListener("click", function() {
-	menu.style.display = "flex";
-	hamburgerBtn.style.display = "none";
-	menuX.style.display = "inline";
+burgerBtn.addEventListener("click", function() {
+	nav.style.display = "flex";
+	burgerBtn.style.display = "none";
+	navX.style.display = "inline";
 });
 
-function closeMenu() {
-	menu.style.display = "none";
-	menuX.style.display = "none";
-	hamburgerBtn.style.display = "flex";
+function closeNav() {
+	nav.style.display = "none";
+	navX.style.display = "none";
+	burgerBtn.style.display = "flex";
 };
 
-menuX.addEventListener("click", function() {
-	closeMenu();
+navX.addEventListener("click", function() {
+	closeNav();
 });
 
 logo.addEventListener("click", function() {
-	closeMenu();
+	closeNav();
 	work.style.display = "none";
 	aboutme.style.display = "none";
 	contact.style.display = "none";
@@ -48,7 +48,7 @@ logo.addEventListener("click", function() {
 });
 
 homeLink.addEventListener("click", function() {
-	closeMenu();
+	closeNav();
 	work.style.display = "none";
 	aboutme.style.display = "none";
 	contact.style.display = "none";
@@ -61,7 +61,7 @@ homeLink.addEventListener("click", function() {
 });
 
 workLink.addEventListener("click", function() {
-	closeMenu();
+	closeNav();
 	home.style.display = "none";
 	aboutme.style.display = "none";
 	contact.style.display = "none";
@@ -74,7 +74,7 @@ workLink.addEventListener("click", function() {
 });
 
 aboutmeLink.addEventListener("click", function() {
-	closeMenu();
+	closeNav();
 	home.style.display = "none";
 	work.style.display = "none";
 	contact.style.display = "none";
@@ -87,7 +87,7 @@ aboutmeLink.addEventListener("click", function() {
 });
 
 contactLink.addEventListener("click", function() {
-	closeMenu();
+	closeNav();
 	home.style.display = "none";
 	work.style.display = "none";
 	aboutme.style.display = "none";
@@ -100,7 +100,7 @@ contactLink.addEventListener("click", function() {
 });
 
 home_workLink.addEventListener("click", function() {
-	closeMenu();
+	closeNav();
 	home.style.display = "none";
 	aboutme.style.display = "none";
 	contact.style.display = "none";
