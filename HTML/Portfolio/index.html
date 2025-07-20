@@ -2,33 +2,38 @@
 <html>
 <head>
 	<link rel="stylesheet" href="index.css">
-	<title id="title">Home | Aleksander Bober</title>
+	<title>Portfolio | Aleksander Bober</title>
+	<meta name="application-name" content="Portfolio">
+	<meta name="author" content="Aleksander Bober">
+	<meta name="keywords" content="HTML, CSS, JavaScript, Web, Developer, Development, Website, Websites, Portfolio">
+	<meta name="description" content="Personal Portfolio">
+	<meta charset="UTF-8">
 </head>
 
 
 <body>
 	<header>
-		<h2 id="logo">Aleksander Bober</h2>
+		<h1 id="logo">Aleksander Bober</h1>
 	
 		<nav>
-			<a id="homeLink" class="menuLink">Home</a>
-			<a id="workLink" class="menuLink">Work</a>
-			<a id="aboutmeLink" class="menuLink">About Me</a>
-			<a id="contactLink" class="menuLink">Contact</a>
+			<a id="home_link" class="nav_link">Home</a>
+			<a id="work_link" class="nav_link">Work</a>
+			<a id="aboutme_link" class="nav_link">About me</a>
+			<a id="contact_link" class="nav_link">Contact</a>
 		</nav>
 	
-		<div id="burgerBtn">
-			<div class="burgerLine"></div>
-			<div class="burgerLine"></div>
-			<div class="burgerLine"></div>
+		<div id="burger_btn">
+			<div class="burger_line"></div>
+			<div class="burger_line"></div>
+			<div class="burger_line"></div>
 		</div>
 	
-		<div id="navX">
-			<div id="navXLine1" class="burgerLine"></div>
-			<div id="navXLine2" class="burgerLine"></div>
+		<div id="nav_close_btn">
+			<div id="nav_close_btn_line1" class="burger_line"></div>
+			<div id="nav_close_btn_line2" class="burger_line"></div>
 		</div>
 	
-		<div id="headerLine"></div>
+		<div id="header_line"></div>
 	</header>
 	
 	
@@ -37,29 +42,29 @@
 		<div id="home">
 			<h1 id="home_h1">Hello</h1>
 			<h2 id="home_bio">I'm a student and a self-taught web developer. I've been specializing in front-end development for over 2 years, creating responsive and user-friendly websites.</h2>
-			<div id="home_workDiv">
-				<h2 class="home_work_intro">Below are previews for example websites I've created. You can test them by going to my <a id="home_workLink" class="home_work_intro">work page</a>.</h2>
+			<div id="home_work_div">
+				<h2 class="home_work_intro">Below are previews for example websites I've created. You can test them by going to my <a id="home_work_link" class="home_work_intro">work page</a>.</h2>
 			</div>
 			<div id="home_preview_card">
-				<div id="home_preview_card_arrowRight"></div>
-				<div id="home_preview_card_arrowLeft"></div>
+				<div id="home_preview_card_arrow_right"></div>
+				<div id="home_preview_card_arrow_left"></div>
 			</div>
 		</div>
 	
 		<div id="work">
-			<h1 id="work_h1">Welcome to my work page! Here you can view and test out example websites that I've created.</h1>
-			<div id="work_examples">
-				<div id="work_example_1" class="workExamples"></div>
-				<div id="work_example_1_btn" class="workExamplesBtn"></div>
-				<div id="work_example_2" class="workExamples"></div>
-				<div id="work_example_2_btn" class="workExamplesBtn"></div>
-				<div id="work_example_3" class="workExamples"></div>
-				<div id="work_example_3_btn" class="workExamplesBtn"></div>
+			<h1 id="work_h1">Work</h1>
+			<div id="work_examples_div">
+				<div id="work_example_1" class="work_examples"></div>
+				<div id="work_example_1_btn" class="work_examples_btn"></div>
+				<div id="work_example_2" class="work_examples"></div>
+				<div id="work_example_2_btn" class="work_examples_btn"></div>
+				<div id="work_example_3" class="work_examples"></div>
+				<div id="work_example_3_btn" class="work_examples_btn"></div>
 			</div>
 		</div>
 	
 		<div id="aboutme">
-			<h1 id="aboutme_h1">Welcome to my about me page!</h1>
+			<h1 id="aboutme_h1">About me</h1>
 			<div id="aboutme_dev">
 				<div id="aboutme_dev_text">
 					<h2 id="aboutme_dev_text_title">Technical Background</h2>
@@ -84,7 +89,14 @@
 	
 	<footer>
 		<a id="email" href="mailto:boberaleksander08@gmail.com">Contact: boberaleksander08@gmail.com</a>
+		<div id="quick_nav">
+			<h2 id="quick_nav_title">Quick Links</h2>
+			<h3 id="quick_nav_home_link" class="quick_nav_link">Home</h3>
+			<h3 id="quick_nav_work_link" class="quick_nav_link">Work</h3>
+			<h3 id="quick_nav_aboutme_link" class="quick_nav_link">About me</h3>
+			<h3 id="quick_nav_contact_link" class="quick_nav_link">Contact</h3>
+		</div>
 	</footer>	
+	<script src="index.js"></script>
 </body>
-<script src="index.js"></script>
 </html>

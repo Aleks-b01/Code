@@ -19,12 +19,10 @@ header {
 
 #logo {
 	color: black;
-	height: 25%;
 	font-family: sans-serif;
-	font-size: auto;
+	font-size: 150%;
 	font-weight: normal;
-	margin: 0;
-	margin-bottom: 1%;
+	margin: 0px;
 	margin-left: 7%;
 	cursor: pointer;
 	user-select: none;
@@ -40,7 +38,7 @@ nav {
 	right: calc(6% + 80px);
 }
 
-.menuLink {
+.nav_link {
 	font-family: sans-serif;
 	font-size: 15px;
 	cursor: pointer;
@@ -49,16 +47,16 @@ nav {
 	user-select: none;
 }
 
-.menuLink:hover {
+.nav_link:hover {
 	transition: 150ms;
 	color: #888888;
 }
 
-#homeLink {
+#home_link {
 	text-decoration-line: underline;
 }
 
-#burgerBtn {
+#burger_btn {
 	display: flex;
 	height: 30px;
 	width: 30px;
@@ -71,14 +69,14 @@ nav {
 	cursor: pointer;
 }
 
-.burgerLine {
+.burger_line {
 	height: 14%;
 	width: 100%;
 	background-color: black;
 	border-radius: 1000px;
 }
 
-#navX {
+#nav_close_btn {
 	display: none;
 	height: 30px;
 	width: 30px;
@@ -89,7 +87,7 @@ nav {
 	cursor: pointer;
 }
 
-#navXLine1 {
+#nav_close_btn_line1 {
 	position: absolute;
 	top: 50%;
 	right: 2px;
@@ -97,7 +95,7 @@ nav {
 	rotate: 45deg;
 }
 
-#navXLine2 {
+#nav_close_btn_line2 {
 	position: absolute;
 	top: 50%;
 	left: 1px;
@@ -105,7 +103,7 @@ nav {
 	rotate: -45deg;
 }
 
-#headerLine {
+#header_line {
 	display: inline;
 	height: 1%;
 	width: 90%;
@@ -175,7 +173,7 @@ main {
 	animation-fill-mode: forwards;
 }
 
-#home_workDiv {
+#home_work_div {
 	display: flex;
 	width: 60%;
 	margin: 0px;
@@ -194,7 +192,7 @@ main {
 	user-select: none;
 }
 
-#home_workLink {
+#home_work_link {
 	color: #0000EE;
 	margin: 0px;
 	text-decoration: underline;
@@ -214,7 +212,7 @@ main {
 	margin-bottom: 10%;
 }
 
-#home_preview_card_arrowRight {
+#home_preview_card_arrow_right {
 	display: flex;
 	height: 50px;
 	width: 50px;
@@ -225,7 +223,7 @@ main {
 	order: 2;
 }
 
-#home_preview_card_arrowLeft {
+#home_preview_card_arrow_left {
 	display: flex;
 	height: 50px;
 	width: 50px;
@@ -247,7 +245,7 @@ main {
 
 #work_h1 {
 	font-family: sans-serif;
-	font-size: 50px;
+	font-size: 80px;
 	font-weight: normal;
 	text-align: center;
 	margin: 0px;
@@ -258,7 +256,7 @@ main {
 	user-select: none;
 }
 
-#work_examples {
+#work_examples_div {
 	display: grid;
 	gap: 30px;
 	justify-content: center;
@@ -269,7 +267,7 @@ main {
 	margin-bottom: 10%;
 }
 
-.workExamples {
+.work_examples {
 	display: flex;
 	height: 394px;
 	width: 700px;
@@ -288,7 +286,7 @@ main {
 	background-color: blue;
 }
 
-.workExamplesBtn {
+.work_examples_btn {
 	display: flex;
 	height: 80px;
 	width: 200px;
@@ -308,7 +306,7 @@ main {
 
 #aboutme_h1 {
 	font-family: sans-serif;
-	font-size: 50px;
+	font-size: 80px;
 	font-weight: normal;
 	text-align: center;
 	margin: 0px;
@@ -405,20 +403,20 @@ main {
 
 #contact {
 	display: none;
-	height: 100%;
+	height: 90vh;
 	width: 100%;
 	flex-direction: column;
-	justify-content: center;
 	align-items: center;
 }
 
 footer {
 	display: flex;
-	height: 100px;
+	height: 30vh;
 	width: 100%;
 	margin: 0px;
+	justify-content: space-around;
 	align-items: center;
-	background-color: #606060;
+	background-color: #7a7b7a;
 }
 
 #email {
@@ -427,4 +425,45 @@ footer {
 	margin-left: 5%;
 	color: #0000EE;
 	user-select: none;
+}
+
+#quick_nav {
+	display: flex;
+	height: 80%;
+	width: auto;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+#quick_nav_title {
+	color: white;
+	font-family: sans-serif;
+	font-size: 30px;
+	font-weight: normal;
+	text-align: center;
+	margin: 0px;
+	margin-bottom: 3%;
+	user-select: none;
+}
+
+.quick_nav_link {
+	color: white;
+	font-family: sans-serif;
+	font-size: 20px;
+	font-weight: normal;
+	text-align: center;
+	margin: 0px;
+	margin-bottom: 2%;
+	user-select: none;
+}
+
+.quick_nav_link:hover {
+	transition: 150ms;
+	color: #999999;
+}
+
+#quick_nav_home_link {
+	text-decoration: underline;
+	margin-bottom: 3%;
 }
