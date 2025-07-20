@@ -455,6 +455,7 @@ footer {
 	text-align: center;
 	margin: 0px;
 	margin-bottom: 2%;
+	cursor: pointer;
 	user-select: none;
 }
 
