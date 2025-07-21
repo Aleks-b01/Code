@@ -364,7 +364,7 @@ main {
 	display: flex;
 	width: 30%;
 	flex-direction: column;
-	background-image: url('assets/aboutme/timeline.png');
+	background-image: url('assets/aboutme/timeline_dark.png');
 	background-repeat: no-repeat;
 	background-size: contain;
 	background-position: center;
@@ -530,7 +530,7 @@ footer {
 
 .quick_nav_link:hover {
 	transition: 150ms;
-	color: #999999;
+	color: #aaaaaa;
 }
 
 #quick_nav_home_link {
