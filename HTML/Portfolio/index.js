@@ -15,6 +15,7 @@ const home_preview_card_arrow_left = document.getElementById("home_preview_card_
 const work = document.getElementById("work");
 const aboutme = document.getElementById("aboutme");
 const contact = document.getElementById("contact");
+const footer = document.getElementsByTagName("footer")[0];
 const quick_nav_home_link = document.getElementById("quick_nav_home_link");
 const quick_nav_work_link = document.getElementById("quick_nav_work_link");
 const quick_nav_aboutme_link = document.getElementById("quick_nav_aboutme_link");
@@ -25,6 +26,9 @@ let home_preview_current_card = 1;
 window.onload = function() {
 	title.innerText = "Home | Aleksander Bober";
 	window.scrollTo(0, 0);
+	if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+		// Set dark mode
+	}
 };
 
 burger_btn.addEventListener("click", function() {
@@ -61,6 +65,7 @@ logo.addEventListener("click", function() {
 	quick_nav_aboutme_link.style.marginBottom = "2%";
 	quick_nav_contact_link.style.marginBottom = "2%";
 	quick_nav_home_link.style.marginBottom = "3%";
+	footer.style.position = "initial";
 	window.scrollTo(0, 0);
 	title.innerText = "Home | Aleksander Bober";
 });
@@ -83,6 +88,7 @@ home_link.addEventListener("click", function() {
 	quick_nav_aboutme_link.style.marginBottom = "2%";
 	quick_nav_contact_link.style.marginBottom = "2%";
 	quick_nav_home_link.style.marginBottom = "3%";
+	footer.style.position = "initial";
 	window.scrollTo(0, 0);
 	title.innerText = "Home | Aleksander Bober";
 });
@@ -105,6 +111,7 @@ work_link.addEventListener("click", function() {
 	quick_nav_aboutme_link.style.marginBottom = "2%";
 	quick_nav_contact_link.style.marginBottom = "2%";
 	quick_nav_work_link.style.marginBottom = "3%";
+	footer.style.position = "initial";
 	window.scrollTo(0, 0);
 	title.innerText = "Work | Aleksander Bober";
 });
@@ -127,6 +134,7 @@ aboutme_link.addEventListener("click", function() {
 	quick_nav_work_link.style.marginBottom = "2%";
 	quick_nav_contact_link.style.marginBottom = "2%";
 	quick_nav_aboutme_link.style.marginBottom = "3%";
+	footer.style.position = "initial";
 	window.scrollTo(0, 0);
 	title.innerText = "About Me | Aleksander Bober";
 });
@@ -149,6 +157,7 @@ contact_link.addEventListener("click", function() {
 	quick_nav_work_link.style.marginBottom = "2%";
 	quick_nav_aboutme_link.style.marginBottom = "2%";
 	quick_nav_contact_link.style.marginBottom = "3%";
+	footer.style.position = "absolute";
 	window.scrollTo(0, 0);
 	title.innerText = "Contact | Aleksander Bober";
 });
@@ -171,6 +180,7 @@ home_work_link.addEventListener("click", function() {
 	quick_nav_aboutme_link.style.marginBottom = "2%";
 	quick_nav_contact_link.style.marginBottom = "2%";
 	quick_nav_work_link.style.marginBottom = "3%";
+	footer.style.position = "initial";
 	window.scrollTo(0, 0);
 	title.innerText = "Work | Aleksander Bober";
 });
@@ -217,6 +227,7 @@ quick_nav_home_link.addEventListener("click", function() {
 	quick_nav_aboutme_link.style.marginBottom = "2%";
 	quick_nav_contact_link.style.marginBottom = "2%";
 	quick_nav_home_link.style.marginBottom = "3%";
+	footer.style.position = "initial";
 	window.scrollTo(0, 0);
 	title.innerText = "Home | Aleksander Bober";
 });
@@ -239,6 +250,7 @@ quick_nav_work_link.addEventListener("click", function() {
 	quick_nav_aboutme_link.style.marginBottom = "2%";
 	quick_nav_contact_link.style.marginBottom = "2%";
 	quick_nav_work_link.style.marginBottom = "3%";
+	footer.style.position = "initial";
 	window.scrollTo(0, 0);
 	title.innerText = "Work | Aleksander Bober";
 });
@@ -261,6 +273,7 @@ quick_nav_aboutme_link.addEventListener("click", function() {
 	quick_nav_work_link.style.marginBottom = "2%";
 	quick_nav_contact_link.style.marginBottom = "2%";
 	quick_nav_aboutme_link.style.marginBottom = "3%";
+	footer.style.position = "initial";
 	window.scrollTo(0, 0);
 	title.innerText = "About Me | Aleksander Bober";
 });
@@ -283,6 +296,7 @@ quick_nav_contact_link.addEventListener("click", function() {
 	quick_nav_work_link.style.marginBottom = "2%";
 	quick_nav_aboutme_link.style.marginBottom = "2%";
 	quick_nav_contact_link.style.marginBottom = "3%";
+	footer.style.position = "absolute";
 	window.scrollTo(0, 0);
 	title.innerText = "Contact | Aleksander Bober";
 });

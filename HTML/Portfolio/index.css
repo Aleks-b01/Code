@@ -3,6 +3,7 @@ body {
 	flex-direction: column;
 	flex-wrap: wrap;
 	margin: 0px;
+	overflow-anchor: none;
 }
 
 header {
@@ -251,8 +252,6 @@ main {
 	margin: 0px;
 	margin-top: 5%;
 	margin-bottom: 10%;
-	margin-left: 20%;
-	margin-right: 20%;
 	user-select: none;
 }
 
@@ -312,8 +311,6 @@ main {
 	margin: 0px;
 	margin-top: 5%;
 	margin-bottom: 10%;
-	margin-left: 20%;
-	margin-right: 20%;
 	user-select: none;
 }
 
@@ -403,18 +400,42 @@ main {
 
 #contact {
 	display: none;
-	height: 90vh;
+	height: 60vh;
 	width: 100%;
 	flex-direction: column;
 	align-items: center;
+}
+
+#contact_h1 {
+	font-family: sans-serif;
+	font-size: 80px;
+	font-weight: normal;
+	text-align: center;
+	margin: 0px;
+	margin-top: 5%;
+	margin-bottom: 5%;
+	user-select: none;
+}
+
+#contact_email {
+	font-family: sans-serif;
+	font-size: 30px;
+	font-weight: normal;
+	text-align: center;
+	margin: 0px;
+	margin-bottom: 10%;
+	margin-left: 20%;
+	margin-right: 20%;
+	user-select: none;
 }
 
 footer {
 	display: flex;
 	height: 30vh;
 	width: 100%;
+	bottom: 0px;
 	margin: 0px;
-	justify-content: space-around;
+	justify-content: space-between;
 	align-items: center;
 	background-color: #7a7b7a;
 }
@@ -422,7 +443,7 @@ footer {
 #email {
 	font-family:sans-serif;
 	font-size: 15px;
-	margin-left: 5%;
+	margin-left: 10%;
 	color: #0000EE;
 	user-select: none;
 }
@@ -434,6 +455,8 @@ footer {
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
+	margin: 0px;
+	margin-right: 10%;
 }
 
 #quick_nav_title {
