@@ -214,14 +214,15 @@ main {
 
 #home_preview_card {
 	display: flex;
-	height: 394px;
-	width: 700px;
+	height: 60vh;
+	width: auto;
 	justify-content: space-between;
 	align-items: center;
 	border-radius: 20px;
 	background-color: black;
 	margin: 0px;
 	margin-bottom: 10%;
+	aspect-ratio: 16 / 9;
 }
 
 #home_preview_card_arrow_right {

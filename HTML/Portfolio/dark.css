@@ -215,14 +215,15 @@ main {
 
 #home_preview_card {
 	display: flex;
-	height: 394px;
-	width: 700px;
+	height: 60vh;
+	width: auto;
 	justify-content: space-between;
 	align-items: center;
 	border-radius: 20px;
-	background-color: white;
+	background-color: black;
 	margin: 0px;
 	margin-bottom: 10%;
+	aspect-ratio: 16 / 9;
 }
 
 #home_preview_card_arrow_right {
@@ -231,7 +232,7 @@ main {
 	width: 50px;
 	border-radius: 50px;
 	margin-right: 3%;
-	background-color: black;
+	background-color: white;
 	cursor: pointer;
 	order: 2;
 }
@@ -242,7 +243,7 @@ main {
 	width: 50px;
 	border-radius: 50px;
 	margin-left: 3%;
-	background-color: black;
+	background-color: white;
 	cursor: pointer;
 	order: 1;
 	visibility: hidden;
@@ -288,7 +289,7 @@ main {
 }
 
 #work_example_1 {
-	background-color: white;
+	background-color: black;
 }
 
 #work_example_2 {

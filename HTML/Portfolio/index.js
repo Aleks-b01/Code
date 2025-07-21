@@ -229,11 +229,7 @@ home_preview_card_arrow_left.addEventListener("click", function() {
 		home_preview_card_arrow_right.style.visibility = "visible";
 		home_preview_current_card = 2;
 	} else if (home_preview_current_card == 2) {
-		if (dark_mode == false) {
-			home_preview_card.style.backgroundColor = "black";
-		} else {
-			home_preview_card.style.backgroundColor = "white";
-		}
+		home_preview_card.style.backgroundColor = "black";
 		home_preview_card_arrow_left.style.visibility = "hidden";
 		home_preview_current_card = 1;
 	}
