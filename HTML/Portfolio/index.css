@@ -67,14 +67,11 @@ nav {
 	top: 50%;
 	right: 6%;
 	transform: translate(0%, -50%);
+	background-image: url('assets/nav/burger.png');
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-position: center;
 	cursor: pointer;
-}
-
-.burger_line {
-	height: 14%;
-	width: 100%;
-	background-color: black;
-	border-radius: 1000px;
 }
 
 #nav_close_btn {
@@ -85,23 +82,11 @@ nav {
 	top: 50%;
 	right: 6%;
 	transform: translate(0%, -50%);
+	background-image: url('assets/nav/nav_close.png');
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-position: center;
 	cursor: pointer;
-}
-
-#nav_close_btn_line1 {
-	position: absolute;
-	top: 50%;
-	right: 2px;
-	transform: translate(0%, -50%);
-	rotate: 45deg;
-}
-
-#nav_close_btn_line2 {
-	position: absolute;
-	top: 50%;
-	left: 1px;
-	transform: translate(0%, -50%);
-	rotate: -45deg;
 }
 
 #header_line {
