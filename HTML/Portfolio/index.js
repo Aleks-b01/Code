@@ -1,4 +1,5 @@
 const title = document.getElementsByTagName("title")[0];
+const stylesheet = document.getElementsByTagName("link")[0];
 const logo = document.getElementById("logo");
 const nav = document.getElementsByTagName("nav")[0];
 const burger_btn = document.getElementById("burger_btn");
@@ -22,12 +23,14 @@ const quick_nav_aboutme_link = document.getElementById("quick_nav_aboutme_link")
 const quick_nav_contact_link = document.getElementById("quick_nav_contact_link");
 
 let home_preview_current_card = 1;
+let dark_mode = false;
 
 window.onload = function() {
 	title.innerText = "Home | Aleksander Bober";
 	window.scrollTo(0, 0);
 	if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-		// Set dark mode
+		stylesheet.setAttribute('href', 'dark.css');
+		dark_mode = true;
 	}
 };
 
@@ -203,7 +206,11 @@ home_preview_card_arrow_left.addEventListener("click", function() {
 		home_preview_card_arrow_right.style.visibility = "visible";
 		home_preview_current_card = 2;
 	} else if (home_preview_current_card == 2) {
-		home_preview_card.style.backgroundColor = "black";
+		if (dark_mode == false) {
+			home_preview_card.style.backgroundColor = "black";
+		} else {
+			home_preview_card.style.backgroundColor = "white";
+		}
 		home_preview_card_arrow_left.style.visibility = "hidden";
 		home_preview_current_card = 1;
 	}
