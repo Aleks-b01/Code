@@ -273,17 +273,18 @@ main {
 	gap: 30px;
 	justify-content: center;
 	align-items: center;
-	grid-template-rows: 400px 400px 400px;
-	grid-template-columns: 750px auto;
+	grid-template-rows: 60vh 60vh 60vh;
+	grid-template-columns: auto auto;
 	margin: 0px;
 	margin-bottom: 10%;
 }
 
 .work_examples {
 	display: flex;
-	height: 394px;
-	width: 700px;
+	height: 60vh;
+	width: auto;
 	border-radius: 20px;
+	aspect-ratio: 16 / 9;
 }
 
 #work_example_1 {
