@@ -406,8 +406,30 @@ main {
 #aboutme_cubing_imgs {
 	display: flex;
 	width: 30%;
+	justify-content: center;
+	align-items: center;
 	flex-direction: column;
-	background-color: black;
+}
+
+#aboutme_cubing_imgs_solveimg {
+	display: flex;
+	width: 100%;
+	margin-bottom: 5%;
+	background-image: url('assets/aboutme/solve.png');
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-position: center;
+	aspect-ratio: 500 / 283;
+}
+
+#aboutme_cubing_imgs_algsimg {
+	display: flex;
+	width: 100%;
+	background-image: url('assets/aboutme/algs.png');
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-position: center;
+	aspect-ratio: 200 / 83;
 }
 
 #contact {
