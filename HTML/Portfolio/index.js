@@ -2,6 +2,8 @@ const title = document.getElementsByTagName("title")[0];
 const stylesheet = document.getElementsByTagName("link")[0];
 const logo = document.getElementById("logo");
 const nav = document.getElementsByTagName("nav")[0];
+const switch_to_dark_mode = document.getElementById("switch_to_dark_mode");
+const switch_to_light_mode = document.getElementById("switch_to_light_mode");
 const burger_btn = document.getElementById("burger_btn");
 const nav_close_btn = document.getElementById("nav_close_btn");
 const home_link = document.getElementById("home_link");
@@ -29,12 +31,28 @@ window.onload = function() {
 	title.innerText = "Home | Aleksander Bober";
 	window.scrollTo(0, 0);
 	if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-		stylesheet.setAttribute('href', 'dark.css');
 		dark_mode = true;
+		stylesheet.setAttribute('href', 'dark.css');
 	}
 };
 
+switch_to_dark_mode.addEventListener("click", function() {
+	dark_mode = true;
+	stylesheet.setAttribute('href', 'dark.css');
+	switch_to_dark_mode.style.display = "none";
+	switch_to_light_mode.style.display = "flex";
+});
+
+switch_to_light_mode.addEventListener("click", function() {
+	dark_mode = false;
+	stylesheet.setAttribute('href', 'index.css');
+	switch_to_light_mode.style.display = "none";
+	switch_to_dark_mode.style.display = "flex";
+});
+
 burger_btn.addEventListener("click", function() {
+	switch_to_dark_mode.style.display = "none";
+	switch_to_light_mode.style.display = "none";
 	nav.style.display = "flex";
 	burger_btn.style.display = "none";
 	nav_close_btn.style.display = "inline";
@@ -44,6 +62,11 @@ function closeNav() {
 	nav.style.display = "none";
 	nav_close_btn.style.display = "none";
 	burger_btn.style.display = "flex";
+	if (dark_mode == false) {
+		switch_to_dark_mode.style.display = "flex";
+	} else {
+		switch_to_light_mode.style.display = "flex";
+	}
 };
 
 nav_close_btn.addEventListener("click", function() {

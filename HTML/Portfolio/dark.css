@@ -37,7 +37,7 @@ nav {
 	justify-content: space-between;
 	align-items: center;
 	position: absolute;
-	right: calc(6% + 80px);
+	right: calc(6% + 75px);
 }
 
 .nav_link {
@@ -58,12 +58,36 @@ nav {
 	text-decoration-line: underline;
 }
 
+.light_dark_mode_switch {
+	height: 25px;
+	width: 25px;
+	position: absolute;
+	top: 50%;
+	right: calc(9% + 25px);
+	transform: translate(0, -50%);
+	cursor: pointer;
+}
+
+#switch_to_dark_mode {
+	display: none;
+	background-image: url('assets/light_dark_switch/moon.png');
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-position: center;
+}
+
+#switch_to_light_mode {
+	display: flex;
+	background-image: url('assets/light_dark_switch/sun.png');
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-position: center;
+}
+
 #burger_btn {
 	display: flex;
-	height: 30px;
-	width: 30px;
-	flex-direction: column;
-	justify-content: space-around;
+	height: 25px;
+	width: 25px;
 	position: absolute;
 	top: 50%;
 	right: 6%;
@@ -77,8 +101,8 @@ nav {
 
 #nav_close_btn {
 	display: none;
-	height: 30px;
-	width: 30px;
+	height: 25px;
+	width: 25px;
 	position: absolute;
 	top: 50%;
 	right: 6%;
