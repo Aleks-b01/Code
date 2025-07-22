@@ -1,3 +1,4 @@
+const body = document.getElementsByTagName("body")[0];
 const title = document.getElementsByTagName("title")[0];
 const stylesheet = document.getElementsByTagName("link")[0];
 const logo = document.getElementById("logo");
@@ -19,10 +20,14 @@ const work = document.getElementById("work");
 const aboutme = document.getElementById("aboutme");
 const contact = document.getElementById("contact");
 const footer = document.getElementsByTagName("footer")[0];
+const legal_image_credits = document.getElementById("legal_image_credits");
+const legal_tos = document.getElementById("legal_tos");
 const quick_nav_home_link = document.getElementById("quick_nav_home_link");
 const quick_nav_work_link = document.getElementById("quick_nav_work_link");
 const quick_nav_aboutme_link = document.getElementById("quick_nav_aboutme_link");
 const quick_nav_contact_link = document.getElementById("quick_nav_contact_link");
+const image_credits = document.getElementById("image_credits");
+const tos = document.getElementById("tos");
 
 let home_preview_current_card = 1;
 let dark_mode = false;
@@ -69,146 +74,96 @@ function closeNav() {
 	}
 };
 
+function switchPage(page) {
+	closeNav();
+	home.style.display = "none";
+	work.style.display = "none";
+	aboutme.style.display = "none";
+	contact.style.display = "none";
+	home_link.style.textDecorationLine = "none";
+	work_link.style.textDecorationLine = "none";
+	aboutme_link.style.textDecorationLine = "none";
+	contact_link.style.textDecorationLine = "none";
+	quick_nav_home_link.style.textDecorationLine = "none";
+	quick_nav_work_link.style.textDecorationLine = "none";
+	quick_nav_aboutme_link.style.textDecorationLine = "none";
+	quick_nav_contact_link.style.textDecorationLine = "none";
+	quick_nav_home_link.style.marginBottom = "2%";
+	quick_nav_work_link.style.marginBottom = "2%";
+	quick_nav_aboutme_link.style.marginBottom = "2%";
+	quick_nav_contact_link.style.marginBottom = "2%";
+	image_credits.style.display = "none";
+	tos.style.display = "none";
+	legal_image_credits.style.textDecorationLine = "none";
+	legal_tos.style.textDecorationLine = "none";
+	legal_image_credits.style.marginBottom = "2%";
+	legal_tos.style.marginBottom = "2%";
+	footer.style.position = "initial";
+	if (page == "home") {
+		home.style.display = "flex";
+		home_link.style.textDecorationLine = "underline";
+		quick_nav_home_link.style.textDecorationLine = "underline";
+		quick_nav_home_link.style.marginBottom = "3%";
+		title.innerText = "Home | Aleksander Bober"
+	} else if (page == "work") {
+		work.style.display = "flex";
+		work_link.style.textDecorationLine = "underline";
+		quick_nav_work_link.style.textDecorationLine = "underline";
+		quick_nav_work_link.style.marginBottom = "3%";
+		title.innerText = "Work | Aleksander Bober";
+	} else if (page == "aboutme") {
+		aboutme.style.display = "flex";
+		aboutme_link.style.textDecorationLine = "underline";
+		quick_nav_aboutme_link.style.textDecorationLine = "underline";
+		quick_nav_aboutme_link.style.marginBottom = "3%";
+		title.innerText = "About me | Aleksander Bober";
+	} else if (page == "contact") {
+		contact.style.display = "flex";
+		contact_link.style.textDecorationLine = "underline";
+		quick_nav_contact_link.style.textDecorationLine = "underline";
+		quick_nav_contact_link.style.marginBottom = "3%";
+		footer.style.position = "absolute";
+		title.innerText = "Contact | Aleksander Bober"
+	} else if (page == "image_credits") {
+		image_credits.style.display = "flex";
+		legal_image_credits.style.textDecorationLine = "underline";
+		legal_image_credits.style.marginBottom = "3%";
+		title.innerText = "Image Credits | Aleksander Bober";
+	} else if (page == "tos") {
+		tos.style.display = "flex";
+		legal_tos.style.textDecorationLine = "underline";
+		legal_tos.style.marginBottom = "3%";
+		title.innerText = "Terms of Service | Aleksander Bober";
+	}
+	window.scrollTo(0, 0);
+};
+
 nav_close_btn.addEventListener("click", function() {
 	closeNav();
 });
 
 logo.addEventListener("click", function() {
-	closeNav();
-	work.style.display = "none";
-	aboutme.style.display = "none";
-	contact.style.display = "none";
-	home.style.display = "flex";
-	work_link.style.textDecorationLine = "none";
-	aboutme_link.style.textDecorationLine = "none";
-	contact_link.style.textDecorationLine = "none";
-	home_link.style.textDecorationLine = "underline";
-	quick_nav_work_link.style.textDecorationLine = "none";
-	quick_nav_aboutme_link.style.textDecorationLine = "none";
-	quick_nav_contact_link.style.textDecorationLine = "none";
-	quick_nav_home_link.style.textDecorationLine = "underline";
-	quick_nav_work_link.style.marginBottom = "2%";
-	quick_nav_aboutme_link.style.marginBottom = "2%";
-	quick_nav_contact_link.style.marginBottom = "2%";
-	quick_nav_home_link.style.marginBottom = "3%";
-	footer.style.position = "initial";
-	window.scrollTo(0, 0);
-	title.innerText = "Home | Aleksander Bober";
+	switchPage("home");
 });
 
 home_link.addEventListener("click", function() {
-	closeNav();
-	work.style.display = "none";
-	aboutme.style.display = "none";
-	contact.style.display = "none";
-	home.style.display = "flex";
-	work_link.style.textDecorationLine = "none";
-	aboutme_link.style.textDecorationLine = "none";
-	contact_link.style.textDecorationLine = "none";
-	home_link.style.textDecorationLine = "underline";
-	quick_nav_work_link.style.textDecorationLine = "none";
-	quick_nav_aboutme_link.style.textDecorationLine = "none";
-	quick_nav_contact_link.style.textDecorationLine = "none";
-	quick_nav_home_link.style.textDecorationLine = "underline";
-	quick_nav_work_link.style.marginBottom = "2%";
-	quick_nav_aboutme_link.style.marginBottom = "2%";
-	quick_nav_contact_link.style.marginBottom = "2%";
-	quick_nav_home_link.style.marginBottom = "3%";
-	footer.style.position = "initial";
-	window.scrollTo(0, 0);
-	title.innerText = "Home | Aleksander Bober";
+	switchPage("home");
 });
 
 work_link.addEventListener("click", function() {
-	closeNav();
-	home.style.display = "none";
-	aboutme.style.display = "none";
-	contact.style.display = "none";
-	work.style.display = "flex";
-	home_link.style.textDecorationLine = "none";
-	aboutme_link.style.textDecorationLine = "none";
-	contact_link.style.textDecorationLine = "none";
-	work_link.style.textDecorationLine = "underline";
-	quick_nav_home_link.style.textDecorationLine = "none";
-	quick_nav_aboutme_link.style.textDecorationLine = "none";
-	quick_nav_contact_link.style.textDecorationLine = "none";
-	quick_nav_work_link.style.textDecorationLine = "underline";
-	quick_nav_home_link.style.marginBottom = "2%";
-	quick_nav_aboutme_link.style.marginBottom = "2%";
-	quick_nav_contact_link.style.marginBottom = "2%";
-	quick_nav_work_link.style.marginBottom = "3%";
-	footer.style.position = "initial";
-	window.scrollTo(0, 0);
-	title.innerText = "Work | Aleksander Bober";
+	switchPage("work");
 });
 
 aboutme_link.addEventListener("click", function() {
-	closeNav();
-	home.style.display = "none";
-	work.style.display = "none";
-	contact.style.display = "none";
-	aboutme.style.display = "flex";
-	home_link.style.textDecorationLine = "none";
-	work_link.style.textDecorationLine = "none";
-	contact_link.style.textDecorationLine = "none";
-	aboutme_link.style.textDecorationLine = "underline";
-	quick_nav_home_link.style.textDecorationLine = "none";
-	quick_nav_work_link.style.textDecorationLine = "none";
-	quick_nav_contact_link.style.textDecorationLine = "none";
-	quick_nav_aboutme_link.style.textDecorationLine = "underline";
-	quick_nav_home_link.style.marginBottom = "2%";
-	quick_nav_work_link.style.marginBottom = "2%";
-	quick_nav_contact_link.style.marginBottom = "2%";
-	quick_nav_aboutme_link.style.marginBottom = "3%";
-	footer.style.position = "initial";
-	window.scrollTo(0, 0);
-	title.innerText = "About Me | Aleksander Bober";
+	switchPage("aboutme");
 });
 
 contact_link.addEventListener("click", function() {
-	closeNav();
-	home.style.display = "none";
-	work.style.display = "none";
-	aboutme.style.display = "none";
-	contact.style.display = "flex";
-	home_link.style.textDecorationLine = "none";
-	work_link.style.textDecorationLine = "none";
-	aboutme_link.style.textDecorationLine = "none";
-	contact_link.style.textDecorationLine = "underline";
-	quick_nav_home_link.style.textDecorationLine = "none";
-	quick_nav_work_link.style.textDecorationLine = "none";
-	quick_nav_aboutme_link.style.textDecorationLine = "none";
-	quick_nav_contact_link.style.textDecorationLine = "underline";
-	quick_nav_home_link.style.marginBottom = "2%";
-	quick_nav_work_link.style.marginBottom = "2%";
-	quick_nav_aboutme_link.style.marginBottom = "2%";
-	quick_nav_contact_link.style.marginBottom = "3%";
-	footer.style.position = "absolute";
-	window.scrollTo(0, 0);
-	title.innerText = "Contact | Aleksander Bober";
+	switchPage("contact");
 });
 
 home_work_link.addEventListener("click", function() {
-	closeNav();
-	home.style.display = "none";
-	aboutme.style.display = "none";
-	contact.style.display = "none";
-	work.style.display = "flex";
-	home_link.style.textDecorationLine = "none";
-	aboutme_link.style.textDecorationLine = "none";
-	contact_link.style.textDecorationLine = "none";
-	work_link.style.textDecorationLine = "underline";
-	quick_nav_home_link.style.textDecorationLine = "none";
-	quick_nav_aboutme_link.style.textDecorationLine = "none";
-	quick_nav_contact_link.style.textDecorationLine = "none";
-	quick_nav_work_link.style.textDecorationLine = "underline";
-	quick_nav_home_link.style.marginBottom = "2%";
-	quick_nav_aboutme_link.style.marginBottom = "2%";
-	quick_nav_contact_link.style.marginBottom = "2%";
-	quick_nav_work_link.style.marginBottom = "3%";
-	footer.style.position = "initial";
-	window.scrollTo(0, 0);
-	title.innerText = "Work | Aleksander Bober";
+	switchPage("work");
 });
 
 home_preview_card_arrow_right.addEventListener("click", function() {
@@ -236,93 +191,25 @@ home_preview_card_arrow_left.addEventListener("click", function() {
 });
 
 quick_nav_home_link.addEventListener("click", function() {
-	closeNav();
-	work.style.display = "none";
-	aboutme.style.display = "none";
-	contact.style.display = "none";
-	home.style.display = "flex";
-	work_link.style.textDecorationLine = "none";
-	aboutme_link.style.textDecorationLine = "none";
-	contact_link.style.textDecorationLine = "none";
-	home_link.style.textDecorationLine = "underline";
-	quick_nav_work_link.style.textDecorationLine = "none";
-	quick_nav_aboutme_link.style.textDecorationLine = "none";
-	quick_nav_contact_link.style.textDecorationLine = "none";
-	quick_nav_home_link.style.textDecorationLine = "underline";
-	quick_nav_work_link.style.marginBottom = "2%";
-	quick_nav_aboutme_link.style.marginBottom = "2%";
-	quick_nav_contact_link.style.marginBottom = "2%";
-	quick_nav_home_link.style.marginBottom = "3%";
-	footer.style.position = "initial";
-	window.scrollTo(0, 0);
-	title.innerText = "Home | Aleksander Bober";
+	switchPage("home");
 });
 
 quick_nav_work_link.addEventListener("click", function() {
-	closeNav();
-	home.style.display = "none";
-	aboutme.style.display = "none";
-	contact.style.display = "none";
-	work.style.display = "flex";
-	home_link.style.textDecorationLine = "none";
-	aboutme_link.style.textDecorationLine = "none";
-	contact_link.style.textDecorationLine = "none";
-	work_link.style.textDecorationLine = "underline";
-	quick_nav_home_link.style.textDecorationLine = "none";
-	quick_nav_aboutme_link.style.textDecorationLine = "none";
-	quick_nav_contact_link.style.textDecorationLine = "none";
-	quick_nav_work_link.style.textDecorationLine = "underline";
-	quick_nav_home_link.style.marginBottom = "2%";
-	quick_nav_aboutme_link.style.marginBottom = "2%";
-	quick_nav_contact_link.style.marginBottom = "2%";
-	quick_nav_work_link.style.marginBottom = "3%";
-	footer.style.position = "initial";
-	window.scrollTo(0, 0);
-	title.innerText = "Work | Aleksander Bober";
+	switchPage("work");
 });
 
 quick_nav_aboutme_link.addEventListener("click", function() {
-	closeNav();
-	home.style.display = "none";
-	work.style.display = "none";
-	contact.style.display = "none";
-	aboutme.style.display = "flex";
-	home_link.style.textDecorationLine = "none";
-	work_link.style.textDecorationLine = "none";
-	contact_link.style.textDecorationLine = "none";
-	aboutme_link.style.textDecorationLine = "underline";
-	quick_nav_home_link.style.textDecorationLine = "none";
-	quick_nav_work_link.style.textDecorationLine = "none";
-	quick_nav_contact_link.style.textDecorationLine = "none";
-	quick_nav_aboutme_link.style.textDecorationLine = "underline";
-	quick_nav_home_link.style.marginBottom = "2%";
-	quick_nav_work_link.style.marginBottom = "2%";
-	quick_nav_contact_link.style.marginBottom = "2%";
-	quick_nav_aboutme_link.style.marginBottom = "3%";
-	footer.style.position = "initial";
-	window.scrollTo(0, 0);
-	title.innerText = "About Me | Aleksander Bober";
+	switchPage("aboutme");
 });
 
 quick_nav_contact_link.addEventListener("click", function() {
-	closeNav();
-	home.style.display = "none";
-	work.style.display = "none";
-	aboutme.style.display = "none";
-	contact.style.display = "flex";
-	home_link.style.textDecorationLine = "none";
-	work_link.style.textDecorationLine = "none";
-	aboutme_link.style.textDecorationLine = "none";
-	contact_link.style.textDecorationLine = "underline";
-	quick_nav_home_link.style.textDecorationLine = "none";
-	quick_nav_work_link.style.textDecorationLine = "none";
-	quick_nav_aboutme_link.style.textDecorationLine = "none";
-	quick_nav_contact_link.style.textDecorationLine = "underline";
-	quick_nav_home_link.style.marginBottom = "2%";
-	quick_nav_work_link.style.marginBottom = "2%";
-	quick_nav_aboutme_link.style.marginBottom = "2%";
-	quick_nav_contact_link.style.marginBottom = "3%";
-	footer.style.position = "absolute";
-	window.scrollTo(0, 0);
-	title.innerText = "Contact | Aleksander Bober";
+	switchPage("contact");
+});
+
+legal_image_credits.addEventListener("click", function() {
+	switchPage("image_credits");
+});
+
+legal_tos.addEventListener("click", function() {
+	switchPage("tos");
 });
