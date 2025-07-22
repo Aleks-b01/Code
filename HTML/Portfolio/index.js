@@ -97,7 +97,6 @@ function switchPage(page) {
 	legal_image_credits.style.textDecorationLine = "none";
 	legal_tos.style.textDecorationLine = "none";
 	legal_image_credits.style.marginBottom = "2%";
-	legal_tos.style.marginBottom = "2%";
 	footer.style.position = "initial";
 	if (page == "home") {
 		home.style.display = "flex";
@@ -128,11 +127,10 @@ function switchPage(page) {
 		image_credits.style.display = "flex";
 		legal_image_credits.style.textDecorationLine = "underline";
 		legal_image_credits.style.marginBottom = "3%";
-		title.innerText = "Image Credits | Aleksander Bober";
+		title.innerText = "Image credits | Aleksander Bober";
 	} else if (page == "tos") {
 		tos.style.display = "flex";
 		legal_tos.style.textDecorationLine = "underline";
-		legal_tos.style.marginBottom = "3%";
 		title.innerText = "Terms of Service | Aleksander Bober";
 	}
 	window.scrollTo(0, 0);

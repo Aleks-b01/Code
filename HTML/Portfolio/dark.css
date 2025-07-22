@@ -601,12 +601,218 @@ footer {
 	user-select: none;
 }
 
+#image_credits_timeline_img {
+	display: flex;
+	height: 30vh;
+	width: auto;
+	background-image: url('assets/aboutme/timeline.png');
+	background-repeat: no-repeat;
+	background-size: contain;
+	margin: 0px;
+	margin-left: 5%;
+	margin-bottom: 3%;
+	aspect-ratio: 1 / 1;
+}
+
+#image_credits_timeline_dark_img {
+	display: flex;
+	height: 30vh;
+	width: auto;
+	background-image: url('assets/aboutme/timeline_dark.png');
+	background-repeat: no-repeat;
+	background-size: contain;
+	margin: 0px;
+	margin-left: 5%;
+	margin-bottom: 3%;
+	aspect-ratio: 1 / 1;
+}
+
+#image_credits_timeline {
+	width: 100%;
+	font-family: sans-serif;
+	font-size: 20px;
+	font-weight: normal;
+	color: white;
+	margin: 0px;
+	margin-left: 5%;
+	margin-bottom: 10%;
+}
+
+#image_credits_timeline_html_img {
+	display: flex;
+	height: 30vh;
+	width: auto;
+	background-image: url('assets/logos/html5.png');
+	background-repeat: no-repeat;
+	background-size: contain;
+	margin: 0px;
+	margin-left: 5%;
+	margin-bottom: 3%;
+	aspect-ratio: 1 / 1;
+}
+
+#image_credits_timeline_html_dark_img {
+	display: flex;
+	height: 30vh;
+	width: auto;
+	background-image: url('assets/logos/html5_dark.png');
+	background-repeat: no-repeat;
+	background-size: contain;
+	margin: 0px;
+	margin-left: 5%;
+	margin-bottom: 3%;
+	aspect-ratio: 1 / 1;
+}
+
+.image_credits_timeline_html {
+	width: 100%;
+	font-family: sans-serif;
+	font-size: 20px;
+	font-weight: normal;
+	color: white;
+	margin: 0px;
+	margin-left: 5%;
+	margin-bottom: 10%;
+}
+
+#image_credits_timeline_css_img {
+	display: flex;
+	height: 30vh;
+	width: auto;
+	background-image: url('assets/logos/css3.png');
+	background-repeat: no-repeat;
+	background-size: contain;
+	margin: 0px;
+	margin-left: 5%;
+	margin-bottom: 3%;
+	aspect-ratio: 726 / 1025;
+}
+
+#image_credits_timeline_css_dark_img {
+	display: flex;
+	height: 30vh;
+	width: auto;
+	background-image: url('assets/logos/css3_dark.png');
+	background-repeat: no-repeat;
+	background-size: contain;
+	margin: 0px;
+	margin-left: 5%;
+	margin-bottom: 3%;
+	aspect-ratio: 726 / 1025;
+}
+
+.image_credits_timeline_css {
+	width: 100%;
+	font-family: sans-serif;
+	font-size: 20px;
+	font-weight: normal;
+	color: white;
+	margin: 0px;
+	margin-left: 5%;
+	margin-bottom: 10%;
+}
+
+#image_credits_timeline_js_img {
+	display: flex;
+	height: 30vh;
+	width: auto;
+	background-image: url('assets/logos/js.png');
+	background-repeat: no-repeat;
+	background-size: contain;
+	margin: 0px;
+	margin-left: 5%;
+	margin-bottom: 3%;
+	aspect-ratio: 1 / 1;
+}
+
+#image_credits_timeline_js {
+	width: 100%;
+	font-family: sans-serif;
+	font-size: 20px;
+	font-weight: normal;
+	color: white;
+	margin: 0px;
+	margin-left: 5%;
+	margin-bottom: 10%;
+}
+
+#image_credits_timeline_react_img {
+	display: flex;
+	height: 30vh;
+	width: auto;
+	background-image: url('assets/logos/react.png');
+	background-repeat: no-repeat;
+	background-size: contain;
+	margin: 0px;
+	margin-left: 5%;
+	margin-bottom: 3%;
+	aspect-ratio: 241 / 209;
+}
+
+#image_credits_timeline_react {
+	width: 100%;
+	font-family: sans-serif;
+	font-size: 20px;
+	font-weight: normal;
+	color: white;
+	margin: 0px;
+	margin-left: 5%;
+	margin-bottom: 20%;
+}
+
+#image_credits_cubing_solve_img {
+	display: flex;
+	height: 30vh;
+	width: auto;
+	background-image: url('assets/aboutme/solve.png');
+	background-repeat: no-repeat;
+	background-size: contain;
+	margin: 0px;
+	margin-left: 5%;
+	margin-bottom: 3%;
+	aspect-ratio: 500 / 283;
+}
+
+#image_credits_cubing_solve {
+	width: 100%;
+	font-family: sans-serif;
+	font-size: 20px;
+	font-weight: normal;
+	color: white;
+	margin: 0px;
+	margin-left: 5%;
+	margin-bottom: 10%;
+}
+
+#image_credits_cubing_algs_img {
+	display: flex;
+	height: 30vh;
+	width: auto;
+	background-image: url('assets/aboutme/algs.png');
+	background-repeat: no-repeat;
+	background-size: contain;
+	margin: 0px;
+	margin-left: 5%;
+	margin-bottom: 3%;
+	aspect-ratio: 200 / 83;
+}
+
+#image_credits_cubing_algs {
+	width: 100%;
+	font-family: sans-serif;
+	font-size: 20px;
+	font-weight: normal;
+	color: white;
+	margin: 0px;
+	margin-left: 5%;
+	margin-bottom: 10%;
+}
+
 #tos {
 	display: none;
 	width: 100%;
 	flex-direction: column;
 	background-color: #1c1c1c;
-
 }
 
 #tos_h1 {
