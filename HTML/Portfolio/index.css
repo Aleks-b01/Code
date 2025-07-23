@@ -482,6 +482,27 @@ main {
 	user-select: none;
 }
 
+#example_website_1 {
+	display: none;
+	width: 100%;
+	background-color: white;
+	z-index: 200;
+}
+
+#example_website_2 {
+	display: none;
+	width: 100%;
+	background-color: white;
+	z-index: 200;
+}
+
+#example_website_3 {
+	display: none;
+	width: 100%;
+	background-color: white;
+	z-index: 200;
+}
+
 footer {
 	display: flex;
 	height: 30vh;

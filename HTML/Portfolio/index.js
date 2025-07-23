@@ -1,6 +1,7 @@
 const body = document.getElementsByTagName("body")[0];
 const title = document.getElementsByTagName("title")[0];
 const stylesheet = document.getElementsByTagName("link")[0];
+const header = document.getElementsByTagName("header")[0];
 const logo = document.getElementById("logo");
 const nav = document.getElementsByTagName("nav")[0];
 const switch_to_dark_mode = document.getElementById("switch_to_dark_mode");
@@ -11,14 +12,21 @@ const home_link = document.getElementById("home_link");
 const work_link = document.getElementById("work_link");
 const aboutme_link = document.getElementById("aboutme_link");
 const contact_link = document.getElementById("contact_link");
+const main = document.getElementsByTagName("main")[0];
 const home = document.getElementById("home");
 const home_work_link = document.getElementById("home_work_link");
 const home_preview_card = document.getElementById("home_preview_card");
 const home_preview_card_arrow_right = document.getElementById("home_preview_card_arrow_right");
 const home_preview_card_arrow_left = document.getElementById("home_preview_card_arrow_left");
 const work = document.getElementById("work");
+const work_example_1_btn = document.getElementById("work_example_1_btn");
+const work_example_2_btn = document.getElementById("work_example_2_btn");
+const work_example_3_btn = document.getElementById("work_example_3_btn");
 const aboutme = document.getElementById("aboutme");
 const contact = document.getElementById("contact");
+const example_website_1 = document.getElementById("example_website_1");
+const example_website_2 = document.getElementById("example_website_2");
+const example_website_3 = document.getElementById("example_website_3");
 const footer = document.getElementsByTagName("footer")[0];
 const legal_image_credits = document.getElementById("legal_image_credits");
 const legal_tos = document.getElementById("legal_tos");
@@ -186,6 +194,27 @@ home_preview_card_arrow_left.addEventListener("click", function() {
 		home_preview_card_arrow_left.style.visibility = "hidden";
 		home_preview_current_card = 1;
 	}
+});
+
+work_example_1_btn.addEventListener("click", function() {
+	header.style.display = "none";
+	main.style.display = "none";
+	footer.style.display = "none";
+	example_website_1.style.display = "flex";
+});
+
+work_example_2_btn.addEventListener("click", function() {
+	header.style.display = "none";
+	main.style.display = "none";
+	footer.style.display = "none";
+	example_website_2.style.display = "flex";
+});
+
+work_example_3_btn.addEventListener("click", function() {
+	header.style.display = "none";
+	main.style.display = "none";
+	footer.style.display = "none";
+	example_website_3.style.display = "flex";
 });
 
 quick_nav_home_link.addEventListener("click", function() {
