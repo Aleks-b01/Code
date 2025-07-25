@@ -427,7 +427,7 @@ main {
 	flex-direction: column;
 }
 
-#aboutme_cubing_imgs_solveimg {
+#aboutme_cubing_imgs_solve_img {
 	display: flex;
 	width: 100%;
 	margin-bottom: 5%;
@@ -438,7 +438,7 @@ main {
 	aspect-ratio: 500 / 283;
 }
 
-#aboutme_cubing_imgs_algsimg {
+#aboutme_cubing_imgs_algs_img {
 	display: flex;
 	width: 100%;
 	background-image: url('assets/aboutme/algs.png');

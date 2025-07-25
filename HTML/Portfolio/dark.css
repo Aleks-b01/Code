@@ -427,7 +427,7 @@ main {
 	flex-direction: column;
 }
 
-#aboutme_cubing_imgs_solveimg {
+#aboutme_cubing_imgs_solve_img {
 	display: flex;
 	width: 100%;
 	margin-bottom: 5%;
@@ -438,7 +438,7 @@ main {
 	aspect-ratio: 500 / 283;
 }
 
-#aboutme_cubing_imgs_algsimg {
+#aboutme_cubing_imgs_algs_img {
 	display: flex;
 	width: 100%;
 	background-image: url('assets/aboutme/algs.png');
@@ -485,8 +485,88 @@ main {
 #example_website_1 {
 	display: none;
 	width: 100%;
+	flex-direction: column;
 	background-color: #1c1c1c;
 	z-index: 200;
+}
+
+#example_website_1_header {
+	display: flex;
+	height: 20vh;
+	width: 100%;
+	align-items: center;
+	justify-content: space-between;
+}
+
+#example_website_1_logo {
+	display: flex;
+	height: 60%;
+	background-image: url('assets/example_logos/example_logo_dark.png');
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-position: center;
+	margin: 0px;
+	margin-left: 3%;
+	aspect-ratio: 1 / 1;
+}
+
+#example_website_1_nav {
+	display: flex;
+	height: 100%;
+	width: 44%;
+	margin: 0px;
+	margin-right: 3%;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.example_website_1_nav_link {
+	font-family: sans-serif;
+	font-size: 20px;
+	font-weight: normal;
+	user-select: none;
+	cursor: pointer;
+	transition: 150ms;
+	color: white;
+}
+
+.example_website_1_nav_link:hover {
+	transition: 150ms;
+	color: #888888;
+}
+
+#example_website_1_home_link {
+	text-decoration-line: underline;
+}
+
+#example_website_1_main {
+	display: flex;
+	width: 100%;
+}
+
+#example_website_1_home {
+	display: flex;
+	width: 100%;
+	flex-direction: column;
+	align-items: center;
+}
+
+#example_website_1_intro {
+	display: flex;
+	height: 55vh;
+	width: 100%;
+	justify-content: flex-end;
+}
+
+#example_website_1_intro_img {
+	display: flex;
+	height: 100%;
+	width: auto;
+	background-image: url('assets/example_images/office_gradient.png');
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-position: center;
+	aspect-ratio: 612 / 359;
 }
 
 #example_website_2 {
