@@ -560,8 +560,8 @@ main {
 
 #example_website_1_intro_img {
 	display: flex;
-	height: 100%;
-	width: auto;
+	height: auto;
+	width: 50%;
 	background-image: url('assets/example_images/office_gradient.png');
 	background-repeat: no-repeat;
 	background-size: contain;
@@ -572,12 +572,13 @@ main {
 
 #example_website_1_intro_hero {
 	display: flex;
-	height: 100%;
-	width: 100%;
+	height: auto;
+	width: 50%;
 	justify-content: space-around;
 	align-items: center;
 	flex-direction: column;
 	order: 1;
+	aspect-ratio: 612 / 359;
 }
 
 #example_website_1_intro_hero_h1 {
