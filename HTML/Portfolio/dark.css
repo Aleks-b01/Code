@@ -582,10 +582,12 @@ main {
 
 #example_website_1_intro_hero_h1 {
 	font-family: sans-serif;
-	font-size: 70px;
+	font-size: 60px;
 	font-weight: normal;
 	color: white;
 	margin: 0px;
+	margin-left: 5%;
+	margin-right: 5%;
 	text-align: center;
 	user-select: none;
 }
@@ -593,10 +595,21 @@ main {
 #example_website_1_intro_hero_btn {
 	display: flex;
 	height: 30%;
-	width: 80%;
+	width: 70%;
+	align-items: center;
 	border-radius: 1000px;
 	background-color: green;
 	cursor: pointer;
+}
+
+#example_website_1_intro_hero_btn_text {
+	width: 100%;
+	color: white;
+	font-family: sans-serif;
+	font-size: 60px;
+	text-align: center;
+	font-weight: normal;
+	user-select: none;
 }
 
 #example_website_2 {
