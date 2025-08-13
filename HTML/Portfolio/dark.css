@@ -560,23 +560,25 @@ main {
 
 #example_website_1_intro_img {
 	display: flex;
-	height: auto;
 	width: 50%;
+	height: auto;
 	background-image: url('assets/example_images/office_gradient.png');
 	background-repeat: no-repeat;
 	background-size: contain;
-	background-position: center;
+	background-position: right;
+	margin: 0px;
 	order: 2;
 	aspect-ratio: 612 / 359;
 }
 
 #example_website_1_intro_hero {
 	display: flex;
-	height: auto;
 	width: 50%;
+	height: auto;
 	justify-content: space-around;
 	align-items: center;
 	flex-direction: column;
+	margin: 0px;
 	order: 1;
 	aspect-ratio: 612 / 359;
 }
@@ -610,6 +612,40 @@ main {
 	font-size: 60px;
 	text-align: center;
 	font-weight: normal;
+	user-select: none;
+}
+
+#example_website_1_whyus {
+	display: flex;
+	height: auto;
+	width: 100%;
+	flex-direction: column;
+	justify-content: center;
+	margin: 0px;
+	margin-top: 20%;
+}
+
+#example_website_1_whyus_title {
+	color: white;
+	font-family: sans-serif;
+	font-size: 60px;
+	font-weight: normal;
+	text-align: center;
+	margin: 0px;
+	margin-bottom: 3%;
+	user-select: none;
+}
+
+#example_website_1_whyus_text {
+	color: white;
+	font-family: sans-serif;
+	font-size: 30px;
+	font-weight: normal;
+	text-align: center;
+	margin: 0px;
+	margin-left: 15%;
+	margin-right: 15%;
+	margin-bottom: 10%;
 	user-select: none;
 }
 
