@@ -507,6 +507,7 @@ main {
 	background-position: center;
 	margin: 0px;
 	margin-left: 3%;
+	cursor: pointer;
 	aspect-ratio: 1 / 1;
 }
 
@@ -555,7 +556,6 @@ main {
 	display: flex;
 	height: 55vh;
 	width: 100%;
-	justify-content: row;
 }
 
 #example_website_1_intro_img {
@@ -567,7 +567,6 @@ main {
 	background-size: contain;
 	background-position: right;
 	margin: 0px;
-	order: 2;
 	aspect-ratio: 612 / 359;
 }
 
@@ -579,7 +578,6 @@ main {
 	align-items: center;
 	flex-direction: column;
 	margin: 0px;
-	order: 1;
 	aspect-ratio: 612 / 359;
 }
 
@@ -647,6 +645,191 @@ main {
 	margin-right: 15%;
 	margin-bottom: 10%;
 	user-select: none;
+}
+
+#example_website_1_stats {
+	display: flex;
+	height: auto;
+	width: 100%;
+	flex-direction: column;
+	margin: 0px;
+	margin-top: 10%;
+	margin-bottom: 10%;
+}
+
+#example_website_1_stats_companies {
+	display: flex;
+	height: auto;
+	width: 100%;
+	margin-bottom: 10%;
+	aspect-ratio: 6 / 2;
+}
+
+#example_website_1_stats_companies_text_div {
+	display: flex;
+	height: auto;
+	width: 50%;
+	align-items: center;
+	aspect-ratio: 3 / 2;
+}
+
+#example_website_1_stats_companies_text {
+	color: white;
+	font-family: sans-serif;
+	font-size: 75px;
+	font-weight: normal;
+	margin: 0px;
+	margin-left: 10%;
+	margin-right: 10%;
+	user-select: none;
+}
+
+#example_website_1_stats_companies_img {
+	height: auto;
+	width: 50%;
+	background-color: grey;
+	aspect-ratio: 3 / 2;
+}
+
+#example_website_1_stats_support {
+	display: flex;
+	height: auto;
+	width: 100%;
+	margin-bottom: 10%;
+	flex-direction: row-reverse;
+	aspect-ratio: 6 / 2;
+}
+
+#example_website_1_stats_support_text_div {
+	display: flex;
+	height: auto;
+	width: 50%;
+	align-items: center;
+	aspect-ratio: 3 / 2;
+}
+
+#example_website_1_stats_support_text {
+	color: white;
+	font-family: sans-serif;
+	font-size: 75px;
+	font-weight: normal;
+	margin: 0px;
+	margin-left: 10%;
+	margin-right: 10%;
+	user-select: none;
+}
+
+#example_website_1_stats_support_img {
+	height: auto;
+	width: 50%;
+	background-color: grey;
+	aspect-ratio: 3 / 2;
+}
+
+#example_website_1_stats_speed {
+	display: flex;
+	height: auto;
+	width: 100%;
+	margin-bottom: 10%;
+	aspect-ratio: 6 / 2;
+}
+
+#example_website_1_stats_speed_text_div {
+	display: flex;
+	height: auto;
+	width: 50%;
+	align-items: center;
+	aspect-ratio: 3 / 2;
+}
+
+#example_website_1_stats_speed_text {
+	color: white;
+	font-family: sans-serif;
+	font-size: 75px;
+	font-weight: normal;
+	margin: 0px;
+	margin-left: 10%;
+	margin-right: 10%;
+	user-select: none;
+}
+
+#example_website_1_stats_speed_img {
+	height: auto;
+	width: 50%;
+	background-color: grey;
+	aspect-ratio: 3 / 2;
+}
+
+#example_website_1_aboutus {
+	display: none;
+	width: 100%;
+	flex-direction: column;
+	align-items: center;
+}
+
+#example_website_1_aboutus_placeholder {
+	color: white;
+	font-family: sans-serif;
+	font-size: 80px;
+	margin: 0px;
+	margin-top: 10%;
+	margin-bottom: 10%;
+}
+
+#example_website_1_services {
+	display: none;
+	width: 100%;
+	flex-direction: column;
+	align-items: center;
+}
+
+#example_website_1_services_placeholder {
+	color: white;
+	font-family: sans-serif;
+	font-size: 80px;
+	margin: 0px;
+	margin-top: 10%;
+	margin-bottom: 10%;
+}
+
+#example_website_1_pricing {
+	display: none;
+	width: 100%;
+	flex-direction: column;
+	align-items: center;
+}
+
+#example_website_1_pricing_placeholder {
+	color: white;
+	font-family: sans-serif;
+	font-size: 80px;
+	margin: 0px;
+	margin-top: 10%;
+	margin-bottom: 10%;
+}
+
+#example_website_1_contact {
+	display: none;
+	width: 100%;
+	flex-direction: column;
+	align-items: center;
+}
+
+#example_website_1_contact_placeholder {
+	color: white;
+	font-family: sans-serif;
+	font-size: 80px;
+	margin: 0px;
+	margin-top: 10%;
+	margin-bottom: 10%;
+}
+
+#example_website_1_footer {
+	display: flex;
+	height: 30vh;
+	width: 100%;
+	margin: 0px;
+	background-color: #7a7b7a;
 }
 
 #example_website_2 {

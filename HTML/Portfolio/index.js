@@ -36,6 +36,18 @@ const quick_nav_aboutme_link = document.getElementById("quick_nav_aboutme_link")
 const quick_nav_contact_link = document.getElementById("quick_nav_contact_link");
 const image_credits = document.getElementById("image_credits");
 const tos = document.getElementById("tos");
+const example_website_1_logo = document.getElementById("example_website_1_logo");
+const example_website_1_home_link = document.getElementById("example_website_1_home_link");
+const example_website_1_aboutus_link = document.getElementById("example_website_1_aboutus_link");
+const example_website_1_services_link = document.getElementById("example_website_1_services_link");
+const example_website_1_pricing_link = document.getElementById("example_website_1_pricing_link");
+const example_website_1_contact_link = document.getElementById("example_website_1_contact_link");
+const example_website_1_home = document.getElementById("example_website_1_home");
+const example_website_1_intro_hero_btn = document.getElementById("example_website_1_intro_hero_btn");
+const example_website_1_aboutus = document.getElementById("example_website_1_aboutus");
+const example_website_1_services = document.getElementById("example_website_1_services");
+const example_website_1_pricing = document.getElementById("example_website_1_pricing");
+const example_website_1_contact = document.getElementById("example_website_1_contact");
 
 let home_preview_current_card = 1;
 let dark_mode = false;
@@ -201,6 +213,8 @@ work_example_1_btn.addEventListener("click", function() {
 	main.style.display = "none";
 	footer.style.display = "none";
 	example_website_1.style.display = "flex";
+	window.scrollTo(0, 0);
+	title.innerText = "Home | Company";
 });
 
 work_example_2_btn.addEventListener("click", function() {
@@ -208,6 +222,8 @@ work_example_2_btn.addEventListener("click", function() {
 	main.style.display = "none";
 	footer.style.display = "none";
 	example_website_2.style.display = "flex";
+	window.scrollTo(0, 0);
+	title.innerText = "Home | Company";
 });
 
 work_example_3_btn.addEventListener("click", function() {
@@ -215,6 +231,8 @@ work_example_3_btn.addEventListener("click", function() {
 	main.style.display = "none";
 	footer.style.display = "none";
 	example_website_3.style.display = "flex";
+	window.scrollTo(0, 0);
+	title.innerText = "Home | Company";
 });
 
 quick_nav_home_link.addEventListener("click", function() {
@@ -239,4 +257,61 @@ legal_image_credits.addEventListener("click", function() {
 
 legal_tos.addEventListener("click", function() {
 	switchPage("tos");
+});
+
+function exampleWebsiteOneSwitchPage(page) {
+	example_website_1_home.style.display = "none";
+	example_website_1_aboutus.style.display = "none";
+	example_website_1_services.style.display = "none";
+	example_website_1_pricing.style.display = "none";
+	example_website_1_contact.style.display = "none";
+	example_website_1_home_link.style.textDecorationLine = "none";
+	example_website_1_aboutus_link.style.textDecorationLine = "none";
+	example_website_1_services_link.style.textDecorationLine = "none";
+	example_website_1_pricing_link.style.textDecorationLine = "none";
+	example_website_1_contact_link.style.textDecorationLine = "none";
+	if (page == "home") {
+		example_website_1_home.style.display = "flex";
+		example_website_1_home_link.style.textDecorationLine = "underline";
+	} else if (page == "aboutus") {
+		example_website_1_aboutus.style.display = "flex";
+		example_website_1_aboutus_link.style.textDecorationLine = "underline";
+	} else if (page == "services") {
+		example_website_1_services.style.display = "flex";
+		example_website_1_services_link.style.textDecorationLine = "underline";
+	} else if (page == "pricing") {
+		example_website_1_pricing.style.display = "flex";
+		example_website_1_pricing_link.style.textDecorationLine = "underline";
+	} else if (page == "contact") {
+		example_website_1_contact.style.display = "flex";
+		example_website_1_contact_link.style.textDecorationLine = "underline";
+	}
+};
+
+example_website_1_logo.addEventListener("click", function() {
+	exampleWebsiteOneSwitchPage("home");
+});
+
+example_website_1_home_link.addEventListener("click", function() {
+	exampleWebsiteOneSwitchPage("home");
+});
+
+example_website_1_aboutus_link.addEventListener("click", function() {
+	exampleWebsiteOneSwitchPage("aboutus");
+});
+
+example_website_1_services_link.addEventListener("click", function() {
+	exampleWebsiteOneSwitchPage("services");
+});
+
+example_website_1_pricing_link.addEventListener("click", function() {
+	exampleWebsiteOneSwitchPage("pricing");
+});
+
+example_website_1_contact_link.addEventListener("click", function() {
+	exampleWebsiteOneSwitchPage("contact");
+});
+
+example_website_1_intro_hero_btn.addEventListener("click", function() {
+	exampleWebsiteOneSwitchPage("services");
 });
