@@ -187,10 +187,12 @@ home_work_link.addEventListener("click", function() {
 
 home_preview_card_arrow_right.addEventListener("click", function() {
 	if (home_preview_current_card == 1) {
+		home_preview_card.style.backgroundImage = "none";
 		home_preview_card.style.backgroundColor = "gray";
 		home_preview_card_arrow_left.style.visibility = "visible";
 		home_preview_current_card = 2;
 	} else if (home_preview_current_card == 2) {
+		home_preview_card.style.backgroundImage = "none";
 		home_preview_card.style.backgroundColor = "blue";
 		home_preview_card_arrow_right.style.visibility = "hidden";
 		home_preview_current_card = 3;
@@ -199,11 +201,17 @@ home_preview_card_arrow_right.addEventListener("click", function() {
 
 home_preview_card_arrow_left.addEventListener("click", function() {
 	if (home_preview_current_card == 3) {
+		home_preview_card.style.backgroundImage = "none";
 		home_preview_card.style.backgroundColor = "gray";
 		home_preview_card_arrow_right.style.visibility = "visible";
 		home_preview_current_card = 2;
 	} else if (home_preview_current_card == 2) {
-		home_preview_card.style.backgroundColor = "black";
+		home_preview_card.style.backgroundColor = "none";
+		if (dark_mode == false) {
+			home_preview_card.style.backgroundImage = "url('assets/example_websites_previews/example_website_1')";
+		} else {
+			home_preview_card.style.backgroundImage = "url('assets/example_websites_previews/example_website_1')";
+		}
 		home_preview_card_arrow_left.style.visibility = "hidden";
 		home_preview_current_card = 1;
 	}
