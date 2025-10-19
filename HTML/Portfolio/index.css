@@ -216,7 +216,7 @@ main {
 	border-style: solid;
 	border-width: 3px;
 	border-color: black;
-	background-image: url('assets/example_websites_previews/example_website_1');
+	background-image: url('assets/example_websites_previews/example_website_1.png');
 	background-repeat: no-repeat;
 	background-size: contain;
 	margin: 0px;
@@ -228,12 +228,13 @@ main {
 	display: flex;
 	height: 50px;
 	width: 50px;
-	margin-right: 3%;
+	margin-left: 3%;
 	background-image: url('assets/icons/arrow_left.png');
 	background-repeat: no-repeat;
 	background-size: contain;
+	visibility: hidden;
 	cursor: pointer;
-	order: 2;
+	order: 1;
 }
 
 #home_preview_card_arrow_right {

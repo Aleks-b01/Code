@@ -214,18 +214,25 @@ main {
 #home_preview_card {
 	display: flex;
 	height: 60vh;
-	width: auto;
-	justify-content: space-between;
+	width: 100%;
+	justify-content: center;
 	align-items: center;
+	margin: 0px;
+	margin-bottom: 10%;
+}
+
+#home_preview_card_img {
+	display: flex;
+	height: 100%;
+	width: auto;
 	border-radius: 20px;
 	border-style: solid;
 	border-width: 3px;
 	border-color: white;
-	background-image: url('assets/example_websites_previews/example_website_1');
+	background-image: url('assets/example_websites_previews/example_website_1_dark.png');
 	background-repeat: no-repeat;
 	background-size: contain;
 	margin: 0px;
-	margin-bottom: 10%;
 	aspect-ratio: 16 / 9;
 }
 
@@ -233,24 +240,23 @@ main {
 	display: flex;
 	height: 50px;
 	width: 50px;
-	margin-right: 3%;
+	margin-right: 5%;
 	background-image: url('assets/icons/arrow_left_dark.png');
 	background-repeat: no-repeat;
 	background-size: contain;
+	visibility: hidden;
 	cursor: pointer;
-	order: 2;
 }
 
 #home_preview_card_arrow_right {
 	display: flex;
 	height: 50px;
 	width: 50px;
-	margin-right: 3%;
+	margin-left: 5%;
 	background-image: url('assets/icons/arrow_right_dark.png');
 	background-repeat: no-repeat;
 	background-size: contain;
 	cursor: pointer;
-	order: 2;
 }
 
 #work {

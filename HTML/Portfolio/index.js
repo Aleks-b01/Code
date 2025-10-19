@@ -15,7 +15,7 @@ const contact_link = document.getElementById("contact_link");
 const main = document.getElementsByTagName("main")[0];
 const home = document.getElementById("home");
 const home_work_link = document.getElementById("home_work_link");
-const home_preview_card = document.getElementById("home_preview_card");
+const home_preview_card_img = document.getElementById("home_preview_card_img");
 const home_preview_card_arrow_right = document.getElementById("home_preview_card_arrow_right");
 const home_preview_card_arrow_left = document.getElementById("home_preview_card_arrow_left");
 const work = document.getElementById("work");
@@ -187,13 +187,13 @@ home_work_link.addEventListener("click", function() {
 
 home_preview_card_arrow_right.addEventListener("click", function() {
 	if (home_preview_current_card == 1) {
-		home_preview_card.style.backgroundImage = "none";
-		home_preview_card.style.backgroundColor = "gray";
+		home_preview_card_img.style.backgroundImage = "none";
+		home_preview_card_img.style.backgroundColor = "gray";
 		home_preview_card_arrow_left.style.visibility = "visible";
 		home_preview_current_card = 2;
 	} else if (home_preview_current_card == 2) {
-		home_preview_card.style.backgroundImage = "none";
-		home_preview_card.style.backgroundColor = "blue";
+		home_preview_card_img.style.backgroundImage = "none";
+		home_preview_card_img.style.backgroundColor = "blue";
 		home_preview_card_arrow_right.style.visibility = "hidden";
 		home_preview_current_card = 3;
 	}
@@ -201,16 +201,16 @@ home_preview_card_arrow_right.addEventListener("click", function() {
 
 home_preview_card_arrow_left.addEventListener("click", function() {
 	if (home_preview_current_card == 3) {
-		home_preview_card.style.backgroundImage = "none";
-		home_preview_card.style.backgroundColor = "gray";
+		home_preview_card_img.style.backgroundImage = "none";
+		home_preview_card_img.style.backgroundColor = "gray";
 		home_preview_card_arrow_right.style.visibility = "visible";
 		home_preview_current_card = 2;
 	} else if (home_preview_current_card == 2) {
-		home_preview_card.style.backgroundColor = "none";
+		home_preview_card_img.style.backgroundColor = "none";
 		if (dark_mode == false) {
-			home_preview_card.style.backgroundImage = "url('assets/example_websites_previews/example_website_1')";
+			home_preview_card_img.style.backgroundImage = "url('assets/example_websites_previews/example_website_1.png')";
 		} else {
-			home_preview_card.style.backgroundImage = "url('assets/example_websites_previews/example_website_1')";
+			home_preview_card_img.style.backgroundImage = "url('assets/example_websites_previews/example_website_1_dark.png')";
 		}
 		home_preview_card_arrow_left.style.visibility = "hidden";
 		home_preview_current_card = 1;
