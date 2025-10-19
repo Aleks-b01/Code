@@ -42,6 +42,7 @@ const example_website_1_aboutus_link = document.getElementById("example_website_
 const example_website_1_services_link = document.getElementById("example_website_1_services_link");
 const example_website_1_pricing_link = document.getElementById("example_website_1_pricing_link");
 const example_website_1_contact_link = document.getElementById("example_website_1_contact_link");
+const example_website_1_exit = document.getElementById("example_website_1_exit");
 const example_website_1_home = document.getElementById("example_website_1_home");
 const example_website_1_intro_hero_btn = document.getElementById("example_website_1_intro_hero_btn");
 const example_website_1_aboutus = document.getElementById("example_website_1_aboutus");
@@ -212,6 +213,7 @@ work_example_1_btn.addEventListener("click", function() {
 	header.style.display = "none";
 	main.style.display = "none";
 	footer.style.display = "none";
+	exampleWebsiteOneSwitchPage("home");
 	example_website_1.style.display = "flex";
 	window.scrollTo(0, 0);
 	title.innerText = "Home | Company";
@@ -273,18 +275,23 @@ function exampleWebsiteOneSwitchPage(page) {
 	if (page == "home") {
 		example_website_1_home.style.display = "flex";
 		example_website_1_home_link.style.textDecorationLine = "underline";
+		title.innerText = "Home | Company";
 	} else if (page == "aboutus") {
 		example_website_1_aboutus.style.display = "flex";
 		example_website_1_aboutus_link.style.textDecorationLine = "underline";
+		title.innerText = "About Us | Company";
 	} else if (page == "services") {
 		example_website_1_services.style.display = "flex";
 		example_website_1_services_link.style.textDecorationLine = "underline";
+		title.innerText = "Services | Company";
 	} else if (page == "pricing") {
 		example_website_1_pricing.style.display = "flex";
 		example_website_1_pricing_link.style.textDecorationLine = "underline";
+		title.innerText = "Pricing | Company";
 	} else if (page == "contact") {
 		example_website_1_contact.style.display = "flex";
 		example_website_1_contact_link.style.textDecorationLine = "underline";
+		title.innerText = "Contact | Company";
 	}
 };
 
@@ -310,6 +317,15 @@ example_website_1_pricing_link.addEventListener("click", function() {
 
 example_website_1_contact_link.addEventListener("click", function() {
 	exampleWebsiteOneSwitchPage("contact");
+});
+
+example_website_1_exit.addEventListener("click", function() {
+	example_website_1.style.display = "none";
+	header.style.display = "flex";
+	main.style.display = "flex";
+	footer.style.display = "flex";
+	window.scrollTo(0, 0);
+	title.innerText = "Work | Aleksander Bober";
 });
 
 example_website_1_intro_hero_btn.addEventListener("click", function() {

@@ -33,7 +33,7 @@ header {
 nav {
 	display: none;
 	height: 100%;
-	width: 25%;
+	width: 30%;
 	justify-content: space-between;
 	align-items: center;
 	position: absolute;
@@ -51,7 +51,7 @@ nav {
 
 .nav_link:hover {
 	transition: 150ms;
-	color: #888888;
+	color: #aaaaaa;
 }
 
 #home_link {
@@ -134,8 +134,8 @@ main {
 }
 
 @keyframes fadein-h1 {
-	from {color: #1c1c1c; margin-top: 15%;}
-	to {color: white; margin-top: 6%;}
+	from {color: #1c1c1c; margin-top: 20%;}
+	to {color: white; margin-top: 10%;}
 }
 
 @keyframes fadein-bio {
@@ -260,7 +260,7 @@ main {
 	font-weight: normal;
 	text-align: center;
 	margin: 0px;
-	margin-top: 5%;
+	margin-top: 8%;
 	margin-bottom: 10%;
 	color: white;
 	user-select: none;
@@ -320,7 +320,7 @@ main {
 	font-weight: normal;
 	text-align: center;
 	margin: 0px;
-	margin-top: 5%;
+	margin-top: 8%;
 	margin-bottom: 10%;
 	color: white;
 	user-select: none;
@@ -463,7 +463,7 @@ main {
 	font-weight: normal;
 	text-align: center;
 	margin: 0px;
-	margin-top: 5%;
+	margin-top: 8%;
 	margin-bottom: 5%;
 	color: white;
 	user-select: none;
@@ -492,7 +492,7 @@ main {
 
 #example_website_1_header {
 	display: flex;
-	height: 20vh;
+	height: 15vh;
 	width: 100%;
 	align-items: center;
 	justify-content: space-between;
@@ -500,7 +500,7 @@ main {
 
 #example_website_1_logo {
 	display: flex;
-	height: 60%;
+	height: 65%;
 	background-image: url('assets/example_logos/example_logo_dark.png');
 	background-repeat: no-repeat;
 	background-size: contain;
@@ -514,16 +514,16 @@ main {
 #example_website_1_nav {
 	display: flex;
 	height: 100%;
-	width: 44%;
+	width: 50%;
 	margin: 0px;
-	margin-right: 3%;
+	margin-right: 5%;
 	justify-content: space-between;
 	align-items: center;
 }
 
 .example_website_1_nav_link {
 	font-family: sans-serif;
-	font-size: 20px;
+	font-size: 16px;
 	font-weight: normal;
 	user-select: none;
 	cursor: pointer;
@@ -533,11 +533,26 @@ main {
 
 .example_website_1_nav_link:hover {
 	transition: 150ms;
-	color: #888888;
+	color: #aaaaaa;
 }
 
 #example_website_1_home_link {
 	text-decoration-line: underline;
+}
+
+#example_website_1_exit {
+	font-family: sans-serif;
+	font-size: 18px;
+	font-weight: normal;
+	user-select: none;
+	cursor: pointer;
+	transition: 150ms;
+	color: white;
+}
+
+#example_website_1_exit:hover {
+	transition: 150ms;
+	color: #aaaaaa;
 }
 
 #example_website_1_main {
@@ -556,6 +571,7 @@ main {
 	display: flex;
 	height: 55vh;
 	width: 100%;
+	margin-top: 5%;
 }
 
 #example_website_1_intro_img {
@@ -574,7 +590,7 @@ main {
 	display: flex;
 	width: 50%;
 	height: auto;
-	justify-content: space-around;
+	justify-content: flex-start;
 	align-items: center;
 	flex-direction: column;
 	margin: 0px;
@@ -583,20 +599,22 @@ main {
 
 #example_website_1_intro_hero_h1 {
 	font-family: sans-serif;
-	font-size: 60px;
+	font-size: 50px;
 	font-weight: normal;
 	color: white;
 	margin: 0px;
-	margin-left: 5%;
-	margin-right: 5%;
+	margin-top: 10%;
+	margin-left: 10%;
+	margin-right: 10%;
+	margin-bottom: 10%;
 	text-align: center;
 	user-select: none;
 }
 
 #example_website_1_intro_hero_btn {
 	display: flex;
-	height: 30%;
-	width: 70%;
+	height: 20%;
+	width: 45%;
 	align-items: center;
 	border-radius: 1000px;
 	background-color: green;
@@ -607,7 +625,7 @@ main {
 	width: 100%;
 	color: white;
 	font-family: sans-serif;
-	font-size: 60px;
+	font-size: 30px;
 	text-align: center;
 	font-weight: normal;
 	user-select: none;
@@ -767,13 +785,23 @@ main {
 	align-items: center;
 }
 
-#example_website_1_aboutus_placeholder {
+#example_website_1_aboutus_head {
+	display: flex;
+	width: 100%;
+	justify-content: center;
+	align-items: center;
+	background-image: url('assets/example_images/office_room.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+	aspect-ratio: 800 / 400;
+}
+
+#example_website_1_aboutus_head_h1 {
 	color: white;
 	font-family: sans-serif;
-	font-size: 80px;
-	margin: 0px;
-	margin-top: 10%;
-	margin-bottom: 10%;
+	font-size: 100px;
+	user-select: none;
 }
 
 #example_website_1_services {
@@ -829,7 +857,7 @@ main {
 	height: 30vh;
 	width: 100%;
 	margin: 0px;
-	background-color: #7a7b7a;
+	background-color: #161616;
 }
 
 #example_website_2 {
@@ -854,7 +882,7 @@ footer {
 	margin: 0px;
 	justify-content: space-between;
 	align-items: center;
-	background-color: #7a7b7a;
+	background-color: #161616;
 }
 
 #email {
@@ -887,7 +915,6 @@ footer {
 }
 
 .legal_link {
-	color: white;
 	font-family: sans-serif;
 	font-size: 20px;
 	font-weight: normal;
@@ -896,6 +923,8 @@ footer {
 	margin-bottom: 2%;
 	cursor: pointer;
 	user-select: none;
+	transition: 150ms;
+	color: white;
 }
 
 .legal_link:hover {
@@ -926,7 +955,6 @@ footer {
 }
 
 .quick_nav_link {
-	color: white;
 	font-family: sans-serif;
 	font-size: 20px;
 	font-weight: normal;
@@ -935,6 +963,8 @@ footer {
 	margin-bottom: 2%;
 	cursor: pointer;
 	user-select: none;
+	transition: 150ms;
+	color: white;
 }
 
 .quick_nav_link:hover {
