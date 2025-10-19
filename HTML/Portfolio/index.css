@@ -89,7 +89,7 @@ nav {
 	top: 50%;
 	right: 6%;
 	transform: translate(0%, -50%);
-	background-image: url('assets/nav/burger.png');
+	background-image: url('assets/icons/burger.png');
 	background-repeat: no-repeat;
 	background-size: contain;
 	background-position: center;
@@ -104,7 +104,7 @@ nav {
 	top: 50%;
 	right: 6%;
 	transform: translate(0%, -50%);
-	background-image: url('assets/nav/nav_close.png');
+	background-image: url('assets/icons/nav_close.png');
 	background-repeat: no-repeat;
 	background-size: contain;
 	background-position: center;
