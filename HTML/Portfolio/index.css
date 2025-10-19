@@ -222,27 +222,28 @@ main {
 	aspect-ratio: 16 / 9;
 }
 
-#home_preview_card_arrow_right {
-	display: flex;
-	height: 50px;
-	width: 50px;
-	border-radius: 50px;
-	margin-right: 3%;
-	background-color: white;
-	cursor: pointer;
-	order: 2;
-}
-
 #home_preview_card_arrow_left {
 	display: flex;
 	height: 50px;
 	width: 50px;
-	border-radius: 50px;
-	margin-left: 3%;
-	background-color: white;
+	margin-right: 3%;
+	background-image: url('assets/icons/arrow_left.png');
+	background-repeat: no-repeat;
+	background-size: contain;
 	cursor: pointer;
-	order: 1;
-	visibility: hidden;
+	order: 2;
+}
+
+#home_preview_card_arrow_right {
+	display: flex;
+	height: 50px;
+	width: 50px;
+	margin-right: 3%;
+	background-image: url('assets/icons/arrow_right.png');
+	background-repeat: no-repeat;
+	background-size: contain;
+	cursor: pointer;
+	order: 2;
 }
 
 #work {
