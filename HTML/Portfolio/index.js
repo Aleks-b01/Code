@@ -44,7 +44,7 @@ const example_website_1_pricing_link = document.getElementById("example_website_
 const example_website_1_contact_link = document.getElementById("example_website_1_contact_link");
 const example_website_1_exit = document.getElementById("example_website_1_exit");
 const example_website_1_home = document.getElementById("example_website_1_home");
-const example_website_1_intro_hero_btn = document.getElementById("example_website_1_intro_hero_btn");
+const example_website_1_hero_btn = document.getElementById("example_website_1_hero_btn");
 const example_website_1_aboutus = document.getElementById("example_website_1_aboutus");
 const example_website_1_services = document.getElementById("example_website_1_services");
 const example_website_1_pricing = document.getElementById("example_website_1_pricing");
@@ -67,6 +67,9 @@ switch_to_dark_mode.addEventListener("click", function() {
 	stylesheet.setAttribute('href', 'dark.css');
 	switch_to_dark_mode.style.display = "none";
 	switch_to_light_mode.style.display = "flex";
+	if (home_preview_current_card == 1) {
+		home_preview_card_img.style.backgroundImage = "url('assets/example_websites_previews/example_website_1_dark.png')";
+	}
 });
 
 switch_to_light_mode.addEventListener("click", function() {
@@ -74,6 +77,9 @@ switch_to_light_mode.addEventListener("click", function() {
 	stylesheet.setAttribute('href', 'index.css');
 	switch_to_light_mode.style.display = "none";
 	switch_to_dark_mode.style.display = "flex";
+	if (home_preview_current_card == 1) {
+		home_preview_card_img.style.backgroundImage = "url('assets/example_websites_previews/example_website_1.png')";
+	}
 });
 
 burger_btn.addEventListener("click", function() {
@@ -336,6 +342,6 @@ example_website_1_exit.addEventListener("click", function() {
 	title.innerText = "Work | Aleksander Bober";
 });
 
-example_website_1_intro_hero_btn.addEventListener("click", function() {
+example_website_1_hero_btn.addEventListener("click", function() {
 	exampleWebsiteOneSwitchPage("services");
 });
