@@ -1,0 +1,16 @@
+Hearts/Diamonds: #fe0000
+Clubs/Spades: #231f20
+margin right bj: -95
+
+settings:
+card design: blackjack,js 411, y
+blackjack value displays: blackjack.js x
+blackjack symbols instead of text for btns: index.js x
+disable animations: blackjack.js x, y
+faster animations: blackjack.js 392 398 404 410 415
+reset prev bet: blackjack.js 414
+
+bj funcs to revamp later:
+updateBet()
+updateChipsDisplay -> updateChips
+

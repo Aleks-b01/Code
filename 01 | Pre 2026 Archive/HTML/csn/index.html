@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="index.css">
+	<title>Casino</title>
+</head>
+<body style="background-color: rgb(47, 52, 56)">
+
+<div id="tabIndicator">
+	<div class="TabIndicator" id="tabIndicatorSlots"></div>
+	<div class="TabIndicator" id="tabIndicatorTable"></div>
+	<div class="TabIndicator" id="tabIndicatorVirtual"></div>
+</div>
+
+<div id="ChipsDisplay">
+	<h1 id="chipsDisplay">5k$</h1>
+</div>
+
+<div id="arrowCorrectDiv">
+	<div id="LeftArrow">
+		<h1 id="leftArrowV">&lt</h1>
+	</div>
+	<div id="RightArrow">
+		<h1 id="rightArrowV">&gt</h1>
+	</div>
+</div>
+
+<div id="tabCorrectDiv">
+	<div class="Tabs" id="tabSlots">
+		<div id="tabSlotsFixed">
+			<div class="SlotsFixed" id="slots1"></div>
+			<div class="SlotsFixed" id="slots2"></div>
+		</div>
+		<div id="tabSlotsFlex">
+			<div class="SlotsFlex" id="slots3"></div>
+			<div class="SlotsFlex" id="slots4"></div>
+			<div class="SlotsFlex" id="slots5"></div>
+			<div class="SlotsFlex" id="slots6"></div>
+			<div class="SlotsFlex" id="slots7"></div>
+			<div class="SlotsFlex" id="slots8"></div>
+			<div class="SlotsFlex" id="slots9"></div>
+			<div class="SlotsFlex" id="slots10"></div>
+		</div>
+	</div>
+	
+	<div class="Tabs" id="tabTable">
+		<div id=tabTablePoker>
+			<div id="pokerArt">
+				<div id="pokerTexasHoldem"></div>
+				<div id="pokerOmahaHoldem"></div>
+			</div>
+		</div>
+		<div id="tabTableRest">
+			<div class="Table" id="blackjack"></div>
+			<div class="Table" id="baccarat"></div>
+			<div class="Table" id="roulette"></div>
+			<div class="Table" id="craps"></div>
+		</div>
+	</div>
+	
+	<div class="Tabs" id="tabVirtual">
+		<div class="Virtual" id="crash"></div>
+		<div class="Virtual" id="dice"></div>
+		<div class="Virtual" id="plinko"></div>
+		<div class="Virtual" id="mines"></div>
+		<div class="Virtual" id="cases"></div>
+		<div class="Virtual" id="coinflip"></div>
+		<div class="Virtual" id="keno"></div>
+		<div class="Virtual" id="tower"></div>
+	</div>
+</div>
+
+<div id="blackjackGame">
+	<div id="exitBlackjack"></div>
+	<div id="blackjackCurrentBet"></div>
+	<div id="blackjackBetScreen">
+		<div id="blackjackBetSign">Bet</div>
+		<div id="blackjackBetChipsDisplayDiv">
+			<div id="blackjackBetChipsDisplay"></div>
+		</div>
+		<div id="blackjackBetDisplay">0$</div>
+		<div id="blackjackBetBtnsDiv">
+			<div id="blackjackBetBtns">
+				<div class="BlackjackBetBtn" id="blackjackPlay">Play</div>
+				<div class="BlackjackBetBtn" id="blackjackClearBet">Clear Bet</div>
+				<div class="BlackjackBetBtn" id="blackjackMinusBet">-</div>
+			</div>
+		</div>
+		<div id="blackjackBetChips">
+			<div class="BlackjackBetChip" id="blackjackBet50"></div>
+			<div class="BlackjackBetChip" id="blackjackBet100"></div>
+			<div class="BlackjackBetChip" id="blackjackBet500"></div>
+			<div class="BlackjackBetChip" id="blackjackBet1k"></div>
+			<div class="BlackjackBetChip" id="blackjackBet5k"></div>
+			<div class="BlackjackBetChip" id="blackjackBet10k"></div>
+		</div>
+	</div>
+	<div id="blackjackBtns">
+		<div class="BlackjackBtn" id="blackjackHit">Hit</div>
+		<div class="BlackjackBtn" id="blackjackStand">Stand</div>
+		<div class="BlackjackBtn" id="blackjackDouble">Double</div>
+		<div class="BlackjackBtn" id="blackjackSplit">Split</div>
+	</div>
+	<div id="blackjackCardsPlayer"></div>
+	<div id="blackjackCardsDealer"></div>
+	<div id="blackjackPlayerValue"></div>
+	<div id="blackjackDealerValue"></div>
+	<div id="blackjackPlayerValue1"></div>
+</div>
+
+<div id="chipsCounter">5000<div>
+
+</body>
+<script src="js/index.js"></script>
+<script src="js/blackjack.js"></script>
+</html>

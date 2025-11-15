@@ -1,0 +1,7 @@
+fix 3x3 and 4x4 scrambling bug where if for example there's F B then there's a chance for F to appear again
+
+algtrainer html needs to be fixed
+helper html needs to be built
+settings html needs to be built
+
+the rest of this garbage

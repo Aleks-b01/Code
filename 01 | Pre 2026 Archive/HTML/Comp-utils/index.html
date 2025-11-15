@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="index.css">
+	<title>Comp Utils</title>
+</head>
+<body id="bgColor" style="background-color: rgb(47, 52, 56)">
+
+<div id="headerDiv">
+	<h1 id="header">Comp Utils</h1>
+</div>
+<button id="settingsBtn">Settings</button>
+<div id="menu">
+	<button class="menuBtns" id="calcBtn">Average Calculator</button>
+	<button class="menuBtns" id="scrambleBtn">Scramble Generator</button>
+	<button class="menuBtns" id="algsBtn">Algorithm Trainer</button>
+	<button class="menuBtns" id="helpersBtn">Helper Tools</button>
+	<button class="menuBtns" id="competitiongroups">Competition Groups</button>
+	<button class="menuBtns" id="wcalive">WCA Live</button>
+</div>
+
+<div id="calc">
+	<div id="timesDiv">
+		<h1 class="time" id="time1">1.  </h1>
+		<h1 class="time" id="time2">2.  </h1>
+		<h1 class="time" id="time3">3.  </h1>
+		<h1 class="time" id="time4">4.  </h1>
+		<h1 class="time" id="time5">5.  </h1>
+	</div>
+	<div id="avgDiv">
+		<h1 class="time" id="best">Best:  </h1>
+		<h1 class="time" id="worst">Worst:  </h1>
+		<h1 class="time" id="bpa">BPA:  </h1>
+		<h1 class="time" id="wpa">WPA:  </h1>
+		<h1 class="time" id="target">Target:  </h1>
+		<h1 class="time" id="avg">Average:  </h1>
+	</div>
+	<div id="timeInputDiv">
+		<input id="timeInput"></input>
+	</div>
+	<div id="calcBtnsDiv">
+		<button class="penaltyBtns" id="deleteBtn">Delete</button>
+		<button class="penaltyBtns" id="resetBtn">Reset</button>
+		<button id="calcMenuBtn">Back</button>
+		<button class="penaltyBtns" id="OK">OK</button>
+		<button class="penaltyBtns" id="P2">+2</button>
+		<button class="penaltyBtns" id="DNF">DNF</button>
+	</div>
+	<div id="confirmPenalty">
+		<h1 id="confirmText"></h1>
+		<button id="cancel">Cancel</button>
+		<button id="yes">Yes</button>
+	</div>
+	<button id="toSetTarget">Target</button>
+</div>
+<div id="scramble">
+	<button id="nextScramble"></button>
+	<button id="scrambleMenuBtn">Back</button>
+	<button id="scrambleSelectBtn"></button>
+	<h1 id="scrambleText"></h1>
+	<div id="scrambleSelect">
+		<button class="scrambleEvent" id="e222">2x2</button>
+		<button class="scrambleEvent" id="e333">3x3</button>
+		<button class="scrambleEvent" id="e444">4x4</button>
+		<button class="scrambleEvent" id="e555">5x5</button>
+		<button class="scrambleEvent" id="e666">6x6</button>
+		<button class="scrambleEvent" id="e777">7x7</button>
+		<button class="scrambleEvent" id="e3oh">3x3 OH</button>
+		<button class="scrambleEvent" id="e3bld">3BLD</button>
+		<button class="scrambleEvent" id="e3fm">FMC</button>
+		<button class="scrambleEvent" id="e3mbld">MBLD</button>
+		<button class="scrambleEvent" id="epyra">Pyraminx</button>
+		<button class="scrambleEvent" id="eskewb">Skewb</button>
+		<button class="scrambleEvent" id="esq1">SQ1</button>
+		<button class="scrambleEvent" id="emgmx">Mega</button>
+		<button class="scrambleEvent" id="eclock">Clock</button>
+		<button class="scrambleEvent" id="e4bld">4BLD</button>
+		<button class="scrambleEvent" id="e5bld">5BLD</button>
+	</div>
+</div>
+<div id="algs">
+	<button id="algsSelectBtn"></button>
+	<div id="algsSelect">
+	</div>
+</div>
+<div id="settings">
+	<button id="settingsMenuBtn">Back</button>
+	<button id="toCalc"></button>
+	<h1 class="settingsHeader" id="settingsGeneralHeader">General</h1>
+	<h1 class="time">Dark/Light mode</h1>
+	<button id="lxa">D</button>
+	<h1 class="settingsHeader" id="settingsCalcHeader">Average Calculator</h1>
+	<h1 class="time" id="currentTarget">Target average:  </h1>
+	<input id="targetInput"></input>
+	<button id="format">ao5</button>
+</div>
+
+</body>
+<script src="js/index.js"></script>
+<script src="js/avgcalculator.js"></script>
+<script src="js/scramble.js"></script>
+<script src="js/algtrainer.js"></script>
+<script src="js/helper.js"></script>
+</html>
