@@ -287,7 +287,7 @@ function checkKnight(index1, index2) {
 	index = index1 + index2;
 	if (index1 - 2  >= 0 && index2 + 1 < 8) {
 		if (board[index1][index2] % 2 != 0) {
-			if (board[index1 - 2][index2 + 1] == 0 || board[index1 - 2][index2 + 1] % 2 == 0) {
+			if (board[index1 - 2][index2 + 1] % 2 == 0) {
 				moves.push(index1 - 2, index2 + 1);
 			}
 		} else {
@@ -298,7 +298,7 @@ function checkKnight(index1, index2) {
 	}
 	if (index1 - 1  >= 0 && index2 + 2 < 8) {
 		if (board[index1][index2] % 2 != 0) {
-			if (board[index1 - 1][index2 + 2] == 0 || board[index1 - 1][index2 + 2] % 2 == 0) {
+			if (board[index1 - 1][index2 + 2] % 2 == 0) {
 				moves.push(index1 - 1, index2 + 2);
 			}
 		} else {
@@ -309,7 +309,7 @@ function checkKnight(index1, index2) {
 	}
 	if (index1 + 1 < 8 && index2 + 2 < 8) {
 		if (board[index1][index2] % 2 != 0) {
-			if (board[index1 + 1][index2 + 2] == 0 || board[index1 + 1][index2 + 2] % 2 == 0) {
+			if (board[index1 + 1][index2 + 2] % 2 == 0) {
 				moves.push(index1 + 1, index2 + 2);
 			}
 		} else {
@@ -320,7 +320,7 @@ function checkKnight(index1, index2) {
 	}
 	if (index1 + 2 < 8 && index2 + 1 < 8) {
 		if (board[index1][index2] % 2 != 0) {
-			if (board[index1 + 2][index2 + 1] == 0 || board[index1 + 2][index2 + 1] % 2 == 0) {
+			if (board[index1 + 2][index2 + 1] % 2 == 0) {
 				moves.push(index1 + 2, index2 + 1);
 			}
 		} else {
@@ -331,7 +331,7 @@ function checkKnight(index1, index2) {
 	}
 	if (index1 + 2 < 8 && index2 - 1 >= 0) {
 		if (board[index1][index2] % 2 != 0) {
-			if (board[index1 + 2][index2 - 1] == 0 || board[index1 + 2][index2 - 1] % 2 == 0) {
+			if (board[index1 + 2][index2 - 1] % 2 == 0) {
 				moves.push(index1 + 2, index2 - 1);
 			}
 		} else {
@@ -342,7 +342,7 @@ function checkKnight(index1, index2) {
 	}
 	if (index1 + 1 < 8 && index2 - 2 >= 0) {
 		if (board[index1][index2] % 2 != 0) {
-			if (board[index1 + 1][index2 - 2] == 0 || board[index1 + 1][index2 - 2] % 2 == 0) {
+			if (board[index1 + 1][index2 - 2] % 2 == 0) {
 				moves.push(index1 + 1, index2 - 2);
 			}
 		} else {
@@ -353,7 +353,7 @@ function checkKnight(index1, index2) {
 	}
 	if (index1 - 1 >= 0 && index2 - 2 >= 0) {
 		if (board[index1][index2] % 2 != 0) {
-			if (board[index1 - 1][index2 - 2] == 0 || board[index1 - 1][index2 - 2] % 2 == 0) {
+			if (board[index1 - 1][index2 - 2] % 2 == 0) {
 				moves.push(index1 - 1, index2 - 2);
 			}
 		} else {
@@ -364,7 +364,7 @@ function checkKnight(index1, index2) {
 	}
 	if (index1 - 2 >= 0 && index2 - 1 >= 0) {
 		if (board[index1][index2] % 2 != 0) {
-			if (board[index1 - 2][index2 - 1] == 0 || board[index1 - 2][index2 - 1] % 2 == 0) {
+			if (board[index1 - 2][index2 - 1] % 2 == 0) {
 				moves.push(index1 - 2, index2 - 1);
 			}
 		} else {
@@ -760,9 +760,6 @@ function checkLegalMoves() {
 				checkPawn(i, j);
 			} else if (board[i][j] == 3 || board[i][j] == 4) {
 				checkKnight(i, j);
-				let index = "";
-				index = i + j;
-				console.log(legalMoves.get(index));
 			} else if (board[i][j] == 5 || board[i][j] == 6) {
 				checkBishop(i, j);
 			} else if (board[i][j] == 7 || board[i][j] == 8) {
