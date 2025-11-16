@@ -1,0 +1,41 @@
+* {
+	margin: none;
+	font-family: sans-serif;
+	user-drag: none;
+}
+
+body {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	overflow: hidden;
+}
+
+#cursor_piece {
+	display: none;
+	background-size: contain;
+	background-repeat: no-repeat;
+	position: absolute;
+	pointer-events: none;
+}
+
+#chessboard {
+	display: grid;
+	height: 95vh;
+	border: 3px solid black;
+	grid-template-columns: repeat(8, 1fr);
+	grid-template-rows: repeat(8, 1fr);
+	background-image: url('assets/boards/aqua_board.png');
+	background-size: contain;
+	background-repeat: no-repeat;
+	aspect-ratio: 1 / 1;
+}
+
+#a8, #b8, #c8, #d8, #e8, #f8, #g8, #h8, #a7, #b7, #c7, #d7, #e7, #f7, #g7, #h7, #a6, #b6, #c6, #d6, #e6, #f6, #g6, #h6, #a5, #b5, #c5, #d5, #e5, #f5, #g5, #h5, #a4, #b4, #c4, #d4, #e4, #f4, #g4, #h4, #a3, #b3, #c3, #d3, #e3, #f3, #g3, #h3, #a2, #b2, #c2, #d2, #e2, #f2, #g2, #h2, #a1, #b1, #c1, #d1, #e1, #f1, #g1, #h1 {
+	background-size: contain;
+	background-repeat: no-repeat;
+}
+
+#a8:hover, #b8:hover, #c8:hover, #d8:hover, #e8:hover, #f8:hover, #g8:hover, #h8:hover, #a7:hover, #b7:hover, #c7:hover, #d7:hover, #e7:hover, #f7:hover, #g7:hover, #h7:hover, #a6:hover, #b6:hover, #c6:hover, #d6:hover, #e6:hover, #f6:hover, #g6:hover, #h6:hover, #a5:hover, #b5:hover, #c5:hover, #d5:hover, #e5:hover, #f5:hover, #g5:hover, #h5:hover, #a4:hover, #b4:hover, #c4:hover, #d4:hover, #e4:hover, #f4:hover, #g4:hover, #h4:hover, #a3:hover, #b3:hover, #c3:hover, #d3:hover, #e3:hover, #f3:hover, #g3:hover, #h3:hover, #a2:hover, #b2:hover, #c2:hover, #d2:hover, #e2:hover, #f2:hover, #g2:hover, #h2:hover, #a1:hover, #b1:hover, #c1:hover, #d1:hover, #e1:hover, #f1:hover, #g1:hover, #h1:hover {
+	cursor: var(--cursor);
+}
