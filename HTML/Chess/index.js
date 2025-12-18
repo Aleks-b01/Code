@@ -308,14 +308,14 @@ function checkPawn(index1, index2) {
 			moves.push(pushIndex);
 		}
 		if (board[index1][index2 + 1] == 2) {
-			tempIndex = index1 + (index2 + 1);
+			tempIndex = "" + index1 + (index2 + 1);
 			if (enPassant.has(tempIndex)) {
 				pushIndex = "" + (index1 - 1) + (index2 + 1);
 				moves.push(pushIndex);
 			}
 		}
 		if (board[index1][index2 - 1] == 2) {
-			tempIndex = index1 + (index2 - 1);
+			tempIndex = "" + index1 + (index2 - 1);
 			if (enPassant.has(tempIndex)) {
 				pushIndex = "" + (index1 - 1) + (index2 - 1);
 				moves.push(pushIndex);
@@ -339,14 +339,14 @@ function checkPawn(index1, index2) {
 			moves.push(pushIndex);
 		}
 		if (board[index1][index2 + 1] == 1) {
-			tempIndex = index1 + (index2 + 1);
+			tempIndex = "" + index1 + (index2 + 1);
 			if (enPassant.has(tempIndex)) {
 				pushIndex = "" + (index1 + 1) + (index2 + 1);
 				moves.push(pushIndex);
 			}
 		}
 		if (board[index1][index2 - 1] == 1) {
-			tempIndex = index1 + (index2 - 1);
+			tempIndex = "" + index1 + (index2 - 1);
 			if (enPassant.has(tempIndex)) {
 				pushIndex = "" + (index1 + 1) + (index2 - 1);
 				moves.push(pushIndex);
@@ -1066,6 +1066,7 @@ function checkLegalMoves() {
 			}
 		}
 	}
+	console.log(legalMoves);
 };
 
 chessboard.addEventListener("mousedown", function() {
@@ -1080,11 +1081,62 @@ chessboard.addEventListener("mousedown", function() {
 
 chessboard.addEventListener("mouseup", function() {
 	cursor_piece.style.display = "none";
+	let tempIndex = "";
 	let temp = (boardIndex.get(currentSquareOver)).split("");
 	let temp2 = (boardIndex.get(pickedSquare)).split("");
 	let temp3 = squareIndex.get(pickedSquare);
-	let temp4 = boardIndex.get(currentSquareOver)
 	if (board[temp2[0]][temp2[1]] != 0 && pickedSquare != currentSquareOver && (legalMoves.get(boardIndex.get(pickedSquare))).includes(boardIndex.get(currentSquareOver))) {
+		enPassant.clear();
+		if (board[temp2[0]][temp2[1]] == 1 && temp2[0] == 6 && temp[0] == 4) {
+			tempIndex = "" + temp[0] + temp[1];
+			enPassant.set(tempIndex, 1);
+		}
+		if (board[temp2[0]][temp2[1]] == 2 && temp2[0] == 1 && temp[0] == 3) {
+			tempIndex = "" + temp[0] + temp[1];
+			enPassant.set(tempIndex, 1);
+		}
+		if (board[temp2[0]][temp2[1]] == 1 && temp[1] != temp2[1] && board[temp[0]][temp[1]] == 0) {
+			board[parseInt(temp[0]) + 1][temp[1]] = 0;
+		}
+		if (board[temp2[0]][temp2[1]] == 2 && temp[1] != temp2[1] && board[temp[0]][temp[1]] == 0) {
+			board[parseInt(temp[0]) - 1][temp[1]] = 0;
+		}
+		if (board[temp2[0]][temp2[1]] == 11) {
+			if (temp2[0] == 7 && temp2[1] == 4 && temp[1] == 6) {
+				board[7][7] = 0;
+				board[7][5] = 7;
+			}
+			if (temp2[0] == 7 && temp2[1] == 4 && temp[1] == 2) {
+				board[7][0] = 0;
+				board[7][3] = 7;
+			}
+			whiteShortCastle = false;
+			whiteLongCastle = false;
+		}
+		if (temp2[0] == 7 && temp2[1] == 7) {
+			whiteShortCastle = false;
+		}
+		if (temp2[0] == 7 && temp2[1] == 0) {
+			whiteLongCastle = false;
+		}
+		if (board[temp2[0]][temp2[1]] == 12) {
+			if (temp2[0] == 0 && temp2[1] == 4 && temp[1] == 6) {
+				board[0][7] = 0;
+				board[0][5] = 8;
+			}
+			if (temp2[0] == 0 && temp2[1] == 4 && temp[1] == 2) {
+				board[0][0] = 0;
+				board[0][3] = 8;
+			}
+			blackShortCastle = false;
+			blackLongCastle = false;
+		}
+		if (temp2[0] == 0 && temp2[1] == 7) {
+			blackShortCastle = false;
+		}
+		if (temp2[0] == 0 && temp2[1] == 0) {
+			blackLongCastle = false;
+		}
 		board[temp[0]][temp[1]] = board[temp2[0]][temp2[1]];
 		board[temp2[0]][temp2[1]] = 0;
 		square[temp3].style.visibility = "visible";
