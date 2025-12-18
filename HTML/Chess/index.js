@@ -271,6 +271,7 @@ function moveCursorPiece(event) {
 
 function drawBoard() {
 	let currentSquare = 0;
+	checkLegalMoves();
 	for (let i = 0; i < board.length; i++) {
 		for (let j = 0; j < board[0].length; j++) {
 			if (board[i][j] > 0) {
@@ -1024,8 +1025,8 @@ function checkKing(index1, index2) {
 			}
 		}
 		if (whiteLongCastle == true) {
-			if (board[index1][index2 - 1] == 0 && board[index1][index2 - 2] == 0 && board[index1][index2 - 3]) {
-				pushIndex = "" + index1 + (index2 - 3);
+			if (board[index1][index2 - 1] == 0 && board[index1][index2 - 2] == 0 && board[index1][index2 - 3] == 0) {
+				pushIndex = "" + index1 + (index2 - 2);
 				moves.push(pushIndex);
 			}
 		}
@@ -1038,7 +1039,7 @@ function checkKing(index1, index2) {
 		}
 		if (blackLongCastle == true) {
 			if (board[index1][index2 - 1] == 0 && board[index1][index2 - 2] == 0 && board[index1][index2 - 3] == 0) {
-				pushIndex = "" + index1 + (index2 - 3);
+				pushIndex = "" + index1 + (index2 - 2);
 				moves.push(pushIndex);
 			}
 		}
@@ -1065,7 +1066,6 @@ function checkLegalMoves() {
 			}
 		}
 	}
-	return true;
 };
 
 chessboard.addEventListener("mousedown", function() {
@@ -1083,7 +1083,8 @@ chessboard.addEventListener("mouseup", function() {
 	let temp = (boardIndex.get(currentSquareOver)).split("");
 	let temp2 = (boardIndex.get(pickedSquare)).split("");
 	let temp3 = squareIndex.get(pickedSquare);
-	if (checkLegalMoves() == true && board[temp2[0]][temp2[1]] != 0 && pickedSquare != currentSquareOver) {
+	let temp4 = boardIndex.get(currentSquareOver)
+	if (board[temp2[0]][temp2[1]] != 0 && pickedSquare != currentSquareOver && (legalMoves.get(boardIndex.get(pickedSquare))).includes(boardIndex.get(currentSquareOver))) {
 		board[temp[0]][temp[1]] = board[temp2[0]][temp2[1]];
 		board[temp2[0]][temp2[1]] = 0;
 		square[temp3].style.visibility = "visible";
