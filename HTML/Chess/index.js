@@ -248,9 +248,15 @@ let board = [
 ];
 
 let legalMoves = new Map();
+let enPassant = new Map();
 
 let currentSquareOver = "none";
 let pickedSquare = "none";
+let move = 0; // 0 == white to move, 1 == black to move
+let whiteShortCastle = true;
+let whiteLongCastle = true;
+let blackShortCastle = true;
+let blackLongCastle = true;
 
 window.onload = function() {
 	drawBoard();
@@ -278,98 +284,183 @@ function drawBoard() {
 };
 
 function checkPawn(index1, index2) {
-	
+	let moves = [];
+	let tempIndex = "";
+	let pushIndex = "";
+	let index = "";
+	index = "" + index1 + index2;
+	if (board[index1][index2] % 2 != 0) {
+		if (board[index1 - 1][index2] == 0) {
+			pushIndex = "" + (index1 - 1) + index2;
+			moves.push(pushIndex);
+			if (index1 == 6 && board[4][index2] == 0) {
+				pushIndex = "4" + index2;
+				moves.push(pushIndex);
+			}
+		}
+		if (board[index1 - 1][index2 + 1] % 2 == 0 && board[index1 - 1][index2 + 1] != 0) {
+			pushIndex = "" + (index1 - 1) + (index2 + 1);
+			moves.push(pushIndex);
+		}
+		if (board[index1 - 1][index2 - 1] % 2 == 0 && board[index1 - 1][index2 - 1] != 0) {
+			pushIndex = "" + (index1 - 1) + (index2 - 1);
+			moves.push(pushIndex);
+		}
+		if (board[index1][index2 + 1] == 2) {
+			tempIndex = index1 + (index2 + 1);
+			if (enPassant.has(tempIndex)) {
+				pushIndex = "" + (index1 - 1) + (index2 + 1);
+				moves.push(pushIndex);
+			}
+		}
+		if (board[index1][index2 - 1] == 2) {
+			tempIndex = index1 + (index2 - 1);
+			if (enPassant.has(tempIndex)) {
+				pushIndex = "" + (index1 - 1) + (index2 - 1);
+				moves.push(pushIndex);
+			}
+		}
+	} else {
+		if (board[index1 + 1][index2] == 0) {
+			pushIndex = "" + (index1 + 1) + index2;
+			moves.push(pushIndex);
+			if (index1 == 1 && board[3][index2] == 0) {
+				pushIndex = "3" + index2;
+				moves.push(pushIndex);
+			}
+		}
+		if (board[index1 + 1][index2 + 1] % 2 != 0 && index2 + 1 != 8) {
+			pushIndex = "" + (index1 + 1) + (index2 + 1);
+			moves.push(pushIndex);
+		}
+		if (board[index1 + 1][index2 - 1] % 2 != 0 && index2 - 1 != -1) {
+			pushIndex = "" + (index1 + 1) + (index2 - 1);
+			moves.push(pushIndex);
+		}
+		if (board[index1][index2 + 1] == 1) {
+			tempIndex = index1 + (index2 + 1);
+			if (enPassant.has(tempIndex)) {
+				pushIndex = "" + (index1 + 1) + (index2 + 1);
+				moves.push(pushIndex);
+			}
+		}
+		if (board[index1][index2 - 1] == 1) {
+			tempIndex = index1 + (index2 - 1);
+			if (enPassant.has(tempIndex)) {
+				pushIndex = "" + (index1 + 1) + (index2 - 1);
+				moves.push(pushIndex);
+			}
+		}	
+	}
+	legalMoves.set(index, moves);
 };
 
 function checkKnight(index1, index2) {
 	let moves = [];
+	let pushIndex = "";
 	let index = "";
-	index = index1 + index2;
+	index = "" + index1 + index2;
 	if (index1 - 2  >= 0 && index2 + 1 < 8) {
 		if (board[index1][index2] % 2 != 0) {
 			if (board[index1 - 2][index2 + 1] % 2 == 0) {
-				moves.push(index1 - 2, index2 + 1);
+				pushIndex = "" + (index1 - 2) + (index2 + 1);
+				moves.push(pushIndex);
 			}
 		} else {
 			if (board[index1 - 2][index2 + 1] == 0 || board[index1 - 2][index2 + 1] % 2 != 0) {
-				moves.push(index1 - 2, index2 + 1);
+				pushIndex = "" + (index1 - 2) + (index2 + 1);
+				moves.push(pushIndex);
 			}
 		}
 	}
 	if (index1 - 1  >= 0 && index2 + 2 < 8) {
 		if (board[index1][index2] % 2 != 0) {
 			if (board[index1 - 1][index2 + 2] % 2 == 0) {
-				moves.push(index1 - 1, index2 + 2);
+				pushIndex = "" + (index1 - 1) + (index2 + 2);
+				moves.push(pushIndex);
 			}
 		} else {
 			if (board[index1 - 1][index2 + 2] == 0 || board[index1 - 1][index2 + 2] % 2 != 0) {
-				moves.push(index1 - 1, index2 + 2);
+				pushIndex = "" + (index1 - 1) + (index2 + 2);
+				moves.push(pushIndex);
 			}
 		}
 	}
 	if (index1 + 1 < 8 && index2 + 2 < 8) {
 		if (board[index1][index2] % 2 != 0) {
 			if (board[index1 + 1][index2 + 2] % 2 == 0) {
-				moves.push(index1 + 1, index2 + 2);
+				pushIndex = "" + (index1 + 1) + (index2 + 2);
+				moves.push(pushIndex);
 			}
 		} else {
 			if (board[index1 + 1][index2 + 2] == 0 || board[index1 + 1][index2 + 2] % 2 != 0) {
-				moves.push(index1 + 1, index2 + 2);
+				pushIndex = "" + (index1 + 1) + (index2 + 2);
+				moves.push(pushIndex);
 			}
 		}
 	}
 	if (index1 + 2 < 8 && index2 + 1 < 8) {
 		if (board[index1][index2] % 2 != 0) {
 			if (board[index1 + 2][index2 + 1] % 2 == 0) {
-				moves.push(index1 + 2, index2 + 1);
+				pushIndex = "" + (index1 + 2) + (index2 + 1);
+				moves.push(pushIndex);
 			}
 		} else {
 			if (board[index1 + 2][index2 + 1] == 0 || board[index1 + 2][index2 + 1] % 2 != 0) {
-				moves.push(index1 + 2, index2 + 1);
+				pushIndex = "" + (index1 + 2) + (index2 + 1);
+				moves.push(pushIndex);
 			}
 		}
 	}
 	if (index1 + 2 < 8 && index2 - 1 >= 0) {
 		if (board[index1][index2] % 2 != 0) {
 			if (board[index1 + 2][index2 - 1] % 2 == 0) {
-				moves.push(index1 + 2, index2 - 1);
+				pushIndex = "" + (index1 + 2) + (index2 - 1);
+				moves.push(pushIndex);
 			}
 		} else {
 			if (board[index1 + 2][index2 - 1] == 0 || board[index1 + 2][index2 - 1] % 2 != 0) {
-				moves.push(index1 + 2, index2 - 1);
+				pushIndex = "" + (index1 + 2) + (index2 - 1);
+				moves.push(pushIndex);
 			}
 		}
 	}
 	if (index1 + 1 < 8 && index2 - 2 >= 0) {
 		if (board[index1][index2] % 2 != 0) {
 			if (board[index1 + 1][index2 - 2] % 2 == 0) {
-				moves.push(index1 + 1, index2 - 2);
+				pushIndex = "" + (index1 + 1) + (index2 - 2);
+				moves.push(pushIndex);
 			}
 		} else {
 			if (board[index1 + 1][index2 - 2] == 0 || board[index1 + 1][index2 - 2] % 2 != 0) {
-				moves.push(index1 + 1, index2 - 2);
+				pushIndex = "" + (index1 + 1) + (index2 - 2);
+				moves.push(pushIndex);
 			}
 		}
 	}
 	if (index1 - 1 >= 0 && index2 - 2 >= 0) {
 		if (board[index1][index2] % 2 != 0) {
 			if (board[index1 - 1][index2 - 2] % 2 == 0) {
-				moves.push(index1 - 1, index2 - 2);
+				pushIndex = "" + (index1 - 1) + (index2 - 2);
+				moves.push(pushIndex);
 			}
 		} else {
 			if (board[index1 - 1][index2 - 2] == 0 || board[index1 - 1][index2 - 2] % 2 != 0) {
-				moves.push(index1 - 1, index2 - 2);
+				pushIndex = "" + (index1 - 1) + (index2 - 2);
+				moves.push(pushIndex);
 			}
 		}
 	}
 	if (index1 - 2 >= 0 && index2 - 1 >= 0) {
 		if (board[index1][index2] % 2 != 0) {
 			if (board[index1 - 2][index2 - 1] % 2 == 0) {
-				moves.push(index1 - 2, index2 - 1);
+				pushIndex = "" + (index1 - 2) + (index2 - 1);
+				moves.push(pushIndex);
 			}
 		} else {
 			if (board[index1 - 2][index2 - 1] == 0 || board[index1 - 2][index2 - 1] % 2 != 0) {
-				moves.push(index1 - 2, index2 - 1);
+				pushIndex = "" + (index1 - 2) + (index2 - 1);
+				moves.push(pushIndex);
 			}
 		}
 	}
@@ -378,24 +469,29 @@ function checkKnight(index1, index2) {
 
 function checkBishop(index1, index2) {
 	let moves = [];
+	let pushIndex = "";
 	let index = "";
-	index = index1 + index2;
+	index = "" + index1 + index2;
 	let j = index2 + 1;
 	for (let i = index1 - 1; (i >= 0 && j < 8); i--) {
 		if (board[index1][index2] % 2 != 0) {
 			if (board[i][j] == 0) {
-				moves.push(i, j);
+				pushIndex = "" + i + j;
+				moves.push(pushIndex);
 			} else if (board[i][j] % 2 == 0) {
-				moves.push(i, j);
+				pushIndex = "" + i + j;
+				moves.push(pushIndex);
 				break;
 			} else {
 				break;
 			}		
 		} else {
 			if (board[i][j] == 0) {
-				moves.push(i, j);
+				pushIndex = "" + i + j;
+				moves.push(pushIndex);
 			} else if (board[i][j] % 2 != 0) {
-				moves.push(i, j);
+				pushIndex = "" + i + j;
+				moves.push(pushIndex);
 				break;
 			} else {
 				break;
@@ -407,18 +503,22 @@ function checkBishop(index1, index2) {
 	for (let i = index1 + 1; (i < 8 && j < 8); i++) {
 		if (board[index1][index2] % 2 != 0) {
 			if (board[i][j] == 0) {
-				moves.push(i, j);
+				pushIndex = "" + i + j;
+				moves.push(pushIndex);
 			} else if (board[i][j] % 2 == 0) {
-				moves.push(i, j);
+				pushIndex = "" + i + j;
+				moves.push(pushIndex);
 				break;
 			} else {
 				break;
 			}		
 		} else {
 			if (board[i][j] == 0) {
-				moves.push(i, j);
+				pushIndex = "" + i + j;
+				moves.push(pushIndex);
 			} else if (board[i][j] % 2 != 0) {
-				moves.push(i, j);
+				pushIndex = "" + i + j;
+				moves.push(pushIndex);
 				break;
 			} else {
 				break;
@@ -430,18 +530,22 @@ function checkBishop(index1, index2) {
 	for (let i = index1 + 1; (i < 8 && j >= 0); i++) {
 		if (board[index1][index2] % 2 != 0) {
 			if (board[i][j] == 0) {
-				moves.push(i, j);
+				pushIndex = "" + i + j;
+				moves.push(pushIndex);
 			} else if (board[i][j] % 2 == 0) {
-				moves.push(i, j);
+				pushIndex = "" + i + j;
+				moves.push(pushIndex);
 				break;
 			} else {
 				break;
 			}		
 		} else {
 			if (board[i][j] == 0) {
-				moves.push(i, j);
+				pushIndex = "" + i + j;
+				moves.push(pushIndex);
 			} else if (board[i][j] % 2 != 0) {
-				moves.push(i, j);
+				pushIndex = "" + i + j;
+				moves.push(pushIndex);
 				break;
 			} else {
 				break;
@@ -453,18 +557,22 @@ function checkBishop(index1, index2) {
 	for (let i = index1 - 1; (i >= 0 && j >= 0); i--) {
 		if (board[index1][index2] % 2 != 0) {
 			if (board[i][j] == 0) {
-				moves.push(i, j);
+				pushIndex = "" + i + j;
+				moves.push(pushIndex);
 			} else if (board[i][j] % 2 == 0) {
-				moves.push(i, j);
+				pushIndex = "" + i + j;
+				moves.push(pushIndex);
 				break;
 			} else {
 				break;
 			}		
 		} else {
 			if (board[i][j] == 0) {
-				moves.push(i, j);
+				pushIndex = "" + i + j;
+				moves.push(pushIndex);
 			} else if (board[i][j] % 2 != 0) {
-				moves.push(i, j);
+				pushIndex = "" + i + j;
+				moves.push(pushIndex);
 				break;
 			} else {
 				break;
@@ -477,23 +585,28 @@ function checkBishop(index1, index2) {
 
 function checkRook(index1, index2) {
 	let moves = [];
+	let pushIndex = "";
 	let index = "";
-	index = index1 + index2;
+	index = "" + index1 + index2;
 	for (let i = index1 - 1; i >= 0; i--) {
 		if (board[index1][index2] % 2 != 0) {
 			if (board[i][index2] == 0) {
-				moves.push(i, index2);
+				pushIndex = "" + i + index2;
+				moves.push(pushIndex);
 			} else if (board[i][index2] % 2 == 0) {
-				moves.push(i, index2);
+				pushIndex = "" + i + index2;
+				moves.push(pushIndex);
 				break;
 			} else {
 				break;
 			}
 		} else {
 			if (board[i][index2] == 0) {
-				moves.push(i, index2);
+				pushIndex = "" + i + index2;
+				moves.push(pushIndex);
 			} else if (board[i][index2] % 2 != 0) {
-				moves.push(i, index2);
+				pushIndex = "" + i + index2;
+				moves.push(pushIndex);
 				break;
 			} else {
 				break;
@@ -503,18 +616,22 @@ function checkRook(index1, index2) {
 	for (let i = index2 + 1; i < 8; i++) {
 		if (board[index1][index2] % 2 != 0) {
 			if (board[index1][i] == 0) {
-				moves.push(index1, i);
+				pushIndex = "" + index1 + i;
+				moves.push(pushIndex);
 			} else if (board[index1][i] % 2 == 0) {
-				moves.push(index1, i);
+				pushIndex = "" + index1 + i;
+				moves.push(pushIndex);
 				break;
 			} else {
 				break;
 			}
 		} else {
 			if (board[index1][i] == 0) {
-				moves.push(index1, i);
+				pushIndex = "" + index1 + i;
+				moves.push(pushIndex);
 			} else if (board[index1][i] % 2 != 0) {
-				moves.push(index1, i);
+				pushIndex = "" + index1 + i;
+				moves.push(pushIndex);
 				break;
 			} else {
 				break;
@@ -524,18 +641,22 @@ function checkRook(index1, index2) {
 	for (let i = index1 + 1; i < 8; i++) {
 		if (board[index1][index2] % 2 != 0) {
 			if (board[i][index2] == 0) {
-				moves.push(i, index2);
+				pushIndex = "" + i + index2;
+				moves.push(pushIndex);
 			} else if (board[i][index2] % 2 == 0) {
-				moves.push(i, index2);
+				pushIndex = "" + i + index2;
+				moves.push(pushIndex);
 				break;
 			} else {
 				break;
 			}
 		} else {
 			if (board[i][index2] == 0) {
-				moves.push(i, index2);
+				pushIndex = "" + i + index2;
+				moves.push(pushIndex);
 			} else if (board[i][index2] % 2 != 0) {
-				moves.push(i, index2);
+				pushIndex = "" + i + index2;
+				moves.push(pushIndex);
 				break;
 			} else {
 				break;
@@ -545,18 +666,22 @@ function checkRook(index1, index2) {
 	for (let i = index2 - 1; i >= 0; i--) {
 		if (board[index1][index2] % 2 != 0) {
 			if (board[index1][i] == 0) {
-				moves.push(index1, i);
+				pushIndex = "" + index1 + i;
+				moves.push(pushIndex);
 			} else if (board[index1][i] % 2 == 0) {
-				moves.push(index1, i);
+				pushIndex = "" + index1 + i;
+				moves.push(pushIndex);
 				break;
 			} else {
 				break;
 			}
 		} else {
 			if (board[index1][i] == 0) {
-				moves.push(index1, i);
+				pushIndex = "" + index1 + i;
+				moves.push(pushIndex);
 			} else if (board[index1][i] % 2 != 0) {
-				moves.push(index1, i);
+				pushIndex = "" + index1 + i;
+				moves.push(pushIndex);
 				break;
 			} else {
 				break;
@@ -568,23 +693,28 @@ function checkRook(index1, index2) {
 
 function checkQueen(index1, index2) {
 	let moves = [];
+	let pushIndex = "";
 	let index = "";
-	index = index1 + index2;
+	index = "" + index1 + index2;
 	for (let i = index1 - 1; i >= 0; i--) {
 		if (board[index1][index2] % 2 != 0) {
 			if (board[i][index2] == 0) {
-				moves.push(i, index2);
+				pushIndex = "" + i + index2;
+				moves.push(pushIndex);
 			} else if (board[i][index2] % 2 == 0) {
-				moves.push(i, index2);
+				pushIndex = "" + i + index2;
+				moves.push(pushIndex);
 				break;
 			} else {
 				break;
 			}
 		} else {
 			if (board[i][index2] == 0) {
-				moves.push(i, index2);
+				pushIndex = "" + i + index2;
+				moves.push(pushIndex);
 			} else if (board[i][index2] % 2 != 0) {
-				moves.push(i, index2);
+				pushIndex = "" + i + index2;
+				moves.push(pushIndex);
 				break;
 			} else {
 				break;
@@ -594,18 +724,22 @@ function checkQueen(index1, index2) {
 	for (let i = index2 + 1; i < 8; i++) {
 		if (board[index1][index2] % 2 != 0) {
 			if (board[index1][i] == 0) {
-				moves.push(index1, i);
+				pushIndex = "" + index1 + i;
+				moves.push(pushIndex);
 			} else if (board[index1][i] % 2 == 0) {
-				moves.push(index1, i);
+				pushIndex = "" + index1 + i;
+				moves.push(pushIndex);
 				break;
 			} else {
 				break;
 			}
 		} else {
 			if (board[index1][i] == 0) {
-				moves.push(index1, i);
+				pushIndex = "" + index1 + i;
+				moves.push(pushIndex);
 			} else if (board[index1][i] % 2 != 0) {
-				moves.push(index1, i);
+				pushIndex = "" + index1 + i;
+				moves.push(pushIndex);
 				break;
 			} else {
 				break;
@@ -615,18 +749,22 @@ function checkQueen(index1, index2) {
 	for (let i = index1 + 1; i < 8; i++) {
 		if (board[index1][index2] % 2 != 0) {
 			if (board[i][index2] == 0) {
-				moves.push(i, index2);
+				pushIndex = "" + i + index2;
+				moves.push(pushIndex);
 			} else if (board[i][index2] % 2 == 0) {
-				moves.push(i, index2);
+				pushIndex = "" + i + index2;
+				moves.push(pushIndex);
 				break;
 			} else {
 				break;
 			}
 		} else {
 			if (board[i][index2] == 0) {
-				moves.push(i, index2);
+				pushIndex = "" + i + index2;
+				moves.push(pushIndex);
 			} else if (board[i][index2] % 2 != 0) {
-				moves.push(i, index2);
+				pushIndex = "" + i + index2;
+				moves.push(pushIndex);
 				break;
 			} else {
 				break;
@@ -636,18 +774,22 @@ function checkQueen(index1, index2) {
 	for (let i = index2 - 1; i >= 0; i--) {
 		if (board[index1][index2] % 2 != 0) {
 			if (board[index1][i] == 0) {
-				moves.push(index1, i);
+				pushIndex = "" + index1 + i;
+				moves.push(pushIndex);
 			} else if (board[index1][i] % 2 == 0) {
-				moves.push(index1, i);
+				pushIndex = "" + index1 + i;
+				moves.push(pushIndex);
 				break;
 			} else {
 				break;
 			}
 		} else {
 			if (board[index1][i] == 0) {
-				moves.push(index1, i);
+				pushIndex = "" + index1 + i;
+				moves.push(pushIndex);
 			} else if (board[index1][i] % 2 != 0) {
-				moves.push(index1, i);
+				pushIndex = "" + index1 + i;
+				moves.push(pushIndex);
 				break;
 			} else {
 				break;
@@ -658,18 +800,22 @@ function checkQueen(index1, index2) {
 	for (let i = index1 - 1; (i >= 0 && j < 8); i--) {
 		if (board[index1][index2] % 2 != 0) {
 			if (board[i][j] == 0) {
-				moves.push(i, j);
+				pushIndex = "" + i + j;
+				moves.push(pushIndex);
 			} else if (board[i][j] % 2 == 0) {
-				moves.push(i, j);
+				pushIndex = "" + i + j;
+				moves.push(pushIndex);
 				break;
 			} else {
 				break;
 			}		
 		} else {
 			if (board[i][j] == 0) {
-				moves.push(i, j);
+				pushIndex = "" + i + j;
+				moves.push(pushIndex);
 			} else if (board[i][j] % 2 != 0) {
-				moves.push(i, j);
+				pushIndex = "" + i + j;
+				moves.push(pushIndex);
 				break;
 			} else {
 				break;
@@ -681,18 +827,22 @@ function checkQueen(index1, index2) {
 	for (let i = index1 + 1; (i < 8 && j < 8); i++) {
 		if (board[index1][index2] % 2 != 0) {
 			if (board[i][j] == 0) {
-				moves.push(i, j);
+				pushIndex = "" + i + j;
+				moves.push(pushIndex);
 			} else if (board[i][j] % 2 == 0) {
-				moves.push(i, j);
+				pushIndex = "" + i + j;
+				moves.push(pushIndex);
 				break;
 			} else {
 				break;
 			}		
 		} else {
 			if (board[i][j] == 0) {
-				moves.push(i, j);
+				pushIndex = "" + i + j;
+				moves.push(pushIndex);
 			} else if (board[i][j] % 2 != 0) {
-				moves.push(i, j);
+				pushIndex = "" + i + j;
+				moves.push(pushIndex);
 				break;
 			} else {
 				break;
@@ -704,18 +854,22 @@ function checkQueen(index1, index2) {
 	for (let i = index1 + 1; (i < 8 && j >= 0); i++) {
 		if (board[index1][index2] % 2 != 0) {
 			if (board[i][j] == 0) {
-				moves.push(i, j);
+				pushIndex = "" + i + j;
+				moves.push(pushIndex);
 			} else if (board[i][j] % 2 == 0) {
-				moves.push(i, j);
+				pushIndex = "" + i + j;
+				moves.push(pushIndex);
 				break;
 			} else {
 				break;
 			}		
 		} else {
 			if (board[i][j] == 0) {
-				moves.push(i, j);
+				pushIndex = "" + i + j;
+				moves.push(pushIndex);
 			} else if (board[i][j] % 2 != 0) {
-				moves.push(i, j);
+				pushIndex = "" + i + j;
+				moves.push(pushIndex);
 				break;
 			} else {
 				break;
@@ -727,18 +881,22 @@ function checkQueen(index1, index2) {
 	for (let i = index1 - 1; (i >= 0 && j >= 0); i--) {
 		if (board[index1][index2] % 2 != 0) {
 			if (board[i][j] == 0) {
-				moves.push(i, j);
+				pushIndex = "" + i + j;
+				moves.push(pushIndex);
 			} else if (board[i][j] % 2 == 0) {
-				moves.push(i, j);
+				pushIndex = "" + i + j;
+				moves.push(pushIndex);
 				break;
 			} else {
 				break;
 			}		
 		} else {
 			if (board[i][j] == 0) {
-				moves.push(i, j);
+				pushIndex = "" + i + j;
+				moves.push(pushIndex);
 			} else if (board[i][j] % 2 != 0) {
-				moves.push(i, j);
+				pushIndex = "" + i + j;
+				moves.push(pushIndex);
 				break;
 			} else {
 				break;
@@ -750,10 +908,146 @@ function checkQueen(index1, index2) {
 };
 
 function checkKing(index1, index2) {
-
+	let moves = [];
+	let pushIndex = "";
+	let index = "";
+	index = "" + index1 + index2;
+	if (index1 - 1 >= 0) {
+		if (board[index1][index2] % 2 != 0) {
+			if (board[index1 - 1][index2] % 2 == 0) {
+				pushIndex = "" + (index1 - 1) + index2;
+				moves.push(pushIndex);
+			}
+		} else {
+			if (board[index1 - 1][index2] == 0 || board[index1 - 1][index2] % 2 != 0) {
+				pushIndex = "" + (index1 - 1) + index2;
+				moves.push(pushIndex);
+			}
+		}
+	}
+	if (index1 - 1 >= 0 && index2 + 1 < 8) {
+		if (board[index1][index2] % 2 != 0) {
+			if (board[index1 - 1][index2 + 1] % 2 == 0) {
+				pushIndex = "" + (index1 - 1) + (index2 + 1);
+				moves.push(pushIndex);
+			}
+		} else {
+			if (board[index1 - 1][index2 + 1] == 0 || board[index1 - 1][index2 + 1] % 2 != 0) {
+				pushIndex = "" + (index1 - 1) + (index2 + 1);
+				moves.push(pushIndex);
+			}
+		}
+	}
+	if (index2 + 1 < 8) {
+		if (board[index1][index2] % 2 != 0) {
+			if (board[index1][index2 + 1] % 2 == 0) {
+				pushIndex = "" + index1 + (index2 + 1);
+				moves.push(pushIndex);
+			}
+		} else {
+			if (board[index1][index2 + 1] == 0 || board[index1][index2 + 1] % 2 != 0) {
+				pushIndex = "" + index1 + (index2 + 1);
+				moves.push(pushIndex);
+			}
+		}
+	}
+	if (index1 + 1 < 8 && index2 + 1 < 8) {
+		if (board[index1][index2] % 2 != 0) {
+			if (board[index1 + 1][index2 + 1] % 2 == 0) {
+				pushIndex = "" + (index1 + 1) + (index2 + 1);
+				moves.push(pushIndex);
+			}
+		} else {
+			if (board[index1 + 1][index2 + 1] == 0 || board[index1 + 1][index2 + 1] % 2 != 0) {
+				pushIndex = "" + (index1 + 1) + (index2 + 1);
+				moves.push(pushIndex);
+			}
+		}
+	}
+	if (index1 + 1 < 8) {
+		if (board[index1][index2] % 2 != 0) {
+			if (board[index1 + 1][index2] % 2 == 0) {
+				pushIndex = "" + (index1 + 1) + index2;
+				moves.push(pushIndex);
+					}
+		} else {
+			if (board[index1 + 1][index2] == 0 || board[index1 + 1][index2] % 2 != 0) {
+				pushIndex = "" + (index1 + 1) + index2;
+				moves.push(pushIndex);
+			}
+		}
+	}
+	if (index1 + 1 < 8 && index2 - 1 >= 0) {
+		if (board[index1][index2] % 2 != 0) {
+			if (board[index1 + 1][index2 - 1] % 2 == 0) {
+				pushIndex = "" + (index1 + 1) + (index2 - 1);
+				moves.push(pushIndex);
+			}
+		} else {
+			if (board[index1 + 1][index2 - 1] == 0 || board[index1 + 1][index2 - 1] % 2 != 0) {
+				pushIndex = "" + (index1 + 1) + (index2 - 1);
+				moves.push(pushIndex);
+			}
+		}
+	}
+	if (index2 - 1 >= 0) {
+		if (board[index1][index2] % 2 != 0) {
+			if (board[index1][index2 - 1] % 2 == 0) {
+				pushIndex = "" + index1 + (index2 - 1);
+				moves.push(pushIndex);
+			}
+		} else {
+			if (board[index1][index2 - 1] == 0 || board[index1][index2 - 1] % 2 != 0) {
+				pushIndex = "" + index1 + (index2 - 1);
+				moves.push(pushIndex);
+			}
+		}
+	}
+	if (index1 - 1 >= 0 && index2 - 1 >= 0) {
+		if (board[index1][index2] % 2 != 0) {
+			if (board[index1 - 1][index2 - 1] % 2 == 0) {
+				pushIndex = "" + (index1 - 1) + (index2 - 1);
+				moves.push(pushIndex);
+			}
+		} else {
+			if (board[index1 - 1][index2 - 1] == 0 || board[index1 - 1][index2 - 1] % 2 != 0) {
+				pushIndex = "" + (index1 - 1) + (index2 - 1);
+				moves.push(pushIndex);
+			}
+		}
+	}
+	if (board[index1][index2] % 2 != 0) {
+		if (whiteShortCastle == true) {
+			if (board[index1][index2 + 1] == 0 && board[index1][index2 + 2] == 0) {
+				pushIndex = "" + index1 + (index2 + 2);
+				moves.push(pushIndex);
+			}
+		}
+		if (whiteLongCastle == true) {
+			if (board[index1][index2 - 1] == 0 && board[index1][index2 - 2] == 0 && board[index1][index2 - 3]) {
+				pushIndex = "" + index1 + (index2 - 3);
+				moves.push(pushIndex);
+			}
+		}
+	} else {
+		if (blackShortCastle == true) {
+			if (board[index1][index2 + 1] == 0 && board[index1][index2 + 2] == 0) {
+				pushIndex = "" + index1 + (index2 + 2);
+				moves.push(pushIndex);
+			}
+		}
+		if (blackLongCastle == true) {
+			if (board[index1][index2 - 1] == 0 && board[index1][index2 - 2] == 0 && board[index1][index2 - 3] == 0) {
+				pushIndex = "" + index1 + (index2 - 3);
+				moves.push(pushIndex);
+			}
+		}
+	}
+	legalMoves.set(index, moves);
 };
 
 function checkLegalMoves() {
+	legalMoves.clear();
 	for (let i = 0; i < 8; i++) {
 		for (let j = 0; j < 8; j++) {
 			if (board[i][j] == 1 || board[i][j] == 2) {
