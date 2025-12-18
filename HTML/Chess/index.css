@@ -9,6 +9,7 @@ body {
 	justify-content: center;
 	align-items: center;
 	overflow: hidden;
+	background-color: #1c1c1c;
 }
 
 #cursor_piece {
@@ -25,7 +26,7 @@ body {
 	border: 3px solid black;
 	grid-template-columns: repeat(8, 1fr);
 	grid-template-rows: repeat(8, 1fr);
-	background-image: url('assets/boards/aqua_board.png');
+	background-image: url('assets/boards/default_board.png');
 	background-size: contain;
 	background-repeat: no-repeat;
 	aspect-ratio: 1 / 1;
