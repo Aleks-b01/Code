@@ -248,10 +248,14 @@ let board = [
 ];
 
 let legalMoves = new Map();
+let whiteControl = new Map();
+let blackControl = new Map();
 let enPassant = new Map();
 
 let currentSquareOver = "none";
 let pickedSquare = "none";
+let whiteKingIndex = "";
+let blackKingIndex = "";
 let move = 0; // 0 == white to move, 1 == black to move
 let whiteShortCastle = true;
 let whiteLongCastle = true;
@@ -271,7 +275,7 @@ function moveCursorPiece(event) {
 
 function drawBoard() {
 	let currentSquare = 0;
-	checkLegalMoves();
+	let pushIndex = "";
 	for (let i = 0; i < board.length; i++) {
 		for (let j = 0; j < board[0].length; j++) {
 			if (board[i][j] > 0) {
@@ -280,8 +284,16 @@ function drawBoard() {
 				square[currentSquare].style.backgroundImage = "none";
 			}
 			currentSquare++;
+			if (board[i][j] == 11) {
+				pushIndex = "" + i + j;
+				whiteKingIndex = pushIndex;
+			} else if (board[i][j] == 12) {
+				pushIndex = "" + i + j;
+				blackKingIndex = pushIndex;
+			}
 		}
 	}
+	checkLegalMoves();
 };
 
 function checkPawn(index1, index2) {
@@ -321,6 +333,10 @@ function checkPawn(index1, index2) {
 				moves.push(pushIndex);
 			}
 		}
+		pushIndex = "" + (index1 - 1) + (index2 - 1);
+		whiteControl.set(pushIndex, index);
+		pushIndex = "" + (index1 - 1) + (index2 + 1);
+		whiteControl.set(pushIndex, index);
 	} else {
 		if (board[index1 + 1][index2] == 0) {
 			pushIndex = "" + (index1 + 1) + index2;
@@ -351,7 +367,11 @@ function checkPawn(index1, index2) {
 				pushIndex = "" + (index1 + 1) + (index2 - 1);
 				moves.push(pushIndex);
 			}
-		}	
+		}
+		pushIndex = "" + (index1 + 1) + (index2 - 1);
+		blackControl.set(pushIndex, index);
+		pushIndex = "" + (index1 + 1) + (index2 + 1);
+		blackControl.set(pushIndex, index);
 	}
 	legalMoves.set(index, moves);
 };
@@ -367,11 +387,15 @@ function checkKnight(index1, index2) {
 				pushIndex = "" + (index1 - 2) + (index2 + 1);
 				moves.push(pushIndex);
 			}
+			pushIndex = "" + (index1 - 2) + (index2 + 1);
+			whiteControl.set(pushIndex, index);
 		} else {
 			if (board[index1 - 2][index2 + 1] == 0 || board[index1 - 2][index2 + 1] % 2 != 0) {
 				pushIndex = "" + (index1 - 2) + (index2 + 1);
 				moves.push(pushIndex);
 			}
+			pushIndex = "" + (index1 - 2) + (index2 + 1);
+			blackControl.set(pushIndex, index);
 		}
 	}
 	if (index1 - 1  >= 0 && index2 + 2 < 8) {
@@ -380,11 +404,15 @@ function checkKnight(index1, index2) {
 				pushIndex = "" + (index1 - 1) + (index2 + 2);
 				moves.push(pushIndex);
 			}
+			pushIndex = "" + (index1 - 1) + (index2 + 2);
+			whiteControl.set(pushIndex, index);
 		} else {
 			if (board[index1 - 1][index2 + 2] == 0 || board[index1 - 1][index2 + 2] % 2 != 0) {
 				pushIndex = "" + (index1 - 1) + (index2 + 2);
 				moves.push(pushIndex);
 			}
+			pushIndex = "" + (index1 - 1) + (index2 + 2);
+			blackControl.set(pushIndex, index);
 		}
 	}
 	if (index1 + 1 < 8 && index2 + 2 < 8) {
@@ -393,11 +421,15 @@ function checkKnight(index1, index2) {
 				pushIndex = "" + (index1 + 1) + (index2 + 2);
 				moves.push(pushIndex);
 			}
+			pushIndex = "" + (index1 + 1) + (index2 + 2);
+			whiteControl.set(pushIndex, index);
 		} else {
 			if (board[index1 + 1][index2 + 2] == 0 || board[index1 + 1][index2 + 2] % 2 != 0) {
 				pushIndex = "" + (index1 + 1) + (index2 + 2);
 				moves.push(pushIndex);
 			}
+			pushIndex = "" + (index1 + 1) + (index2 + 2);
+			blackControl.set(pushIndex, index);
 		}
 	}
 	if (index1 + 2 < 8 && index2 + 1 < 8) {
@@ -406,11 +438,15 @@ function checkKnight(index1, index2) {
 				pushIndex = "" + (index1 + 2) + (index2 + 1);
 				moves.push(pushIndex);
 			}
+			pushIndex = "" + (index1 + 2) + (index2 + 1);
+			whiteControl.set(pushIndex, index);
 		} else {
 			if (board[index1 + 2][index2 + 1] == 0 || board[index1 + 2][index2 + 1] % 2 != 0) {
 				pushIndex = "" + (index1 + 2) + (index2 + 1);
 				moves.push(pushIndex);
 			}
+			pushIndex = "" + (index1 + 2) + (index2 + 1);
+			blackControl.set(pushIndex, index);
 		}
 	}
 	if (index1 + 2 < 8 && index2 - 1 >= 0) {
@@ -419,11 +455,15 @@ function checkKnight(index1, index2) {
 				pushIndex = "" + (index1 + 2) + (index2 - 1);
 				moves.push(pushIndex);
 			}
+			pushIndex = "" + (index1 + 2) + (index2 - 1);
+			whiteControl.set(pushIndex, index);
 		} else {
 			if (board[index1 + 2][index2 - 1] == 0 || board[index1 + 2][index2 - 1] % 2 != 0) {
 				pushIndex = "" + (index1 + 2) + (index2 - 1);
 				moves.push(pushIndex);
 			}
+			pushIndex = "" + (index1 + 2) + (index2 - 1);
+			blackControl.set(pushIndex, index);
 		}
 	}
 	if (index1 + 1 < 8 && index2 - 2 >= 0) {
@@ -432,11 +472,15 @@ function checkKnight(index1, index2) {
 				pushIndex = "" + (index1 + 1) + (index2 - 2);
 				moves.push(pushIndex);
 			}
+			pushIndex = "" + (index1 + 1) + (index2 - 2);
+			whiteControl.set(pushIndex, index);
 		} else {
 			if (board[index1 + 1][index2 - 2] == 0 || board[index1 + 1][index2 - 2] % 2 != 0) {
 				pushIndex = "" + (index1 + 1) + (index2 - 2);
 				moves.push(pushIndex);
 			}
+			pushIndex = "" + (index1 + 1) + (index2 - 2);
+			blackControl.set(pushIndex, index);
 		}
 	}
 	if (index1 - 1 >= 0 && index2 - 2 >= 0) {
@@ -445,11 +489,15 @@ function checkKnight(index1, index2) {
 				pushIndex = "" + (index1 - 1) + (index2 - 2);
 				moves.push(pushIndex);
 			}
+			pushIndex = "" + (index1 - 1) + (index2 - 2);
+			whiteControl.set(pushIndex, index);
 		} else {
 			if (board[index1 - 1][index2 - 2] == 0 || board[index1 - 1][index2 - 2] % 2 != 0) {
 				pushIndex = "" + (index1 - 1) + (index2 - 2);
 				moves.push(pushIndex);
 			}
+			pushIndex = "" + (index1 - 1) + (index2 - 2);
+			blackControl.set(pushIndex, index);
 		}
 	}
 	if (index1 - 2 >= 0 && index2 - 1 >= 0) {
@@ -458,11 +506,15 @@ function checkKnight(index1, index2) {
 				pushIndex = "" + (index1 - 2) + (index2 - 1);
 				moves.push(pushIndex);
 			}
+			pushIndex = "" + (index1 - 2) + (index2 - 1);
+			whiteControl.set(pushIndex, index);
 		} else {
 			if (board[index1 - 2][index2 - 1] == 0 || board[index1 - 2][index2 - 1] % 2 != 0) {
 				pushIndex = "" + (index1 - 2) + (index2 - 1);
 				moves.push(pushIndex);
 			}
+			pushIndex = "" + (index1 - 2) + (index2 - 1);
+			blackControl.set(pushIndex, index);
 		}
 	}
 	legalMoves.set(index, moves);
@@ -479,9 +531,11 @@ function checkBishop(index1, index2) {
 			if (board[i][j] == 0) {
 				pushIndex = "" + i + j;
 				moves.push(pushIndex);
+				whiteControl.set(pushIndex, index);
 			} else if (board[i][j] % 2 == 0) {
 				pushIndex = "" + i + j;
 				moves.push(pushIndex);
+				whiteControl.set(pushIndex, index);
 				break;
 			} else {
 				break;
@@ -490,9 +544,11 @@ function checkBishop(index1, index2) {
 			if (board[i][j] == 0) {
 				pushIndex = "" + i + j;
 				moves.push(pushIndex);
+				blackControl.set(pushIndex, index);
 			} else if (board[i][j] % 2 != 0) {
 				pushIndex = "" + i + j;
 				moves.push(pushIndex);
+				blackControl.set(pushIndex, index);
 				break;
 			} else {
 				break;
@@ -506,9 +562,11 @@ function checkBishop(index1, index2) {
 			if (board[i][j] == 0) {
 				pushIndex = "" + i + j;
 				moves.push(pushIndex);
+				whiteControl.set(pushIndex, index);
 			} else if (board[i][j] % 2 == 0) {
 				pushIndex = "" + i + j;
 				moves.push(pushIndex);
+				whiteControl.set(pushIndex, index);
 				break;
 			} else {
 				break;
@@ -517,9 +575,11 @@ function checkBishop(index1, index2) {
 			if (board[i][j] == 0) {
 				pushIndex = "" + i + j;
 				moves.push(pushIndex);
+				blackControl.set(pushIndex, index);
 			} else if (board[i][j] % 2 != 0) {
 				pushIndex = "" + i + j;
 				moves.push(pushIndex);
+				blackControl.set(pushIndex, index);
 				break;
 			} else {
 				break;
@@ -533,9 +593,11 @@ function checkBishop(index1, index2) {
 			if (board[i][j] == 0) {
 				pushIndex = "" + i + j;
 				moves.push(pushIndex);
+				whiteControl.set(pushIndex, index);
 			} else if (board[i][j] % 2 == 0) {
 				pushIndex = "" + i + j;
 				moves.push(pushIndex);
+				whiteControl.set(pushIndex, index);
 				break;
 			} else {
 				break;
@@ -544,9 +606,11 @@ function checkBishop(index1, index2) {
 			if (board[i][j] == 0) {
 				pushIndex = "" + i + j;
 				moves.push(pushIndex);
+				blackControl.set(pushIndex, index);
 			} else if (board[i][j] % 2 != 0) {
 				pushIndex = "" + i + j;
 				moves.push(pushIndex);
+				blackControl.set(pushIndex, index);
 				break;
 			} else {
 				break;
@@ -560,9 +624,11 @@ function checkBishop(index1, index2) {
 			if (board[i][j] == 0) {
 				pushIndex = "" + i + j;
 				moves.push(pushIndex);
+				whiteControl.set(pushIndex, index);
 			} else if (board[i][j] % 2 == 0) {
 				pushIndex = "" + i + j;
 				moves.push(pushIndex);
+				whiteControl.set(pushIndex, index);
 				break;
 			} else {
 				break;
@@ -571,9 +637,11 @@ function checkBishop(index1, index2) {
 			if (board[i][j] == 0) {
 				pushIndex = "" + i + j;
 				moves.push(pushIndex);
+				blackControl.set(pushIndex, index);
 			} else if (board[i][j] % 2 != 0) {
 				pushIndex = "" + i + j;
 				moves.push(pushIndex);
+				blackControl.set(pushIndex, index);
 				break;
 			} else {
 				break;
@@ -594,9 +662,11 @@ function checkRook(index1, index2) {
 			if (board[i][index2] == 0) {
 				pushIndex = "" + i + index2;
 				moves.push(pushIndex);
+				whiteControl.set(pushIndex, index);
 			} else if (board[i][index2] % 2 == 0) {
 				pushIndex = "" + i + index2;
 				moves.push(pushIndex);
+				whiteControl.set(pushIndex, index);
 				break;
 			} else {
 				break;
@@ -605,9 +675,11 @@ function checkRook(index1, index2) {
 			if (board[i][index2] == 0) {
 				pushIndex = "" + i + index2;
 				moves.push(pushIndex);
+				blackControl.set(pushIndex, index);
 			} else if (board[i][index2] % 2 != 0) {
 				pushIndex = "" + i + index2;
 				moves.push(pushIndex);
+				blackControl.set(pushIndex, index);
 				break;
 			} else {
 				break;
@@ -619,9 +691,11 @@ function checkRook(index1, index2) {
 			if (board[index1][i] == 0) {
 				pushIndex = "" + index1 + i;
 				moves.push(pushIndex);
+				whiteControl.set(pushIndex, index);
 			} else if (board[index1][i] % 2 == 0) {
 				pushIndex = "" + index1 + i;
 				moves.push(pushIndex);
+				whiteControl.set(pushIndex, index);
 				break;
 			} else {
 				break;
@@ -630,9 +704,11 @@ function checkRook(index1, index2) {
 			if (board[index1][i] == 0) {
 				pushIndex = "" + index1 + i;
 				moves.push(pushIndex);
+				blackControl.set(pushIndex, index);
 			} else if (board[index1][i] % 2 != 0) {
 				pushIndex = "" + index1 + i;
 				moves.push(pushIndex);
+				blackControl.set(pushIndex, index);
 				break;
 			} else {
 				break;
@@ -644,9 +720,11 @@ function checkRook(index1, index2) {
 			if (board[i][index2] == 0) {
 				pushIndex = "" + i + index2;
 				moves.push(pushIndex);
+				whiteControl.set(pushIndex, index);
 			} else if (board[i][index2] % 2 == 0) {
 				pushIndex = "" + i + index2;
 				moves.push(pushIndex);
+				whiteControl.set(pushIndex, index);
 				break;
 			} else {
 				break;
@@ -655,9 +733,11 @@ function checkRook(index1, index2) {
 			if (board[i][index2] == 0) {
 				pushIndex = "" + i + index2;
 				moves.push(pushIndex);
+				blackControl.set(pushIndex, index);
 			} else if (board[i][index2] % 2 != 0) {
 				pushIndex = "" + i + index2;
 				moves.push(pushIndex);
+				blackControl.set(pushIndex, index);
 				break;
 			} else {
 				break;
@@ -669,9 +749,11 @@ function checkRook(index1, index2) {
 			if (board[index1][i] == 0) {
 				pushIndex = "" + index1 + i;
 				moves.push(pushIndex);
+				whiteControl.set(pushIndex, index);
 			} else if (board[index1][i] % 2 == 0) {
 				pushIndex = "" + index1 + i;
 				moves.push(pushIndex);
+				whiteControl.set(pushIndex, index);
 				break;
 			} else {
 				break;
@@ -680,9 +762,11 @@ function checkRook(index1, index2) {
 			if (board[index1][i] == 0) {
 				pushIndex = "" + index1 + i;
 				moves.push(pushIndex);
+				blackControl.set(pushIndex, index);
 			} else if (board[index1][i] % 2 != 0) {
 				pushIndex = "" + index1 + i;
 				moves.push(pushIndex);
+				blackControl.set(pushIndex, index);
 				break;
 			} else {
 				break;
@@ -702,9 +786,11 @@ function checkQueen(index1, index2) {
 			if (board[i][index2] == 0) {
 				pushIndex = "" + i + index2;
 				moves.push(pushIndex);
+				whiteControl.set(pushIndex, index);
 			} else if (board[i][index2] % 2 == 0) {
 				pushIndex = "" + i + index2;
 				moves.push(pushIndex);
+				whiteControl.set(pushIndex, index);
 				break;
 			} else {
 				break;
@@ -713,9 +799,11 @@ function checkQueen(index1, index2) {
 			if (board[i][index2] == 0) {
 				pushIndex = "" + i + index2;
 				moves.push(pushIndex);
+				blackControl.set(pushIndex, index);
 			} else if (board[i][index2] % 2 != 0) {
 				pushIndex = "" + i + index2;
 				moves.push(pushIndex);
+				blackControl.set(pushIndex, index);
 				break;
 			} else {
 				break;
@@ -727,9 +815,11 @@ function checkQueen(index1, index2) {
 			if (board[index1][i] == 0) {
 				pushIndex = "" + index1 + i;
 				moves.push(pushIndex);
+				whiteControl.set(pushIndex, index);
 			} else if (board[index1][i] % 2 == 0) {
 				pushIndex = "" + index1 + i;
 				moves.push(pushIndex);
+				whiteControl.set(pushIndex, index);
 				break;
 			} else {
 				break;
@@ -738,9 +828,11 @@ function checkQueen(index1, index2) {
 			if (board[index1][i] == 0) {
 				pushIndex = "" + index1 + i;
 				moves.push(pushIndex);
+				blackControl.set(pushIndex, index);
 			} else if (board[index1][i] % 2 != 0) {
 				pushIndex = "" + index1 + i;
 				moves.push(pushIndex);
+				blackControl.set(pushIndex, index);
 				break;
 			} else {
 				break;
@@ -752,9 +844,11 @@ function checkQueen(index1, index2) {
 			if (board[i][index2] == 0) {
 				pushIndex = "" + i + index2;
 				moves.push(pushIndex);
+				whiteControl.set(pushIndex, index);
 			} else if (board[i][index2] % 2 == 0) {
 				pushIndex = "" + i + index2;
 				moves.push(pushIndex);
+				whiteControl.set(pushIndex, index);
 				break;
 			} else {
 				break;
@@ -763,9 +857,11 @@ function checkQueen(index1, index2) {
 			if (board[i][index2] == 0) {
 				pushIndex = "" + i + index2;
 				moves.push(pushIndex);
+				blackControl.set(pushIndex, index);
 			} else if (board[i][index2] % 2 != 0) {
 				pushIndex = "" + i + index2;
 				moves.push(pushIndex);
+				blackControl.set(pushIndex, index);
 				break;
 			} else {
 				break;
@@ -777,9 +873,11 @@ function checkQueen(index1, index2) {
 			if (board[index1][i] == 0) {
 				pushIndex = "" + index1 + i;
 				moves.push(pushIndex);
+				whiteControl.set(pushIndex, index);
 			} else if (board[index1][i] % 2 == 0) {
 				pushIndex = "" + index1 + i;
 				moves.push(pushIndex);
+				whiteControl.set(pushIndex, index);
 				break;
 			} else {
 				break;
@@ -788,9 +886,11 @@ function checkQueen(index1, index2) {
 			if (board[index1][i] == 0) {
 				pushIndex = "" + index1 + i;
 				moves.push(pushIndex);
+				blackControl.set(pushIndex, index);
 			} else if (board[index1][i] % 2 != 0) {
 				pushIndex = "" + index1 + i;
 				moves.push(pushIndex);
+				blackControl.set(pushIndex, index);
 				break;
 			} else {
 				break;
@@ -803,9 +903,11 @@ function checkQueen(index1, index2) {
 			if (board[i][j] == 0) {
 				pushIndex = "" + i + j;
 				moves.push(pushIndex);
+				whiteControl.set(pushIndex, index);
 			} else if (board[i][j] % 2 == 0) {
 				pushIndex = "" + i + j;
 				moves.push(pushIndex);
+				whiteControl.set(pushIndex, index);
 				break;
 			} else {
 				break;
@@ -814,9 +916,11 @@ function checkQueen(index1, index2) {
 			if (board[i][j] == 0) {
 				pushIndex = "" + i + j;
 				moves.push(pushIndex);
+				blackControl.set(pushIndex, index);
 			} else if (board[i][j] % 2 != 0) {
 				pushIndex = "" + i + j;
 				moves.push(pushIndex);
+				blackControl.set(pushIndex, index);
 				break;
 			} else {
 				break;
@@ -830,9 +934,11 @@ function checkQueen(index1, index2) {
 			if (board[i][j] == 0) {
 				pushIndex = "" + i + j;
 				moves.push(pushIndex);
+				whiteControl.set(pushIndex, index);
 			} else if (board[i][j] % 2 == 0) {
 				pushIndex = "" + i + j;
 				moves.push(pushIndex);
+				whiteControl.set(pushIndex, index);
 				break;
 			} else {
 				break;
@@ -841,9 +947,11 @@ function checkQueen(index1, index2) {
 			if (board[i][j] == 0) {
 				pushIndex = "" + i + j;
 				moves.push(pushIndex);
+				blackControl.set(pushIndex, index);
 			} else if (board[i][j] % 2 != 0) {
 				pushIndex = "" + i + j;
 				moves.push(pushIndex);
+				blackControl.set(pushIndex, index);
 				break;
 			} else {
 				break;
@@ -857,9 +965,11 @@ function checkQueen(index1, index2) {
 			if (board[i][j] == 0) {
 				pushIndex = "" + i + j;
 				moves.push(pushIndex);
+				whiteControl.set(pushIndex, index);
 			} else if (board[i][j] % 2 == 0) {
 				pushIndex = "" + i + j;
 				moves.push(pushIndex);
+				whiteControl.set(pushIndex, index);
 				break;
 			} else {
 				break;
@@ -868,9 +978,11 @@ function checkQueen(index1, index2) {
 			if (board[i][j] == 0) {
 				pushIndex = "" + i + j;
 				moves.push(pushIndex);
+				blackControl.set(pushIndex, index);
 			} else if (board[i][j] % 2 != 0) {
 				pushIndex = "" + i + j;
 				moves.push(pushIndex);
+				blackControl.set(pushIndex, index);
 				break;
 			} else {
 				break;
@@ -884,9 +996,11 @@ function checkQueen(index1, index2) {
 			if (board[i][j] == 0) {
 				pushIndex = "" + i + j;
 				moves.push(pushIndex);
+				whiteControl.set(pushIndex, index);
 			} else if (board[i][j] % 2 == 0) {
 				pushIndex = "" + i + j;
 				moves.push(pushIndex);
+				whiteControl.set(pushIndex, index);
 				break;
 			} else {
 				break;
@@ -895,9 +1009,11 @@ function checkQueen(index1, index2) {
 			if (board[i][j] == 0) {
 				pushIndex = "" + i + j;
 				moves.push(pushIndex);
+				blackControl.set(pushIndex, index);
 			} else if (board[i][j] % 2 != 0) {
 				pushIndex = "" + i + j;
 				moves.push(pushIndex);
+				blackControl.set(pushIndex, index);
 				break;
 			} else {
 				break;
@@ -915,130 +1031,146 @@ function checkKing(index1, index2) {
 	index = "" + index1 + index2;
 	if (index1 - 1 >= 0) {
 		if (board[index1][index2] % 2 != 0) {
-			if (board[index1 - 1][index2] % 2 == 0) {
+			if (board[index1 - 1][index2] % 2 == 0 && blackControl.has("" + (index1 - 1) + index2) == false) {
 				pushIndex = "" + (index1 - 1) + index2;
 				moves.push(pushIndex);
+				whiteControl.set(pushIndex, index);
 			}
 		} else {
-			if (board[index1 - 1][index2] == 0 || board[index1 - 1][index2] % 2 != 0) {
+			if ((board[index1 - 1][index2] == 0 || board[index1 - 1][index2] % 2 != 0) && whiteControl.has("" + (index1 - 1) + index2) == false) {
 				pushIndex = "" + (index1 - 1) + index2;
 				moves.push(pushIndex);
+				blackControl.set(pushIndex, index);
 			}
 		}
 	}
 	if (index1 - 1 >= 0 && index2 + 1 < 8) {
 		if (board[index1][index2] % 2 != 0) {
-			if (board[index1 - 1][index2 + 1] % 2 == 0) {
+			if (board[index1 - 1][index2 + 1] % 2 == 0 && blackControl.has("" + (index1 - 1) + (index2 + 1)) == false) {
 				pushIndex = "" + (index1 - 1) + (index2 + 1);
 				moves.push(pushIndex);
+				whiteControl.set(pushIndex, index);
 			}
 		} else {
-			if (board[index1 - 1][index2 + 1] == 0 || board[index1 - 1][index2 + 1] % 2 != 0) {
+			if ((board[index1 - 1][index2 + 1] == 0 || board[index1 - 1][index2 + 1] % 2 != 0) && whiteControl.has("" + (index1 - 1) + (index2 + 1)) == false) {
 				pushIndex = "" + (index1 - 1) + (index2 + 1);
 				moves.push(pushIndex);
+				blackControl.set(pushIndex, index);
 			}
 		}
 	}
 	if (index2 + 1 < 8) {
 		if (board[index1][index2] % 2 != 0) {
-			if (board[index1][index2 + 1] % 2 == 0) {
+			if (board[index1][index2 + 1] % 2 == 0 && blackControl.has("" + index1 + (index2 + 1)) == false) {
 				pushIndex = "" + index1 + (index2 + 1);
 				moves.push(pushIndex);
+				whiteControl.set(pushIndex, index);
 			}
 		} else {
-			if (board[index1][index2 + 1] == 0 || board[index1][index2 + 1] % 2 != 0) {
+			if ((board[index1][index2 + 1] == 0 || board[index1][index2 + 1] % 2 != 0) && whiteControl.has("" + index1 + (index2 + 1)) == false) {
 				pushIndex = "" + index1 + (index2 + 1);
 				moves.push(pushIndex);
+				blackControl.set(pushIndex, index);
 			}
 		}
 	}
 	if (index1 + 1 < 8 && index2 + 1 < 8) {
 		if (board[index1][index2] % 2 != 0) {
-			if (board[index1 + 1][index2 + 1] % 2 == 0) {
+			if (board[index1 + 1][index2 + 1] % 2 == 0 && blackControl.has("" + (index1 + 1) + (index2 + 1)) == false) {
 				pushIndex = "" + (index1 + 1) + (index2 + 1);
 				moves.push(pushIndex);
+				whiteControl.set(pushIndex, index);
 			}
 		} else {
-			if (board[index1 + 1][index2 + 1] == 0 || board[index1 + 1][index2 + 1] % 2 != 0) {
+			if ((board[index1 + 1][index2 + 1] == 0 || board[index1 + 1][index2 + 1] % 2 != 0) && whiteControl.has("" + (index1 + 1) + (index2 + 1)) == false) {
 				pushIndex = "" + (index1 + 1) + (index2 + 1);
 				moves.push(pushIndex);
+				blackControl.set(pushIndex, index);
 			}
 		}
 	}
 	if (index1 + 1 < 8) {
 		if (board[index1][index2] % 2 != 0) {
-			if (board[index1 + 1][index2] % 2 == 0) {
+			if (board[index1 + 1][index2] % 2 == 0 && blackControl.has("" + (index1 + 1) + index2) == false) {
 				pushIndex = "" + (index1 + 1) + index2;
 				moves.push(pushIndex);
+				whiteControl.set(pushIndex, index);
 					}
 		} else {
-			if (board[index1 + 1][index2] == 0 || board[index1 + 1][index2] % 2 != 0) {
+			if ((board[index1 + 1][index2] == 0 || board[index1 + 1][index2] % 2 != 0) && (whiteControl.has("" + (index1 + 1) + index2) == false)) {
 				pushIndex = "" + (index1 + 1) + index2;
 				moves.push(pushIndex);
+				blackControl.set(pushIndex, index);
 			}
 		}
 	}
 	if (index1 + 1 < 8 && index2 - 1 >= 0) {
 		if (board[index1][index2] % 2 != 0) {
-			if (board[index1 + 1][index2 - 1] % 2 == 0) {
+			if (board[index1 + 1][index2 - 1] % 2 == 0 && blackControl.has("" + (index1 + 1) + (index2 - 1)) == false) {
 				pushIndex = "" + (index1 + 1) + (index2 - 1);
 				moves.push(pushIndex);
+				whiteControl.set(pushIndex, index);
 			}
 		} else {
-			if (board[index1 + 1][index2 - 1] == 0 || board[index1 + 1][index2 - 1] % 2 != 0) {
+			if ((board[index1 + 1][index2 - 1] == 0 || board[index1 + 1][index2 - 1] % 2 != 0) && whiteControl.has("" + (index1 + 1) + (index2 - 1)) == false) {
 				pushIndex = "" + (index1 + 1) + (index2 - 1);
 				moves.push(pushIndex);
+				blackControl.set(pushIndex, index);
 			}
 		}
 	}
 	if (index2 - 1 >= 0) {
 		if (board[index1][index2] % 2 != 0) {
-			if (board[index1][index2 - 1] % 2 == 0) {
+			if (board[index1][index2 - 1] % 2 == 0 && blackControl.has("" + index1 + (index2 - 1)) == false) {
 				pushIndex = "" + index1 + (index2 - 1);
 				moves.push(pushIndex);
+				whiteControl.set(pushIndex, index);
 			}
 		} else {
-			if (board[index1][index2 - 1] == 0 || board[index1][index2 - 1] % 2 != 0) {
+			if ((board[index1][index2 - 1] == 0 || board[index1][index2 - 1] % 2 != 0) && whiteControl.has("" + index1 + (index2 - 1)) == false) {
 				pushIndex = "" + index1 + (index2 - 1);
 				moves.push(pushIndex);
+				blackControl.set(pushIndex, index);
 			}
 		}
 	}
 	if (index1 - 1 >= 0 && index2 - 1 >= 0) {
 		if (board[index1][index2] % 2 != 0) {
-			if (board[index1 - 1][index2 - 1] % 2 == 0) {
+			if (board[index1 - 1][index2 - 1] % 2 == 0 && blackControl.has("" + (index1 - 1) + (index2 - 1)) == false) {
 				pushIndex = "" + (index1 - 1) + (index2 - 1);
 				moves.push(pushIndex);
+				whiteControl.set(pushIndex, index);
 			}
 		} else {
-			if (board[index1 - 1][index2 - 1] == 0 || board[index1 - 1][index2 - 1] % 2 != 0) {
+			if ((board[index1 - 1][index2 - 1] == 0 || board[index1 - 1][index2 - 1] % 2 != 0) && whiteControl.has("" + (index1 - 1) + (index2 - 1)) == false) {
 				pushIndex = "" + (index1 - 1) + (index2 - 1);
 				moves.push(pushIndex);
+				blackControl.set(pushIndex, index);
 			}
 		}
 	}
 	if (board[index1][index2] % 2 != 0) {
 		if (whiteShortCastle == true) {
-			if (board[index1][index2 + 1] == 0 && board[index1][index2 + 2] == 0) {
+			if (board[index1][index2 + 1] == 0 && board[index1][index2 + 2] == 0 && blackControl.has("" + index1 + (index2 + 1)) == false && blackControl.has("" + index1 + (index2 + 2)) == false) {
 				pushIndex = "" + index1 + (index2 + 2);
 				moves.push(pushIndex);
 			}
 		}
 		if (whiteLongCastle == true) {
-			if (board[index1][index2 - 1] == 0 && board[index1][index2 - 2] == 0 && board[index1][index2 - 3] == 0) {
+			if (board[index1][index2 - 1] == 0 && board[index1][index2 - 2] == 0 && board[index1][index2 - 3] == 0 && blackControl.has("" + index1 + (index2 - 1)) == false && blackControl.has("" + index1 + (index2 - 2)) == false) {
 				pushIndex = "" + index1 + (index2 - 2);
 				moves.push(pushIndex);
 			}
 		}
 	} else {
 		if (blackShortCastle == true) {
-			if (board[index1][index2 + 1] == 0 && board[index1][index2 + 2] == 0) {
+			if (board[index1][index2 + 1] == 0 && board[index1][index2 + 2] == 0 && whiteControl.has("" + index1 + (index2 + 1)) == false && whiteControl.has("" + index1 + (index2 + 2)) == false) {
 				pushIndex = "" + index1 + (index2 + 2);
 				moves.push(pushIndex);
 			}
 		}
 		if (blackLongCastle == true) {
-			if (board[index1][index2 - 1] == 0 && board[index1][index2 - 2] == 0 && board[index1][index2 - 3] == 0) {
+			if (board[index1][index2 - 1] == 0 && board[index1][index2 - 2] == 0 && board[index1][index2 - 3] == 0 && whiteControl.has("" + index1 + (index2 - 1)) == false && whiteControl.has("" + index1 + (index2 - 2)) == false) {
 				pushIndex = "" + index1 + (index2 - 2);
 				moves.push(pushIndex);
 			}
@@ -1049,6 +1181,8 @@ function checkKing(index1, index2) {
 
 function checkLegalMoves() {
 	legalMoves.clear();
+	whiteControl.clear();
+	blackControl.clear();
 	for (let i = 0; i < 8; i++) {
 		for (let j = 0; j < 8; j++) {
 			if (board[i][j] == 1 || board[i][j] == 2) {
@@ -1061,12 +1195,13 @@ function checkLegalMoves() {
 				checkRook(i, j);
 			} else if (board[i][j] == 9 || board[i][j] == 10) {
 				checkQueen(i, j);
-			} else if (board[i][j] == 11 || board[i][j] == 12) {
-				checkKing(i, j);
 			}
 		}
 	}
-	console.log(legalMoves);
+	let temp = whiteKingIndex.split("");
+	checkKing(parseInt(temp[0]), parseInt(temp[1]));
+	temp = blackKingIndex.split("");
+	checkKing(parseInt(temp[0]), parseInt(temp[1]));
 };
 
 chessboard.addEventListener("mousedown", function() {
