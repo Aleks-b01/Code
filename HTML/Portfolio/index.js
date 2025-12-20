@@ -6,8 +6,6 @@ const logo = document.getElementById("logo");
 const nav = document.getElementsByTagName("nav")[0];
 const switch_to_dark_mode = document.getElementById("switch_to_dark_mode");
 const switch_to_light_mode = document.getElementById("switch_to_light_mode");
-const burger_btn = document.getElementById("burger_btn");
-const nav_close_btn = document.getElementById("nav_close_btn");
 const home_link = document.getElementById("home_link");
 const work_link = document.getElementById("work_link");
 const aboutme_link = document.getElementById("aboutme_link");
@@ -82,27 +80,7 @@ switch_to_light_mode.addEventListener("click", function() {
 	}
 });
 
-burger_btn.addEventListener("click", function() {
-	switch_to_dark_mode.style.display = "none";
-	switch_to_light_mode.style.display = "none";
-	nav.style.display = "flex";
-	burger_btn.style.display = "none";
-	nav_close_btn.style.display = "inline";
-});
-
-function closeNav() {
-	nav.style.display = "none";
-	nav_close_btn.style.display = "none";
-	burger_btn.style.display = "flex";
-	if (dark_mode == false) {
-		switch_to_dark_mode.style.display = "flex";
-	} else {
-		switch_to_light_mode.style.display = "flex";
-	}
-};
-
 function switchPage(page) {
-	closeNav();
 	home.style.display = "none";
 	work.style.display = "none";
 	aboutme.style.display = "none";
@@ -162,10 +140,6 @@ function switchPage(page) {
 	}
 	window.scrollTo(0, 0);
 };
-
-nav_close_btn.addEventListener("click", function() {
-	closeNav();
-});
 
 logo.addEventListener("click", function() {
 	switchPage("home");

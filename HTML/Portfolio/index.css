@@ -48,24 +48,24 @@ header {
 }
 
 #logo {
-	font-size: 150%;
+	font-size: 30px;
 	margin-left: 7%;
 	cursor: pointer;
 	user-select: none;
 }
 
 nav {
-	display: none;
+	display: flex;
 	width: 30%;
 	height: 100%;
 	justify-content: space-between;
 	align-items: center;
 	position: absolute;
-	right: calc(9% + 25px);
+	right: calc(9% + 65px);
 }
 
 .nav_link {
-	font-size: 15px;
+	font-size: 20px;
 	cursor: pointer;
 	transition: 150ms;
 	color: black;
@@ -81,11 +81,11 @@ nav {
 }
 
 .light_dark_mode_switch {
-	width: 25px;
-	height: 25px;
+	width: 30px;
+	height: 30px;
 	position: absolute;
 	top: 50%;
-	right: calc(9% + 25px);
+	right: 7%;
 	transform: translate(0, -50%);
 	cursor: pointer;
 }
@@ -106,36 +106,6 @@ nav {
 	background-position: center;
 }
 
-#burger_btn {
-	display: flex;
-	width: 25px;
-	height: 25px;
-	position: absolute;
-	top: 50%;
-	right: 6%;
-	transform: translate(0%, -50%);
-	background-image: url('assets/icons/burger.png');
-	background-repeat: no-repeat;
-	background-size: contain;
-	background-position: center;
-	cursor: pointer;
-}
-
-#nav_close_btn {
-	display: none;
-	width: 25px;
-	height: 25px;
-	position: absolute;
-	top: 50%;
-	right: 6%;
-	transform: translate(0%, -50%);
-	background-image: url('assets/icons/nav_close.png');
-	background-repeat: no-repeat;
-	background-size: contain;
-	background-position: center;
-	cursor: pointer;
-}
-
 #header_line {
 	display: flex;
 	width: 90%;
@@ -154,8 +124,8 @@ main {
 }
 
 @keyframes fadein-h1 {
-	from {color: white; margin-top: 20%;}
-	to {color: black; margin-top: 10%;}
+	from {color: white; margin-top: 25%;}
+	to {color: black; margin-top: 12%;}
 }
 
 @keyframes fadein-bio {
@@ -171,11 +141,11 @@ main {
 }
 
 #home_h1 {
-	font-size: 100px;
+	font-size: 130px;
 	color: white;
 	text-align: center;
-	margin-top: 15%;
-	margin-bottom: 6%;
+	margin-top: 12%;
+	margin-bottom: 5%;
 	animation-name: fadein-h1;
 	animation-duration: 1.3s;
 	animation-delay: 0.2s;
@@ -496,7 +466,7 @@ main {
 
 #example_website_1_nav {
 	display: flex;
-	width: 50%;
+	width: 45%;
 	height: 100%;
 	margin-right: 5%;
 	justify-content: space-between;
@@ -504,7 +474,7 @@ main {
 }
 
 .example_website_1_nav_link {
-	font-size: 16px;
+	font-size: 19px;
 	cursor: pointer;
 	user-select: none;
 	transition: 150ms;
@@ -553,7 +523,7 @@ main {
 
 #example_website_1_hero_text {
 	width: 50%;
-	font-size: 25px;
+	font-size: 26px;
 	margin-left: 3%;
 	margin-bottom: 3%;
 }
@@ -579,13 +549,13 @@ main {
 	height: auto;
 	flex-direction: column;
 	justify-content: center;
-	margin-top: 20%;
+	margin-top: 15%;
 }
 
 #example_website_1_whyus_title {
 	font-size: 60px;
 	text-align: center;
-	margin-bottom: 3%;
+	margin-bottom: 5%;
 }
 
 #example_website_1_whyus_text {
@@ -744,9 +714,9 @@ main {
 }
 
 #example_website_1_aboutus_ourmission_text_heading {
-	font-size: 70px;
+	font-size: 60px;
 	font-weight: bold;
-	margin-bottom: 3%;
+	margin-bottom: 4%;
 }
 
 #example_website_1_aboutus_ourmission_text_text {
@@ -755,7 +725,7 @@ main {
 
 #example_website_1_aboutus_ourmission_imgs {
 	display: flex;
-	width: 15%;
+	width: 12%;
 	height: 70%;
 	justify-content: space-between;
 	flex-direction: column;
@@ -790,7 +760,7 @@ main {
 
 #example_website_1_aboutus_ourmission_text_2 {
 	display: flex;
-	width: 83%;
+	width: 80%;
 	height: auto;
 	font-size: 25px;
 	gap: 0px;
@@ -854,12 +824,12 @@ main {
 #example_website_1_services_scaleserv_text_heading {
 	font-weight: bold;
 	font-size: 60px;
-	margin-bottom: 20px;
+	margin-bottom: 4%;
 }
 
 #example_website_1_services_scaleserv_text_text {
 	font-size: 25px;
-	margin-bottom: 20px;
+	margin-bottom: 3%;
 }
 
 #example_website_1_pricing {
@@ -900,7 +870,8 @@ main {
 .example_website_1_pricing_table_h1 {
 	display: flex;
 	width: 100%;
-	font-size: 35px;
+	font-size: 36px;
+	font-weight: bold;
 	justify-content: center;
 	align-items: center;
 	margin-top: 15px;
@@ -917,7 +888,7 @@ main {
 .example_website_1_pricing_table_price {
 	display: flex;
 	width: 100%;
-	font-size: 20px;
+	font-size: 22px;
 	justify-content: center;
 	align-items: center;
 	background-color: #f6f6f6;
@@ -931,7 +902,7 @@ main {
 .example_website_1_pricing_table_analytics {
 	display: flex;
 	width: 100%;
-	font-size: 20px;
+	font-size: 22px;
 	justify-content: center;
 	align-items: center;
 	aspect-ratio: 3 / 1;
@@ -944,7 +915,7 @@ main {
 .example_website_1_pricing_table_cost_optimization {
 	display: flex;
 	width: 100%;
-	font-size: 20px;
+	font-size: 22px;
 	justify-content: center;
 	align-items: center;
 	background-color: #f6f6f6;
@@ -958,7 +929,7 @@ main {
 .example_website_1_pricing_table_security {
 	display: flex;
 	width: 100%;
-	font-size: 20px;
+	font-size: 22px;
 	justify-content: center;
 	align-items: center;
 	aspect-ratio: 3 / 1;
@@ -971,7 +942,7 @@ main {
 .example_website_1_pricing_table_automation {
 	display: flex;
 	width: 100%;
-	font-size: 20px;
+	font-size: 22px;
 	justify-content: center;
 	align-items: center;
 	background-color: #f6f6f6;
@@ -985,7 +956,7 @@ main {
 .example_website_1_pricing_table_ai_features {
 	display: flex;
 	width: 100%;
-	font-size: 20px;
+	font-size: 22px;
 	justify-content: center;
 	align-items: center;
 	aspect-ratio: 3 / 1;
