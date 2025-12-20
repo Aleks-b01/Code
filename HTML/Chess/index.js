@@ -261,6 +261,7 @@ let whiteShortCastle = true;
 let whiteLongCastle = true;
 let blackShortCastle = true;
 let blackLongCastle = true;
+let canMove = false;
 
 window.onload = function() {
 	drawBoard();
@@ -1207,77 +1208,88 @@ function checkLegalMoves() {
 chessboard.addEventListener("mousedown", function() {
 	let temp = (boardIndex.get(currentSquareOver)).split("");
 	if (board[temp[0]][temp[1]] != 0) {
-		pickedSquare = currentSquareOver;
-		square[squareIndex.get(currentSquareOver)].style.visibility = "hidden";
-		cursor_piece.style.backgroundImage = arrayToPiecePath.get(board[temp[0]][temp[1]]);
-		cursor_piece.style.display = "flex";
+		if ((board[temp[0]][temp[1]] % 2 != 0 && move == 0) || (board[temp[0]][temp[1]] % 2 == 0 && move == 1)) {
+			pickedSquare = currentSquareOver;
+			square[squareIndex.get(currentSquareOver)].style.visibility = "hidden";
+			cursor_piece.style.backgroundImage = arrayToPiecePath.get(board[temp[0]][temp[1]]);
+			cursor_piece.style.display = "flex";
+			canMove = true;
+		}
 	}
 });
 
 chessboard.addEventListener("mouseup", function() {
-	cursor_piece.style.display = "none";
-	let tempIndex = "";
-	let temp = (boardIndex.get(currentSquareOver)).split("");
-	let temp2 = (boardIndex.get(pickedSquare)).split("");
-	let temp3 = squareIndex.get(pickedSquare);
-	if (board[temp2[0]][temp2[1]] != 0 && pickedSquare != currentSquareOver && (legalMoves.get(boardIndex.get(pickedSquare))).includes(boardIndex.get(currentSquareOver))) {
-		enPassant.clear();
-		if (board[temp2[0]][temp2[1]] == 1 && temp2[0] == 6 && temp[0] == 4) {
-			tempIndex = "" + temp[0] + temp[1];
-			enPassant.set(tempIndex, 1);
-		}
-		if (board[temp2[0]][temp2[1]] == 2 && temp2[0] == 1 && temp[0] == 3) {
-			tempIndex = "" + temp[0] + temp[1];
-			enPassant.set(tempIndex, 1);
-		}
-		if (board[temp2[0]][temp2[1]] == 1 && temp[1] != temp2[1] && board[temp[0]][temp[1]] == 0) {
-			board[parseInt(temp[0]) + 1][temp[1]] = 0;
-		}
-		if (board[temp2[0]][temp2[1]] == 2 && temp[1] != temp2[1] && board[temp[0]][temp[1]] == 0) {
-			board[parseInt(temp[0]) - 1][temp[1]] = 0;
-		}
-		if (board[temp2[0]][temp2[1]] == 11) {
-			if (temp2[0] == 7 && temp2[1] == 4 && temp[1] == 6) {
-				board[7][7] = 0;
-				board[7][5] = 7;
+	if (canMove == true) {
+		cursor_piece.style.display = "none";
+		let tempIndex = "";
+		let temp = (boardIndex.get(currentSquareOver)).split("");
+		let temp2 = (boardIndex.get(pickedSquare)).split("");
+		let temp3 = squareIndex.get(pickedSquare);
+		if (board[temp2[0]][temp2[1]] != 0 && pickedSquare != currentSquareOver && (legalMoves.get(boardIndex.get(pickedSquare))).includes(boardIndex.get(currentSquareOver))) {
+			enPassant.clear();
+			if (board[temp2[0]][temp2[1]] == 1 && temp2[0] == 6 && temp[0] == 4) {
+				tempIndex = "" + temp[0] + temp[1];
+				enPassant.set(tempIndex, 1);
 			}
-			if (temp2[0] == 7 && temp2[1] == 4 && temp[1] == 2) {
-				board[7][0] = 0;
-				board[7][3] = 7;
+			if (board[temp2[0]][temp2[1]] == 2 && temp2[0] == 1 && temp[0] == 3) {
+				tempIndex = "" + temp[0] + temp[1];
+				enPassant.set(tempIndex, 1);
 			}
-			whiteShortCastle = false;
-			whiteLongCastle = false;
-		}
-		if (temp2[0] == 7 && temp2[1] == 7) {
-			whiteShortCastle = false;
-		}
-		if (temp2[0] == 7 && temp2[1] == 0) {
-			whiteLongCastle = false;
-		}
-		if (board[temp2[0]][temp2[1]] == 12) {
-			if (temp2[0] == 0 && temp2[1] == 4 && temp[1] == 6) {
-				board[0][7] = 0;
-				board[0][5] = 8;
+			if (board[temp2[0]][temp2[1]] == 1 && temp[1] != temp2[1] && board[temp[0]][temp[1]] == 0) {
+				board[parseInt(temp[0]) + 1][temp[1]] = 0;
 			}
-			if (temp2[0] == 0 && temp2[1] == 4 && temp[1] == 2) {
-				board[0][0] = 0;
-				board[0][3] = 8;
+			if (board[temp2[0]][temp2[1]] == 2 && temp[1] != temp2[1] && board[temp[0]][temp[1]] == 0) {
+				board[parseInt(temp[0]) - 1][temp[1]] = 0;
 			}
-			blackShortCastle = false;
-			blackLongCastle = false;
+			if (board[temp2[0]][temp2[1]] == 11) {
+				if (temp2[0] == 7 && temp2[1] == 4 && temp[1] == 6) {
+					board[7][7] = 0;
+					board[7][5] = 7;
+				}
+				if (temp2[0] == 7 && temp2[1] == 4 && temp[1] == 2) {
+					board[7][0] = 0;
+					board[7][3] = 7;
+				}
+				whiteShortCastle = false;
+				whiteLongCastle = false;
+			}
+			if (temp2[0] == 7 && temp2[1] == 7) {
+				whiteShortCastle = false;
+			}
+			if (temp2[0] == 7 && temp2[1] == 0) {
+				whiteLongCastle = false;
+			}
+			if (board[temp2[0]][temp2[1]] == 12) {
+				if (temp2[0] == 0 && temp2[1] == 4 && temp[1] == 6) {
+					board[0][7] = 0;
+					board[0][5] = 8;
+				}
+				if (temp2[0] == 0 && temp2[1] == 4 && temp[1] == 2) {
+					board[0][0] = 0;
+					board[0][3] = 8;
+				}
+				blackShortCastle = false;
+				blackLongCastle = false;
+			}
+			if (temp2[0] == 0 && temp2[1] == 7) {
+				blackShortCastle = false;
+			}
+			if (temp2[0] == 0 && temp2[1] == 0) {
+				blackLongCastle = false;
+			}
+			canMove = false;
+			if (move == 0) {
+				move = 1;
+			} else {
+				move = 0;
+			}
+			board[temp[0]][temp[1]] = board[temp2[0]][temp2[1]];
+			board[temp2[0]][temp2[1]] = 0;
+			square[temp3].style.visibility = "visible";
+			drawBoard();
+		} else {
+			square[temp3].style.visibility = "visible";
 		}
-		if (temp2[0] == 0 && temp2[1] == 7) {
-			blackShortCastle = false;
-		}
-		if (temp2[0] == 0 && temp2[1] == 0) {
-			blackLongCastle = false;
-		}
-		board[temp[0]][temp[1]] = board[temp2[0]][temp2[1]];
-		board[temp2[0]][temp2[1]] = 0;
-		square[temp3].style.visibility = "visible";
-		drawBoard();
-	} else {
-		square[temp3].style.visibility = "visible";
 	}
 });
 
