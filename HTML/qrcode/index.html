@@ -18,7 +18,53 @@
 		<div id="qrcode_div">
 			<div id="qrcode"></div>
 		</div>
-		<div id="options"></div>
+		<div id="options">
+			<div id="options_background">
+				<div id="options_error_correction">
+					<h1 id="options_error_correction_h1">Error correction</h1>
+					<div id="options_error_correction_auto">
+						<div id="options_error_correction_auto_text">Auto:</div>
+						<div id="options_error_correction_auto_img"></div>
+					</div>
+					<div id="options_error_correction_options">
+						<div id="options_error_correction_low" class="options_error_correction_option">
+							<div id="options_error_correction_low_text" class="options_error_correction_text">L (7%)</div>
+							<div id="options_error_correction_low_select" class="options_error_correction_select">
+								<div id="options_error_correction_low_select_img" class="options_error_correction_select_img"></div>
+							</div>
+						</div>
+						<div id="options_error_correction_medium" class="options_error_correction_option">
+							<div id="options_error_correction_medium_text" class="options_error_correction_text">M (15%)</div>
+							<div id="options_error_correction_medium_select" class="options_error_correction_select">
+								<div id="options_error_correction_medium_select_img" class="options_error_correction_select_img"></div>
+							</div>
+						</div>
+						<div id="options_error_correction_quartile" class="options_error_correction_option">
+							<div id="options_error_correction_quartile_text" class="options_error_correction_text">Q (25%)</div>
+							<div id="options_error_correction_quartile_select" class="options_error_correction_select">
+								<div id="options_error_correction_quartile_select_img" class="options_error_correction_select_img"></div>
+							</div>
+						</div>
+						<div id="options_error_correction_high" class="options_error_correction_option">
+							<div id="options_error_correction_high_text" class="options_error_correction_text">H (30%)</div>
+							<div id="options_error_correction_high_select" class="options_error_correction_select">
+								<div id="options_error_correction_high_select_img" class="options_error_correction_select_img"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div id="options_version">
+					<div id="options_version_top">
+						<h1 id="options_version_h1">Version</h1>
+						<div id="options_version_auto">
+							<div id="options_version_auto_text">Auto: </div>
+							<div id="options_version_auto_img"></div>
+						</div>
+					</div>
+					<input id="options_version_input" type="number" min="1" max="40" value="5"></input>
+				</div>
+			</div>
+		</div>
 		<div id="input">
 			<textarea id="input_text"></textarea>
 			<button id="input_submit">Generate QR-Code</button>
