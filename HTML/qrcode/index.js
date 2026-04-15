@@ -485,6 +485,22 @@ function decimalToBinary(num, mode) {
 	return binary;
 }
 
+function updateErrorCorrection() {
+	options_error_correction_low_select_img.style.backgroundImage = "url(assets/select/select_gray.png)";
+	options_error_correction_medium_select_img.style.backgroundImage = "url(assets/select/select_gray.png)";
+	options_error_correction_quartile_select_img.style.backgroundImage = "url(assets/select/select_gray.png)";
+	options_error_correction_high_select_img.style.backgroundImage = "url(assets/select/select_gray.png)";
+	if (errorCorrection == 0) {
+		options_error_correction_low_select_img.style.backgroundImage = "url(assets/select/selected_gray.png)";
+	} else if (errorCorrection == 1) {
+		options_error_correction_medium_select_img.style.backgroundImage = "url(assets/select/selected_gray.png)";
+	} else if (errorCorrection == 2) {
+		options_error_correction_quartile_select_img.style.backgroundImage = "url(assets/select/selected_gray.png)";
+	} else if (errorCorrection == 3) {
+		options_error_correction_high_select_img.style.backgroundImage = "url(assets/select/selected_gray.png)";
+	}
+}
+
 function calculateVersion(mode, message) {
 	version = 1;
 	if (mode == "byte") {
@@ -506,6 +522,7 @@ function calculateVersion(mode, message) {
 					break;
 				}
 			}
+			updateErrorCorrection();
 		} else {
 			while (true) {
 				if (maxSizeByteMode.get(version)[errorCorrection] < message.length) {
@@ -588,9 +605,11 @@ function generateQRCode() {
 	let messageLengthBinary = decimalToBinary(messageLength, mode).split("");
 	if (versionAuto == true) {
 		calculateVersion(mode, message);
+		options_version_input.value = version;
 	} else if (errorCorrectionAuto == true) {
 		version = parseInt(options_version_input.value);
 		calculateErrorCorrection(mode, message);
+		updateErrorCorrection();
 	} else {
 		version = parseInt(options_version_input.value);
 		calculateMessageLength(mode, message);
@@ -672,8 +691,7 @@ function generateQRCode() {
 			qrcodearray[6][i] = 1;
 			qrcodearray[i][6] = 1;
 		}
-	}
-	let x = grid - 1;
+	} let x = grid - 1;
 	let y = grid - 3;
 	let up = true;
 	let preTimingPattern = true;
