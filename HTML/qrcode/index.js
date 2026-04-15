@@ -566,6 +566,15 @@ function calculateMessageLength(mode, message) {
 	}
 }
 
+function clearQRCode() {
+	qrcode.innerHTML = '';
+	for (let i = 0; i < qrcodearray.length; i++) {
+		for (let j = 0; j < qrcodearray.length; j++) {
+			qrcodearray[i][j] = 0;
+		}
+	}
+}
+
 function drawQRCode(trueGrid) {
 	let grid = 25 + version * 4;
 	let size = (height * 0.8) * 0.99;
@@ -597,6 +606,7 @@ function drawQRCode(trueGrid) {
 }
 
 function generateQRCode() {
+	clearQRCode();
 	messageTooBig = false;
 	let temp = input;
 	let mode = "byte";
