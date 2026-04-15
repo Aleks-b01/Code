@@ -318,15 +318,19 @@ const maxSizeByteMode = new Map([
 	[40, [2953, 2331, 1663, 1273]]
 ]);
 
+options_version_input.setAttribute("disabled", "true");
+
 let qrcodearray = [];
 
 const height = window.innerHeight;
+const padBytes = [1, 1, 1, 0, 1, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1];
 
 let input;
-let errorCorrection = 3; // 0 = L, 1 = M, 2 = Q, 3 = L, 4 = auto
-let selectedErrorCorrection = 3;
-let version;
-let versionAuto = false;
+let errorCorrection = 3; // 0 = L, 1 = M, 2 = Q, 3 = L
+let errorCorrectionAuto = true;
+let version = 5;
+let versionAuto = true;
+let messageTooBig = false;
 
 // this is made specifically for char count if it want obvious enough from the function
 function decimalToBinary(num, mode) {
@@ -481,8 +485,71 @@ function decimalToBinary(num, mode) {
 	return binary;
 }
 
-function drawQRCode(trueGrid) {
+function calculateVersion(mode, message) {
+	version = 1;
+	if (mode == "byte") {
+		if (errorCorrectionAuto == true) {
+			errorCorrection = 3;
+			while (true) {
+				if (maxSizeByteMode.get(version)[errorCorrection] < message.length) {
+					if (version != 40) {
+						version++;
+					} else {
+						if (errorCorrection != 0) {
+							errorCorrection--;
+						} else {
+							messageTooBig = true;
+							break;
+						}
+					}
+				} else {
+					break;
+				}
+			}
+		} else {
+			while (true) {
+				if (maxSizeByteMode.get(version)[errorCorrection] < message.length) {
+					if (version != 40) {
+						version++
+					} else {
+						messageTooBig = true;
+						break;
+					}
+				} else {
+					break;
+				}
+			}	
+		}
+	}
+}
 
+function calculateErrorCorrection(mode, message) {
+	errorCorrection = 3;
+	if (mode == "byte") {
+		while (true) {
+			if (maxSizeByteMode.get(version)[errorCorrection] < message.length) {
+				if (errorCorrection != 0) {
+					errorCorrection--;
+				} else {
+					messageTooBig = true;
+					break;
+				}
+			} else {
+				break;
+			}
+		}
+	}
+}
+
+function calculateMessageLength(mode, message) {
+	if (mode == "byte") {
+		if (maxSizeByteMode.get(version)[errorCorrection] < message.length) {
+			messageTooBig = true;
+		}
+	}
+}
+
+function drawQRCode(trueGrid) {
 	let grid = 25 + version * 4;
 	let size = (height * 0.8) * 0.99;
 	size = size - (size % grid);
@@ -513,13 +580,25 @@ function drawQRCode(trueGrid) {
 }
 
 function generateQRCode() {
+	messageTooBig = false;
 	let temp = input;
-	let message = temp.split("");
-	version = parseInt(message[0]);
 	let mode = "byte";
+	let message = temp.split("");
 	let messageLength = message.length - 1;
 	let messageLengthBinary = decimalToBinary(messageLength, mode).split("");
-	let padBytes = [1, 1, 1, 0, 1, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1];
+	if (versionAuto == true) {
+		calculateVersion(mode, message);
+	} else if (errorCorrectionAuto == true) {
+		version = parseInt(options_version_input.value);
+		calculateErrorCorrection(mode, message);
+	} else {
+		version = parseInt(options_version_input.value);
+		calculateMessageLength(mode, message);
+	}
+	if (messageTooBig == true) {
+		console.log("The message is too big");
+		return 0;
+	}
 	let grid = 17 + version * 4;
 
 	for (let i = 0; i < grid; i++) {
@@ -763,8 +842,8 @@ input_submit.addEventListener("click", function() {
 });
 
 options_error_correction_auto_img.addEventListener("click", function() {
-	if (errorCorrection == 4) {
-		errorCorrection = selectedErrorCorrection;
+	if (errorCorrectionAuto == true) {
+		errorCorrectionAuto = false;
 		options_error_correction_auto_img.style.backgroundImage = "url(assets/switch/switch_off.png)";
 		options_error_correction_low_select_img.style.backgroundImage = "url(assets/select/select.png)";
 		options_error_correction_medium_select_img.style.backgroundImage = "url(assets/select/select.png)";
@@ -774,18 +853,17 @@ options_error_correction_auto_img.addEventListener("click", function() {
 		options_error_correction_medium_text.style.color = "black";
 		options_error_correction_quartile_text.style.color = "black";
 		options_error_correction_high_text.style.color = "black";
-		if (selectedErrorCorrection == 0) {
+		if (errorCorrection == 0) {
 			options_error_correction_low_select_img.style.backgroundImage = "url(assets/select/selected.png)";
-		} else if (selectedErrorCorrection == 1) {
+		} else if (errorCorrection == 1) {
 			options_error_correction_medium_select_img.style.backgroundImage = "url(assets/select/selected.png)";
-		} else if (selectedErrorCorrection == 2) {
+		} else if (errorCorrection == 2) {
 			options_error_correction_quartile_select_img.style.backgroundImage = "url(assets/select/selected.png)";
-		} else if (selectedErrorCorrection == 3) {
+		} else if (errorCorrection == 3) {
 			options_error_correction_high_select_img.style.backgroundImage = "url(assets/select/selected.png)";
 		}
 	} else {
-		selectedErrorCorrection = errorCorrection;
-		errorCorrection = 4;
+		errorCorrectionAuto = true;
 		options_error_correction_auto_img.style.backgroundImage = "url(assets/switch/switch_on.png)";
 		options_error_correction_low_select_img.style.backgroundImage = "url(assets/select/select_gray.png)";
 		options_error_correction_medium_select_img.style.backgroundImage = "url(assets/select/select_gray.png)";
@@ -795,20 +873,20 @@ options_error_correction_auto_img.addEventListener("click", function() {
 		options_error_correction_medium_text.style.color = "#c7c7ce";
 		options_error_correction_quartile_text.style.color = "#c7c7ce";
 		options_error_correction_high_text.style.color = "#c7c7ce";
-		if (selectedErrorCorrection == 0) {
+		if (errorCorrection == 0) {
 			options_error_correction_low_select_img.style.backgroundImage = "url(assets/select/selected_gray.png)";
-		} else if (selectedErrorCorrection == 1) {
+		} else if (errorCorrection == 1) {
 			options_error_correction_medium_select_img.style.backgroundImage = "url(assets/select/selected_gray.png)";
-		} else if (selectedErrorCorrection == 2) {
+		} else if (errorCorrection == 2) {
 			options_error_correction_quartile_select_img.style.backgroundImage = "url(assets/select/selected_gray.png)";
-		} else if (selectedErrorCorrection == 3) {
+		} else if (errorCorrection == 3) {
 			options_error_correction_high_select_img.style.backgroundImage = "url(assets/select/selected_gray.png)";
 		}
 	}
 });
 
 options_error_correction_low.addEventListener("click", function() {
-	if (errorCorrection != 4) {
+	if (errorCorrectionAuto == false) {
 		errorCorrection = 0;
 		options_error_correction_low_select_img.style.backgroundImage = "url(assets/select/selected.png)";
 		options_error_correction_medium_select_img.style.backgroundImage = "url(assets/select/select.png)";
@@ -818,7 +896,7 @@ options_error_correction_low.addEventListener("click", function() {
 });
 
 options_error_correction_medium.addEventListener("click", function() {
-	if (errorCorrection != 4) {
+	if (errorCorrectionAuto == false) {
 		errorCorrection = 1;
 		options_error_correction_low_select_img.style.backgroundImage = "url(assets/select/select.png)";
 		options_error_correction_medium_select_img.style.backgroundImage = "url(assets/select/selected.png)";
@@ -828,7 +906,7 @@ options_error_correction_medium.addEventListener("click", function() {
 });
 
 options_error_correction_quartile.addEventListener("click", function() {
-	if (errorCorrection != 4) {
+	if (errorCorrectionAuto == false) {
 		errorCorrection = 2;
 		options_error_correction_low_select_img.style.backgroundImage = "url(assets/select/select.png)";
 		options_error_correction_medium_select_img.style.backgroundImage = "url(assets/select/select.png)";
@@ -838,7 +916,7 @@ options_error_correction_quartile.addEventListener("click", function() {
 });
 
 options_error_correction_high.addEventListener("click", function() {
-	if (errorCorrection != 4) {
+	if (errorCorrectionAuto == false) {
 		errorCorrection = 3;
 		options_error_correction_low_select_img.style.backgroundImage = "url(assets/select/select.png)";
 		options_error_correction_medium_select_img.style.backgroundImage = "url(assets/select/select.png)";
